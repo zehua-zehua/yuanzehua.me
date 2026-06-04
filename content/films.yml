@@ -10,6 +10,62 @@
 #   symbol    无海报图时的占位符号
 
 films:
+  - title: 奥本海默
+    title_en: Oppenheimer
+    year: 2023
+    director: 克里斯托弗·诺兰
+    color: "#5f3426"
+    symbol: "Ω"
+
+  - title: 头号玩家
+    title_en: Ready Player One
+    year: 2018
+    director: 史蒂文·斯皮尔伯格
+    color: "#284f63"
+    symbol: "◇"
+
+  - title: 黑客帝国
+    title_en: The Matrix
+    year: 1999
+    director: 沃卓斯基姐妹
+    color: "#1f4f3a"
+    symbol: "01"
+
+  - title: 控方证人
+    title_en: Witness for the Prosecution
+    year: 1957
+    director: 比利·怀尔德
+    color: "#5f5a52"
+    symbol: "§"
+
+  - title: 雄狮少年
+    title_en: I Am What I Am
+    year: 2021
+    director: 孙海鹏
+    color: "#b24a2f"
+    symbol: "狮"
+
+  - title: 芙蓉镇
+    title_en: Hibiscus Town
+    year: 1987
+    director: 谢晋
+    color: "#8b5a46"
+    symbol: "芙"
+
+  - title: 大红灯笼高高挂
+    title_en: Raise the Red Lantern
+    year: 1991
+    director: 张艺谋
+    color: "#8f211e"
+    symbol: "灯"
+
+  - title: 少年派的奇幻漂流
+    title_en: Life of Pi
+    year: 2012
+    director: 李安
+    color: "#d08542"
+    symbol: "π"
+
   - title: 宇宙探索编辑部
     title_en: Cosmic Expedition Editorial Dept.
     year: 2023
