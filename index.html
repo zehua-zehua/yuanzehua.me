@@ -449,27 +449,6 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* ── Custom cursor · Comet Trail ────────────── */
-.cursor-head {
-  width: 5px; height: 5px; border-radius: 50%;
-  background: var(--ink);
-  position: fixed; pointer-events: none; z-index: 9998;
-  transform: translate(-50%,-50%);
-  mix-blend-mode: multiply;
-  transition: width 0.2s ease, height 0.2s ease, background 0.2s ease;
-}
-.cursor-head.is-hover {
-  width: 9px; height: 9px;
-  background: var(--accent);
-}
-.trail-node {
-  border-radius: 50%;
-  background: var(--ink);
-  position: fixed; pointer-events: none; z-index: 9997;
-  transform: translate(-50%,-50%);
-  mix-blend-mode: multiply;
-}
-
 /* ── Responsive ──────────────────────────────── */
 @media (max-width: 768px) {
   #hero { grid-template-columns: 1fr; gap: 40px; padding-bottom: 60px; }
@@ -488,7 +467,6 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
 </head>
 
 <body>
-<div class="cursor-head" id="cursorHead"></div>
 
 <!-- Nav -->
 <nav>
@@ -877,20 +855,16 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
       <p>I reply to every thoughtful message. Don't hesitate to reach out.</p>
     </div>
     <div class="connect-links reveal">
-      <a href="mailto:hello@yuanzehua.me" class="connect-link">
-        <div><span class="cl-platform">Email</span><span class="cl-name">hello@yuanzehua.me</span></div>
+      <a href="mailto:zehua@zju.edu.cn" class="connect-link">
+        <div><span class="cl-platform">Email</span><span class="cl-name">zehua@zju.edu.cn</span></div>
         <span class="cl-arrow">↗</span>
       </a>
-      <a href="https://github.com/" target="_blank" class="connect-link">
-        <div><span class="cl-platform">GitHub</span><span class="cl-name">github.com/yuanzehua</span></div>
+      <a href="https://github.com/zehua-zehua" target="_blank" class="connect-link">
+        <div><span class="cl-platform">GitHub</span><span class="cl-name">github.com/zehua-zehua</span></div>
         <span class="cl-arrow">↗</span>
       </a>
-      <a href="https://twitter.com/" target="_blank" class="connect-link">
-        <div><span class="cl-platform">Twitter / X</span><span class="cl-name">@yuanzehua</span></div>
-        <span class="cl-arrow">↗</span>
-      </a>
-      <a href="#" class="connect-link">
-        <div><span class="cl-platform">WeChat</span><span class="cl-name">扫码添加</span></div>
+      <a href="https://www.xiaohongshu.com/user/profile/607105946" target="_blank" class="connect-link">
+        <div><span class="cl-platform">Xiaohongshu</span><span class="cl-name">607105946</span></div>
         <span class="cl-arrow">↗</span>
       </a>
     </div>
@@ -898,82 +872,13 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
 </section>
 
 <footer>
-  <span class="footer-copy">© 2025 Zane Hua · All rights reserved</span>
+  <span class="footer-copy">© 2026 Zane Hua · All rights reserved</span>
   <span class="footer-domain">yuanzehua.me</span>
 </footer>
 
 </div><!-- /container -->
 
 <script>
-/* ── Cursor · Comet Trail ────────────────────── */
-const cursorHead = document.getElementById('cursorHead');
-
-// Trail config
-const TRAIL_COUNT = 10;        // number of ghost nodes
-const TRAIL_SPACING = 3;       // history samples between each node
-const BASE_SIZE = 4;           // px, largest trail node
-const SIZE_STEP = 0.28;        // size reduction per node
-
-// Pre-create trail DOM nodes
-const trailNodes = Array.from({ length: TRAIL_COUNT }, (_, i) => {
-  const el = document.createElement('div');
-  el.className = 'trail-node';
-  const size = Math.max(0.8, BASE_SIZE - i * SIZE_STEP);
-  el.style.cssText = `width:${size}px;height:${size}px;opacity:0;`;
-  document.body.appendChild(el);
-  return el;
-});
-
-// Ring buffer for mouse history
-const HISTORY_LEN = TRAIL_COUNT * TRAIL_SPACING + 4;
-const histX = new Float32Array(HISTORY_LEN);
-const histY = new Float32Array(HISTORY_LEN);
-let histIdx = 0;
-let mx = 0, my = 0;
-let isHover = false;
-let lastMoveTime = 0;          // timestamp of last mousemove
-const IDLE_MS = 80;            // ms after which trail starts fading out
-
-document.addEventListener('mousemove', e => {
-  mx = e.clientX; my = e.clientY;
-  lastMoveTime = performance.now();
-  // store into ring buffer
-  histX[histIdx % HISTORY_LEN] = mx;
-  histY[histIdx % HISTORY_LEN] = my;
-  histIdx++;
-  cursorHead.style.left = mx + 'px';
-  cursorHead.style.top  = my + 'px';
-});
-
-// rAF loop — position trail nodes from history
-(function animateTrail() {
-  const idle = performance.now() - lastMoveTime > IDLE_MS;
-  const total = histIdx;
-  trailNodes.forEach((node, i) => {
-    const age = (i + 1) * TRAIL_SPACING;
-    if (idle || total <= age) { node.style.opacity = '0'; return; }
-    const idx = ((histIdx - 1 - age) % HISTORY_LEN + HISTORY_LEN) % HISTORY_LEN;
-    node.style.left    = histX[idx] + 'px';
-    node.style.top     = histY[idx] + 'px';
-    // opacity: bright near head, fades quickly
-    const t = 1 - (i + 1) / (TRAIL_COUNT + 1);
-    node.style.opacity = (isHover ? 0.18 : 0.55) * Math.pow(t, 1.4);
-  });
-  requestAnimationFrame(animateTrail);
-})();
-
-// Hover state — head swells, trail dims
-document.querySelectorAll('a, button').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    isHover = true;
-    cursorHead.classList.add('is-hover');
-  });
-  el.addEventListener('mouseleave', () => {
-    isHover = false;
-    cursorHead.classList.remove('is-hover');
-  });
-});
-
 /* ── Scroll reveal ──────────────────────────── */
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
