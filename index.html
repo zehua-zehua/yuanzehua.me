@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Zane Hua · 袁泽华</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<meta name="theme-color" content="#f5f2ed">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+SC:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 
@@ -783,6 +785,16 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
 
         <!-- FILMS_START -->
         <div class="film-card">
+          <div class="film-poster" style="background:#c9c2b0;">
+            <img src="/assets/images/films/cosmic-expedition.jpg" alt="宇宙探索编辑部" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <div class="film-poster-overlay"></div>
+            <span class="film-score">★ 8.0</span>
+          </div>
+          <span class="film-title">宇宙探索编辑部</span>
+          <span class="film-title-en">Cosmic Expedition Editorial Dept.</span>
+          <span class="film-year">2023 · 孔大山</span>
+        </div>
+        <div class="film-card">
           <div class="film-poster" style="background:#5f3426;">
             <img src="/assets/images/films/oppenheimer.jpg" alt="奥本海默" style="width:100%;height:100%;object-fit:cover;display:block;">
             <div class="film-poster-overlay"></div>
@@ -861,16 +873,6 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
           <span class="film-title">少年派的奇幻漂流</span>
           <span class="film-title-en">Life of Pi</span>
           <span class="film-year">2012 · 李安</span>
-        </div>
-        <div class="film-card">
-          <div class="film-poster" style="background:#c9c2b0;">
-            <img src="/assets/images/films/cosmic-expedition.jpg" alt="宇宙探索编辑部" style="width:100%;height:100%;object-fit:cover;display:block;">
-            <div class="film-poster-overlay"></div>
-            <span class="film-score">★ 8.0</span>
-          </div>
-          <span class="film-title">宇宙探索编辑部</span>
-          <span class="film-title-en">Cosmic Expedition Editorial Dept.</span>
-          <span class="film-year">2023 · 孔大山</span>
         </div>
         <!-- FILMS_END -->
 
@@ -986,29 +988,62 @@ document.querySelectorAll('.project-head').forEach(head => {
 });
 
 /* ── Film carousel ──────────────────────────── */
+const filmsWrap = document.querySelector('.films-wrap');
+const trackOuter = document.querySelector('.films-track-outer');
 const track = document.getElementById('filmsTrack');
-const CARD_W = 160 + 20; // width + gap
-let filmIndex = 0;
 const filmCards = track.querySelectorAll('.film-card');
-const maxIndex = Math.max(0, filmCards.length - 4);
+let filmIndex = 0;
+let filmAutoTimer = null;
+
+function getFilmStep() {
+  const card = filmCards[0];
+  const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 0;
+  return card.getBoundingClientRect().width + gap;
+}
+
+function getMaxFilmIndex() {
+  const step = getFilmStep();
+  const visibleCards = Math.max(1, Math.floor((trackOuter.clientWidth + step - filmCards[0].getBoundingClientRect().width) / step));
+  return Math.max(0, filmCards.length - visibleCards);
+}
 
 function setFilmPos() {
-  track.style.transform = `translateX(-${filmIndex * CARD_W}px)`;
+  filmIndex = Math.min(filmIndex, getMaxFilmIndex());
+  track.style.transform = `translateX(-${filmIndex * getFilmStep()}px)`;
+}
+
+function moveFilm(delta) {
+  const maxIndex = getMaxFilmIndex();
+  filmIndex = maxIndex ? (filmIndex + delta + maxIndex + 1) % (maxIndex + 1) : 0;
+  setFilmPos();
+}
+
+function startFilmAuto() {
+  if (filmAutoTimer) return;
+  filmAutoTimer = window.setInterval(() => moveFilm(1), 2400);
+}
+
+function stopFilmAuto() {
+  window.clearInterval(filmAutoTimer);
+  filmAutoTimer = null;
 }
 document.getElementById('filmPrev').addEventListener('click', () => {
-  filmIndex = Math.max(0, filmIndex - 1); setFilmPos();
+  moveFilm(-1);
 });
 document.getElementById('filmNext').addEventListener('click', () => {
-  filmIndex = Math.min(maxIndex, filmIndex + 1); setFilmPos();
+  moveFilm(1);
 });
+filmsWrap.addEventListener('mouseenter', startFilmAuto);
+filmsWrap.addEventListener('mouseleave', stopFilmAuto);
+window.addEventListener('resize', setFilmPos);
 
 // touch swipe
 let touchStartX = 0;
 track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, {passive:true});
 track.addEventListener('touchend',   e => {
   const dx = touchStartX - e.changedTouches[0].clientX;
-  if (dx > 40)       { filmIndex = Math.min(maxIndex, filmIndex+1); setFilmPos(); }
-  else if (dx < -40) { filmIndex = Math.max(0, filmIndex-1); setFilmPos(); }
+  if (dx > 40)       moveFilm(1);
+  else if (dx < -40) moveFilm(-1);
 });
 </script>
 </body>

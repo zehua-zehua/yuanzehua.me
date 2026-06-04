@@ -10,6 +10,15 @@
 #   symbol    无海报图时的占位符号
 
 films:
+  - title: 宇宙探索编辑部
+    title_en: Cosmic Expedition Editorial Dept.
+    year: 2023
+    director: 孔大山
+    score: 8.0
+    color: "#c9c2b0"
+    symbol: "◎"
+    image: "/assets/images/films/cosmic-expedition.jpg"
+
   - title: 奥本海默
     title_en: Oppenheimer
     year: 2023
@@ -81,12 +90,3 @@ films:
     color: "#d08542"
     symbol: "π"
     image: "/assets/images/films/life-of-pi.jpg"
-
-  - title: 宇宙探索编辑部
-    title_en: Cosmic Expedition Editorial Dept.
-    year: 2023
-    director: 孔大山
-    score: 8.0
-    color: "#c9c2b0"
-    symbol: "◎"
-    image: "/assets/images/films/cosmic-expedition.jpg"
