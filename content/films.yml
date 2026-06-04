@@ -1,0 +1,20 @@
+# 电影片单
+# 构建脚本读取此文件自动生成轮播 HTML
+# 字段说明：
+#   title     中文片名
+#   title_en  英文片名
+#   year      年份
+#   director  导演
+#   score     评分（显示在海报悬停时）
+#   color     海报占位背景色（用取色器从真实海报主色取，保持色调和谐）
+#   symbol    无海报图时的占位符号
+
+films:
+  - title: 宇宙探索编辑部
+    title_en: Cosmic Expedition Editorial Dept.
+    year: 2023
+    director: 孔大山
+    score: 8.3
+    color: "#c9c2b0"
+    symbol: "◎"
+    image: "/assets/images/films/cosmic-expedition.jpg"

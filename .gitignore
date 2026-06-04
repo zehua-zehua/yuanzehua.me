@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+
+# Node
+node_modules/
+
+# Editor
+.vscode/
+.idea/
+
+# Local drafts (不上线的草稿)
+content/posts/draft-*.md
+content/posts/_*.md

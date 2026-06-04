@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zane Hua · 袁泽华</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+SC:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+/* ── Reset & tokens ─────────────────────────── */
+:root {
+  --ink:      #1a1814;
+  --paper:    #f5f2ed;
+  --mid:      #8c8880;
+  --light:    #c8c4bc;
+  --faint:    #e4e0d8;
+  --accent:   #2d4a3e;
+  --rule:     rgba(26,24,20,0.10);
+  --serif-en: 'EB Garamond', Georgia, serif;
+  --serif-cn: 'Noto Serif SC', STSong, serif;
+  --mono:     'DM Mono', 'Courier New', monospace;
+  --gap:      clamp(32px, 5vw, 72px);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif-cn);
+  font-weight: 300;
+  line-height: 1.8;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 200px;
+  pointer-events: none; z-index: 9999; opacity: 0.6;
+}
+
+/* ── Layout ─────────────────────────────────── */
+.container { max-width: 960px; margin: 0 auto; padding: 0 var(--gap); }
+
+/* ── Nav ────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 20px var(--gap);
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(245,242,237,0.88);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--rule);
+  transition: padding 0.4s ease;
+}
+nav .logo {
+  font-family: var(--serif-en); font-size: 15px;
+  letter-spacing: 0.08em; color: var(--ink); text-decoration: none; font-style: italic;
+}
+nav ul { list-style: none; display: flex; gap: 28px; }
+nav ul a {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.2s;
+}
+nav ul a:hover { color: var(--ink); }
+
+/* ── Hero ───────────────────────────────────── */
+#hero {
+  padding-top: 120px; padding-bottom: 100px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  align-items: end; border-bottom: 1px solid var(--rule);
+}
+.hero-label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--mid); display: block; margin-bottom: 20px;
+  opacity: 0; animation: fadeUp 0.8s ease 0.1s forwards;
+}
+.hero-name-en {
+  font-family: var(--serif-en); font-size: clamp(44px, 7vw, 80px);
+  font-weight: 400; line-height: 1.05; letter-spacing: -0.01em; color: var(--ink); display: block;
+  opacity: 0; animation: fadeUp 0.9s ease 0.25s forwards;
+}
+.hero-name-cn {
+  font-family: var(--serif-cn); font-size: clamp(18px, 2.5vw, 26px);
+  font-weight: 300; color: var(--mid); display: block;
+  margin-top: 8px; letter-spacing: 0.25em;
+  opacity: 0; animation: fadeUp 0.9s ease 0.4s forwards;
+}
+.hero-right { padding-bottom: 6px; opacity: 0; animation: fadeUp 0.9s ease 0.55s forwards; }
+.hero-tagline {
+  font-family: var(--serif-en); font-size: clamp(13px, 1.5vw, 16px);
+  font-style: italic; color: var(--mid); line-height: 1.7;
+  max-width: 340px; margin-left: auto; text-align: right;
+}
+.hero-tagline-cn {
+  font-size: 12px; color: var(--light); margin-top: 10px; font-style: normal;
+  font-family: var(--serif-cn); font-weight: 300; letter-spacing: 0.1em; display: block;
+}
+.scroll-hint {
+  grid-column: 1/-1; margin-top: 60px; display: flex; align-items: center; gap: 12px;
+  opacity: 0; animation: fadeUp 0.9s ease 0.85s forwards;
+}
+.scroll-line { width: 40px; height: 1px; background: var(--light); display: block; }
+.scroll-hint span {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.15em; text-transform: uppercase; color: var(--light);
+}
+
+/* ── Section base ───────────────────────────── */
+section { padding: 80px 0; border-bottom: 1px solid var(--rule); }
+section:last-of-type { border-bottom: none; }
+.section-header {
+  display: flex; align-items: baseline; gap: 16px; margin-bottom: 56px;
+}
+.section-num {
+  font-family: var(--mono); font-size: 10px; color: var(--light);
+  letter-spacing: 0.1em; flex-shrink: 0;
+}
+.section-title {
+  font-family: var(--serif-en); font-size: clamp(20px, 3vw, 28px);
+  font-weight: 400; font-style: italic; color: var(--ink); letter-spacing: -0.01em;
+}
+.section-title-cn {
+  font-family: var(--serif-cn); font-size: 12px; font-weight: 300;
+  color: var(--mid); letter-spacing: 0.2em; margin-left: auto;
+}
+.section-rule { flex: 1; height: 1px; background: var(--rule); align-self: center; }
+
+/* ── About ──────────────────────────────────── */
+.about-grid {
+  display: grid; grid-template-columns: 3fr 2fr;
+  gap: clamp(40px, 6vw, 80px); align-items: start;
+}
+.about-body p {
+  font-size: clamp(15px, 1.8vw, 17px); color: var(--ink);
+  line-height: 2; margin-bottom: 20px; font-weight: 300;
+}
+.about-body p:last-child { margin-bottom: 0; }
+.about-body em { font-family: var(--serif-en); font-style: italic; color: var(--accent); }
+.about-meta { padding-top: 4px; }
+.meta-item { padding: 16px 0; border-bottom: 1px solid var(--rule); }
+.meta-item:first-child { border-top: 1px solid var(--rule); }
+.meta-label {
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--light); display: block; margin-bottom: 4px;
+}
+.meta-value { font-size: 13px; font-weight: 400; color: var(--ink); letter-spacing: 0.05em; }
+.meta-value-en {
+  font-family: var(--serif-en); font-size: 13px; color: var(--mid); display: block; margin-top: 2px;
+}
+
+/* ── Journey / Timeline ─────────────────────── */
+.journey-wrap { margin-top: 64px; padding-top: 56px; border-top: 1px solid var(--rule); }
+.journey-label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--light); margin-bottom: 40px; display: block;
+}
+.timeline {
+  position: relative;
+  padding-left: 28px;
+}
+.timeline::before {
+  content: '';
+  position: absolute; left: 0; top: 8px; bottom: 8px;
+  width: 1px; background: var(--rule);
+}
+.tl-item {
+  position: relative;
+  padding-bottom: 44px;
+}
+.tl-item:last-child { padding-bottom: 0; }
+.tl-dot {
+  position: absolute; left: -32px; top: 7px;
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--paper); border: 1px solid var(--light);
+  transition: border-color 0.2s, background 0.2s;
+}
+.tl-item:hover .tl-dot { background: var(--accent); border-color: var(--accent); }
+.tl-period {
+  font-family: var(--mono); font-size: 9px; color: var(--light);
+  letter-spacing: 0.12em; display: block; margin-bottom: 6px;
+}
+.tl-role {
+  font-size: 15px; font-weight: 400; color: var(--ink); display: block;
+  letter-spacing: 0.03em; margin-bottom: 2px;
+}
+.tl-org {
+  font-family: var(--serif-en); font-size: 13px; font-style: italic;
+  color: var(--accent); display: block; margin-bottom: 8px;
+}
+.tl-desc {
+  font-size: 13px; color: var(--mid); line-height: 1.8; font-weight: 300;
+  max-width: 520px;
+}
+.tl-tag {
+  display: inline-block; margin-top: 10px;
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--mid);
+  border: 1px solid var(--rule); padding: 2px 8px;
+}
+
+/* ── Work / Projects ────────────────────────── */
+.work-tabs {
+  display: flex; gap: 0; margin-bottom: 40px;
+  border-bottom: 1px solid var(--rule);
+}
+.work-tab {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--light);
+  padding: 0 0 14px; margin-right: 32px;
+  border-bottom: 1px solid transparent;
+  cursor: pointer; transition: color 0.2s, border-color 0.2s;
+  background: none; border-left: none; border-right: none; border-top: none;
+  position: relative; bottom: -1px;
+}
+.work-tab.active { color: var(--ink); border-bottom-color: var(--ink); }
+.work-tab:hover { color: var(--mid); }
+
+.work-panel { display: none; }
+.work-panel.active { display: block; }
+
+.project-list { display: flex; flex-direction: column; gap: 0; }
+.project-item {
+  border-bottom: 1px solid var(--rule); overflow: hidden;
+}
+.project-item:first-child { border-top: 1px solid var(--rule); }
+
+.project-head {
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 20px; align-items: center;
+  padding: 24px 0; cursor: pointer;
+  transition: opacity 0.2s;
+}
+.project-head:hover { opacity: 0.7; }
+
+.project-title-wrap { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.project-title { font-size: 15px; font-weight: 400; color: var(--ink); letter-spacing: 0.03em; }
+.project-badge {
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em;
+  text-transform: uppercase; padding: 2px 8px;
+  border: 1px solid var(--rule); color: var(--mid); flex-shrink: 0;
+}
+.project-badge.pub   { border-color: rgba(45,74,62,0.3); color: var(--accent); }
+.project-badge.proj  { border-color: rgba(140,136,128,0.3); }
+.project-badge.work  { border-color: rgba(26,24,20,0.15); }
+
+.project-toggle {
+  font-family: var(--mono); font-size: 12px; color: var(--light);
+  transition: transform 0.3s; flex-shrink: 0; user-select: none;
+}
+.project-item.open .project-toggle { transform: rotate(45deg); }
+
+.project-body {
+  display: grid; grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(.4,0,.2,1);
+}
+.project-item.open .project-body { grid-template-rows: 1fr; }
+.project-body-inner {
+  overflow: hidden;
+  padding-bottom: 0;
+  transition: padding-bottom 0.35s ease;
+}
+.project-item.open .project-body-inner { padding-bottom: 28px; }
+
+.project-detail {
+  display: grid; grid-template-columns: 3fr 2fr; gap: 32px;
+  padding-top: 4px;
+}
+.project-desc { font-size: 13px; color: var(--mid); line-height: 1.9; font-weight: 300; }
+.project-desc em { font-family: var(--serif-en); font-style: italic; color: var(--ink); }
+.project-meta-list { display: flex; flex-direction: column; gap: 0; }
+.pm-item { padding: 10px 0; border-bottom: 1px solid var(--rule); }
+.pm-item:first-child { border-top: 1px solid var(--rule); }
+.pm-label {
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--light); display: block; margin-bottom: 2px;
+}
+.pm-val { font-size: 12px; color: var(--ink); font-weight: 300; }
+
+/* ── Interests ──────────────────────────────── */
+.interests-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--rule); border: 1px solid var(--rule);
+}
+.interest-card {
+  background: var(--paper); padding: 36px 32px;
+  transition: background 0.3s ease; cursor: default;
+}
+.interest-card:hover { background: #eeebe4; }
+.interest-num {
+  font-family: var(--mono); font-size: 9px; color: var(--light);
+  letter-spacing: 0.1em; display: block; margin-bottom: 20px;
+}
+.interest-icon { font-size: 22px; display: block; margin-bottom: 16px; line-height: 1; }
+.interest-title {
+  font-family: var(--serif-en); font-size: 18px; font-weight: 400;
+  font-style: italic; color: var(--ink); display: block; margin-bottom: 4px;
+}
+.interest-title-cn {
+  font-size: 12px; color: var(--mid); letter-spacing: 0.15em;
+  display: block; margin-bottom: 16px;
+}
+.interest-desc { font-size: 13px; color: var(--mid); line-height: 1.8; font-weight: 300; }
+
+/* ── Film Carousel ──────────────────────────── */
+.films-wrap {
+  margin-top: 64px; padding-top: 56px; border-top: 1px solid var(--rule);
+}
+.films-label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--light); margin-bottom: 32px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.films-nav { display: flex; gap: 12px; }
+.film-btn {
+  background: none; border: 1px solid var(--rule); color: var(--mid);
+  width: 28px; height: 28px; cursor: pointer; font-size: 12px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s; font-family: var(--mono);
+}
+.film-btn:hover { border-color: var(--ink); color: var(--ink); }
+
+.films-track-outer {
+  overflow: hidden; position: relative;
+}
+.films-track-outer::after {
+  content: '';
+  position: absolute; right: 0; top: 0; bottom: 0;
+  width: 80px;
+  background: linear-gradient(to right, transparent, var(--paper));
+  pointer-events: none;
+}
+.films-track {
+  display: flex; gap: 20px;
+  transition: transform 0.5s cubic-bezier(.4,0,.2,1);
+  will-change: transform;
+}
+.film-card {
+  flex-shrink: 0; width: 160px; cursor: pointer;
+}
+.film-poster {
+  width: 160px; height: 228px;
+  background: var(--faint);
+  position: relative; overflow: hidden;
+  margin-bottom: 14px;
+  transition: transform 0.3s ease;
+}
+.film-card:hover .film-poster { transform: translateY(-4px); }
+.film-poster-bg {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 40px; opacity: 0.35;
+}
+.film-poster-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(26,24,20,0.6) 100%);
+  opacity: 0; transition: opacity 0.3s;
+}
+.film-card:hover .film-poster-overlay { opacity: 1; }
+.film-score {
+  position: absolute; bottom: 10px; right: 10px;
+  font-family: var(--mono); font-size: 11px; color: #fff;
+  opacity: 0; transition: opacity 0.3s;
+}
+.film-card:hover .film-score { opacity: 1; }
+.film-title { font-size: 13px; font-weight: 400; color: var(--ink); display: block; letter-spacing: 0.03em; }
+.film-title-en {
+  font-family: var(--serif-en); font-style: italic; font-size: 12px;
+  color: var(--light); display: block; margin-top: 2px;
+}
+.film-year {
+  font-family: var(--mono); font-size: 9px; color: var(--light);
+  display: block; margin-top: 4px; letter-spacing: 0.1em;
+}
+
+/* ── Thinking ───────────────────────────────── */
+.thoughts-list { display: flex; flex-direction: column; }
+.thought-item {
+  display: grid; grid-template-columns: 100px 1fr auto;
+  gap: 32px; align-items: baseline;
+  padding: 28px 0; border-bottom: 1px solid var(--rule);
+  text-decoration: none; color: inherit;
+}
+.thought-item:first-child { border-top: 1px solid var(--rule); }
+.thought-item:hover .thought-title { color: var(--accent); }
+.thought-date {
+  font-family: var(--mono); font-size: 10px; color: var(--light);
+  letter-spacing: 0.08em; white-space: nowrap;
+}
+.thought-title {
+  font-size: 15px; font-weight: 400; color: var(--ink);
+  transition: color 0.2s; letter-spacing: 0.03em;
+}
+.thought-tag {
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--mid);
+  border: 1px solid var(--rule); padding: 3px 8px; white-space: nowrap;
+}
+.thoughts-cta {
+  margin-top: 40px; display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--mid);
+  cursor: pointer; text-decoration: none; transition: color 0.2s;
+}
+.thoughts-cta:hover { color: var(--ink); }
+.thoughts-cta::after { content: '→'; }
+
+/* ── Connect ────────────────────────────────── */
+.connect-layout {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: var(--gap); align-items: start;
+}
+.connect-text p { font-size: 15px; color: var(--mid); line-height: 2; font-weight: 300; }
+.connect-text em { font-family: var(--serif-en); font-style: italic; color: var(--ink); }
+.connect-links { display: flex; flex-direction: column; }
+.connect-link {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 0; border-bottom: 1px solid var(--rule);
+  text-decoration: none; transition: all 0.2s;
+}
+.connect-link:first-child { border-top: 1px solid var(--rule); }
+.connect-link:hover .cl-name { color: var(--accent); }
+.connect-link:hover .cl-arrow { transform: translate(3px, -3px); color: var(--accent); }
+.cl-platform {
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--light); display: block;
+}
+.cl-name {
+  font-size: 14px; color: var(--ink); display: block; margin-top: 3px;
+  font-weight: 400; transition: color 0.2s; letter-spacing: 0.03em;
+}
+.cl-arrow { color: var(--light); font-size: 14px; transition: all 0.2s; }
+
+/* ── Footer ─────────────────────────────────── */
+footer { padding: 40px 0; display: flex; justify-content: space-between; align-items: center; }
+.footer-copy { font-family: var(--mono); font-size: 10px; color: var(--light); letter-spacing: 0.1em; }
+.footer-domain { font-family: var(--serif-en); font-size: 12px; font-style: italic; color: var(--light); }
+
+/* ── Animations ─────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── Custom cursor · Comet Trail ────────────── */
+.cursor-head {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--ink);
+  position: fixed; pointer-events: none; z-index: 9998;
+  transform: translate(-50%,-50%);
+  mix-blend-mode: multiply;
+  transition: width 0.2s ease, height 0.2s ease, background 0.2s ease;
+}
+.cursor-head.is-hover {
+  width: 9px; height: 9px;
+  background: var(--accent);
+}
+.trail-node {
+  border-radius: 50%;
+  background: var(--ink);
+  position: fixed; pointer-events: none; z-index: 9997;
+  transform: translate(-50%,-50%);
+  mix-blend-mode: multiply;
+}
+
+/* ── Responsive ──────────────────────────────── */
+@media (max-width: 768px) {
+  #hero { grid-template-columns: 1fr; gap: 40px; padding-bottom: 60px; }
+  .hero-tagline { margin-left: 0; text-align: left; }
+  .about-grid { grid-template-columns: 1fr; }
+  .interests-grid { grid-template-columns: 1fr; }
+  .connect-layout { grid-template-columns: 1fr; }
+  .thought-item { grid-template-columns: 80px 1fr; }
+  .thought-tag { display: none; }
+  .project-detail { grid-template-columns: 1fr; }
+  nav ul { gap: 16px; }
+  .film-card { width: 130px; }
+  .film-poster { width: 130px; height: 185px; }
+}
+</style>
+</head>
+
+<body>
+<div class="cursor-head" id="cursorHead"></div>
+
+<!-- Nav -->
+<nav>
+  <a href="#" class="logo">Zane Hua</a>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#interests">Interests</a></li>
+    <li><a href="#thinking">Thinking</a></li>
+    <li><a href="#connect">Connect</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+
+<!-- ── Hero ──────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-left">
+    <span class="hero-label">yuanzehua.me</span>
+    <span class="hero-name-en">Zane<br>Hua</span>
+    <span class="hero-name-cn">袁 泽 华</span>
+  </div>
+  <div class="hero-right">
+    <p class="hero-tagline">
+      Building products at the edge of what AI can do.
+      <span class="hero-tagline-cn">在智能的边界处，定义下一个产品</span>
+    </p>
+  </div>
+  <div class="scroll-hint">
+    <span class="scroll-line"></span>
+    <span>Scroll to explore</span>
+  </div>
+</section>
+
+<!-- ── 01 About + Journey ─────────────────────── -->
+<section id="about">
+  <div class="section-header reveal">
+    <span class="section-num">01</span>
+    <h2 class="section-title">About</h2>
+    <span class="section-rule"></span>
+    <span class="section-title-cn">关 于 我</span>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-body reveal">
+      <p>你好，我是袁泽华。我对这个世界保持着广泛的好奇心——无论是技术系统的底层逻辑，还是人文世界的复杂纹理，都让我着迷。</p>
+      <p>我相信<em>清晰的思考</em>是一切好事情的基础。我喜欢把复杂的事情想明白，再用尽量简洁的方式表达出来。</p>
+      <p>这里是我思考与生活的一个切面——不求全面，但求真实。欢迎你来看看。</p>
+    </div>
+    <div class="about-meta reveal">
+      <div class="meta-item">
+        <span class="meta-label">Location</span>
+        <span class="meta-value">中国</span>
+        <span class="meta-value-en">China</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Focus</span>
+        <span class="meta-value">思考 · 建造 · 表达</span>
+        <span class="meta-value-en">Think · Build · Express</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Status</span>
+        <span class="meta-value">持续探索中</span>
+        <span class="meta-value-en">Always exploring</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Domain</span>
+        <span class="meta-value">yuanzehua.me</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Timeline: Education + Internship -->
+  <div class="journey-wrap reveal">
+    <span class="journey-label">Education &amp; Experience · 学习与经历</span>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <span class="tl-dot"></span>
+        <span class="tl-period">2025.09 — 至今</span>
+        <span class="tl-role">研究生 · Master's Student</span>
+        <span class="tl-org">浙江大学 · 人工智能</span>
+        <p class="tl-desc">研究方向：人工智能。</p>
+        <span class="tl-tag">Research</span>
+      </div>
+
+      <div class="tl-item">
+        <span class="tl-dot"></span>
+        <span class="tl-period">2021.09 — 2025.06</span>
+        <span class="tl-role">本科生 · Bachelor's Student</span>
+        <span class="tl-org">华中科技大学 · 网络空间安全</span>
+        <p class="tl-desc">主修网络空间安全。</p>
+        <span class="tl-tag">Education</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── 02 Work ─────────────────────────────────── -->
+<section id="work">
+  <div class="section-header reveal">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Work</h2>
+    <span class="section-rule"></span>
+    <span class="section-title-cn">成 果 与 项 目</span>
+  </div>
+
+  <div class="work-tabs reveal">
+    <button class="work-tab active" data-tab="research">Research</button>
+    <button class="work-tab" data-tab="projects">Projects</button>
+    <button class="work-tab" data-tab="internship">Internship</button>
+  </div>
+
+  <!-- Research -->
+  <div class="work-panel active" id="panel-research">
+    <div class="project-list">
+
+      <div class="project-item">
+        <div class="project-head">
+          <div class="project-title-wrap">
+            <span class="project-title">[论文/研究标题，请替换]</span>
+            <span class="project-badge pub">Published</span>
+          </div>
+          <span class="project-toggle">+</span>
+        </div>
+        <div class="project-body">
+          <div class="project-body-inner">
+            <div class="project-detail">
+              <div class="project-desc">
+                <p>研究摘要：[用两三句话描述这项研究解决了什么问题、用了什么方法、取得了什么结论]。</p>
+                <br>
+                <p><em>Key finding：</em>[核心发现或贡献，1句话]。</p>
+              </div>
+              <div class="project-meta-list">
+                <div class="pm-item">
+                  <span class="pm-label">Venue</span>
+                  <span class="pm-val">[期刊/会议名称]</span>
+                </div>
+                <div class="pm-item">
+                  <span class="pm-label">Year</span>
+                  <span class="pm-val">2024</span>
+                </div>
+                <div class="pm-item">
+                  <span class="pm-label">Role</span>
+                  <span class="pm-val">第一作者 / Co-author</span>
+                </div>
+                <div class="pm-item">
+                  <span class="pm-label">Link</span>
+                  <span class="pm-val"><a href="#" style="color:var(--accent);text-decoration:none">arxiv / paper ↗</a></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-item">
+        <div class="project-head">
+          <div class="project-title-wrap">
+            <span class="project-title">[另一项研究/在投论文标题]</span>
+            <span class="project-badge pub" style="border-color:rgba(140,136,128,0.3);color:var(--mid)">Under Review</span>
+          </div>
+          <span class="project-toggle">+</span>
+        </div>
+        <div class="project-body">
+          <div class="project-body-inner">
+            <div class="project-detail">
+              <div class="project-desc">
+                <p>[研究描述，请替换为真实内容]</p>
+              </div>
+              <div class="project-meta-list">
+                <div class="pm-item"><span class="pm-label">Target</span><span class="pm-val">[目标期刊/会议]</span></div>
+                <div class="pm-item"><span class="pm-label">Year</span><span class="pm-val">2025</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Projects -->
+  <div class="work-panel" id="panel-projects">
+    <div class="project-list">
+
+      <div class="project-item">
+        <div class="project-head">
+          <div class="project-title-wrap">
+            <span class="project-title">[项目名称，请替换]</span>
+            <span class="project-badge proj">Side Project</span>
+          </div>
+          <span class="project-toggle">+</span>
+        </div>
+        <div class="project-body">
+          <div class="project-body-inner">
+            <div class="project-detail">
+              <div class="project-desc">
+                <p>[项目描述：这个项目做了什么、解决了什么问题、用了哪些技术/方法]。</p>
+                <br>
+                <p><em>成果：</em>[具体成果，如用户量、功能上线、获奖情况等]。</p>
+              </div>
+              <div class="project-meta-list">
+                <div class="pm-item"><span class="pm-label">Stack</span><span class="pm-val">[技术栈]</span></div>
+                <div class="pm-item"><span class="pm-label">Year</span><span class="pm-val">2024</span></div>
+                <div class="pm-item"><span class="pm-label">Link</span><span class="pm-val"><a href="#" style="color:var(--accent);text-decoration:none">GitHub ↗</a></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-item">
+        <div class="project-head">
+          <div class="project-title-wrap">
+            <span class="project-title">[另一个项目]</span>
+            <span class="project-badge proj">Competition</span>
+          </div>
+          <span class="project-toggle">+</span>
+        </div>
+        <div class="project-body">
+          <div class="project-body-inner">
+            <div class="project-detail">
+              <div class="project-desc"><p>[项目描述]</p></div>
+              <div class="project-meta-list">
+                <div class="pm-item"><span class="pm-label">Award</span><span class="pm-val">[获奖情况]</span></div>
+                <div class="pm-item"><span class="pm-label">Year</span><span class="pm-val">2023</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Internship -->
+  <div class="work-panel" id="panel-internship">
+    <div class="project-list">
+
+      <div class="project-item">
+        <div class="project-head">
+          <div class="project-title-wrap">
+            <span class="project-title">[实习项目/成果名称]</span>
+            <span class="project-badge work">Internship</span>
+          </div>
+          <span class="project-toggle">+</span>
+        </div>
+        <div class="project-body">
+          <div class="project-body-inner">
+            <div class="project-detail">
+              <div class="project-desc">
+                <p>[描述你在实习期间主导或参与的最重要的一个项目/成果]。</p>
+                <br>
+                <p><em>影响：</em>[量化影响，如：DAU提升X%、缩短处理时间X分钟、上线功能服务X万用户]。</p>
+              </div>
+              <div class="project-meta-list">
+                <div class="pm-item"><span class="pm-label">Company</span><span class="pm-val">[公司名称]</span></div>
+                <div class="pm-item"><span class="pm-label">Period</span><span class="pm-val">2024 夏</span></div>
+                <div class="pm-item"><span class="pm-label">Team</span><span class="pm-val">[所在团队]</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── 03 Interests + Films ───────────────────── -->
+<section id="interests">
+  <div class="section-header reveal">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Interests</h2>
+    <span class="section-rule"></span>
+    <span class="section-title-cn">兴 趣 所 在</span>
+  </div>
+
+  <div class="interests-grid reveal">
+    <div class="interest-card">
+      <span class="interest-num">— 01</span>
+      <span class="interest-icon">◎</span>
+      <span class="interest-title">AI Research</span>
+      <span class="interest-title-cn">人工智能研究</span>
+      <p class="interest-desc">专注于 [你的研究方向]。既想理解模型内部发生了什么，也在意它最终能为谁解决什么问题。技术深度是产品判断力的底座。</p>
+    </div>
+    <div class="interest-card">
+      <span class="interest-num">— 02</span>
+      <span class="interest-icon">◈</span>
+      <span class="interest-title">Product Sense</span>
+      <span class="interest-title-cn">产品感知与判断</span>
+      <p class="interest-desc">好的产品决策来自对用户、技术与商业三者之间张力的持续感知。我喜欢拆解一个产品"为什么这样设计"，比它"做了什么"更有意思。</p>
+    </div>
+    <div class="interest-card">
+      <span class="interest-num">— 03</span>
+      <span class="interest-icon">◇</span>
+      <span class="interest-title">Design</span>
+      <span class="interest-title-cn">设计与交互</span>
+      <p class="interest-desc">AI 能力需要好的界面才能被感知到。关注 AI 产品的交互范式——如何设计提示词、反馈、置信度表达，让智能变得可信赖而非神秘。</p>
+    </div>
+    <div class="interest-card">
+      <span class="interest-num">— 04</span>
+      <span class="interest-icon">○</span>
+      <span class="interest-title">Writing</span>
+      <span class="interest-title-cn">写作与表达</span>
+      <p class="interest-desc">写作是把模糊想法逼成清晰结论的过程。PRD、分析报告、还是这个页面——清晰表达是 PM 最被低估的硬技能。</p>
+    </div>
+    <div class="interest-card">
+      <span class="interest-num">— 05</span>
+      <span class="interest-icon">△</span>
+      <span class="interest-title">People</span>
+      <span class="interest-title-cn">人与行为</span>
+      <p class="interest-desc">AI 产品最难的不是模型，是人。用户如何建立对 AI 的信任、在哪里放弃、对"足够好"的阈值在哪——这些比 benchmark 更值得研究。</p>
+    </div>
+    <div class="interest-card">
+      <span class="interest-num">— 06</span>
+      <span class="interest-icon">□</span>
+      <span class="interest-title">Cinema</span>
+      <span class="interest-title-cn">电影与叙事</span>
+      <p class="interest-desc">电影教会我如何在有限时间内建立信任、制造转折、留下余韵。这和设计一个好的 AI 产品体验，其实是同一件事。</p>
+    </div>
+  </div>
+
+  <!-- Film Carousel -->
+  <div class="films-wrap reveal">
+    <div class="films-label">
+      <span>Watchlist · 近期片单</span>
+      <div class="films-nav">
+        <button class="film-btn" id="filmPrev">←</button>
+        <button class="film-btn" id="filmNext">→</button>
+      </div>
+    </div>
+    <div class="films-track-outer">
+      <div class="films-track" id="filmsTrack">
+
+        <!-- FILMS_START -->
+        <div class="film-card">
+          <div class="film-poster" style="background:#c9c2b0;">
+            <img src="/assets/images/films/cosmic-expedition.jpg" alt="宇宙探索编辑部" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <div class="film-poster-overlay"></div>
+            <span class="film-score">★ 8.3</span>
+          </div>
+          <span class="film-title">宇宙探索编辑部</span>
+          <span class="film-title-en">Cosmic Expedition Editorial Dept.</span>
+          <span class="film-year">2023 · 孔大山</span>
+        </div>
+        <!-- FILMS_END -->
+
+      </div><!-- /track -->
+    </div>
+  </div>
+</section>
+
+<!-- ── 04 Thinking ────────────────────────────── -->
+<section id="thinking">
+  <div class="section-header reveal">
+    <span class="section-num">04</span>
+    <h2 class="section-title">Thinking</h2>
+    <span class="section-rule"></span>
+    <span class="section-title-cn">思 考 片 段</span>
+  </div>
+
+  <div class="thoughts-list">
+    <!-- POSTS_START -->
+      <!-- 暂无文章，在 content/posts/ 下新建 .md 文件 -->
+      <!-- POSTS_END -->
+  </div>
+  <a href="#" class="thoughts-cta reveal">查看全部文章 · View all writing</a>
+</section>
+
+<!-- ── 05 Connect ─────────────────────────────── -->
+<section id="connect">
+  <div class="section-header reveal">
+    <span class="section-num">05</span>
+    <h2 class="section-title">Connect</h2>
+    <span class="section-rule"></span>
+    <span class="section-title-cn">联 系 我</span>
+  </div>
+
+  <div class="connect-layout">
+    <div class="connect-text reveal">
+      <p>如果你对某个话题有相似的兴趣，或者只是想聊聊，<em>欢迎写信给我</em>。</p>
+      <br>
+      <p>I reply to every thoughtful message. Don't hesitate to reach out.</p>
+    </div>
+    <div class="connect-links reveal">
+      <a href="mailto:hello@yuanzehua.me" class="connect-link">
+        <div><span class="cl-platform">Email</span><span class="cl-name">hello@yuanzehua.me</span></div>
+        <span class="cl-arrow">↗</span>
+      </a>
+      <a href="https://github.com/" target="_blank" class="connect-link">
+        <div><span class="cl-platform">GitHub</span><span class="cl-name">github.com/yuanzehua</span></div>
+        <span class="cl-arrow">↗</span>
+      </a>
+      <a href="https://twitter.com/" target="_blank" class="connect-link">
+        <div><span class="cl-platform">Twitter / X</span><span class="cl-name">@yuanzehua</span></div>
+        <span class="cl-arrow">↗</span>
+      </a>
+      <a href="#" class="connect-link">
+        <div><span class="cl-platform">WeChat</span><span class="cl-name">扫码添加</span></div>
+        <span class="cl-arrow">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-copy">© 2025 Zane Hua · All rights reserved</span>
+  <span class="footer-domain">yuanzehua.me</span>
+</footer>
+
+</div><!-- /container -->
+
+<script>
+/* ── Cursor · Comet Trail ────────────────────── */
+const cursorHead = document.getElementById('cursorHead');
+
+// Trail config
+const TRAIL_COUNT = 10;        // number of ghost nodes
+const TRAIL_SPACING = 3;       // history samples between each node
+const BASE_SIZE = 4;           // px, largest trail node
+const SIZE_STEP = 0.28;        // size reduction per node
+
+// Pre-create trail DOM nodes
+const trailNodes = Array.from({ length: TRAIL_COUNT }, (_, i) => {
+  const el = document.createElement('div');
+  el.className = 'trail-node';
+  const size = Math.max(0.8, BASE_SIZE - i * SIZE_STEP);
+  el.style.cssText = `width:${size}px;height:${size}px;opacity:0;`;
+  document.body.appendChild(el);
+  return el;
+});
+
+// Ring buffer for mouse history
+const HISTORY_LEN = TRAIL_COUNT * TRAIL_SPACING + 4;
+const histX = new Float32Array(HISTORY_LEN);
+const histY = new Float32Array(HISTORY_LEN);
+let histIdx = 0;
+let mx = 0, my = 0;
+let isHover = false;
+let lastMoveTime = 0;          // timestamp of last mousemove
+const IDLE_MS = 80;            // ms after which trail starts fading out
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  lastMoveTime = performance.now();
+  // store into ring buffer
+  histX[histIdx % HISTORY_LEN] = mx;
+  histY[histIdx % HISTORY_LEN] = my;
+  histIdx++;
+  cursorHead.style.left = mx + 'px';
+  cursorHead.style.top  = my + 'px';
+});
+
+// rAF loop — position trail nodes from history
+(function animateTrail() {
+  const idle = performance.now() - lastMoveTime > IDLE_MS;
+  const total = histIdx;
+  trailNodes.forEach((node, i) => {
+    const age = (i + 1) * TRAIL_SPACING;
+    if (idle || total <= age) { node.style.opacity = '0'; return; }
+    const idx = ((histIdx - 1 - age) % HISTORY_LEN + HISTORY_LEN) % HISTORY_LEN;
+    node.style.left    = histX[idx] + 'px';
+    node.style.top     = histY[idx] + 'px';
+    // opacity: bright near head, fades quickly
+    const t = 1 - (i + 1) / (TRAIL_COUNT + 1);
+    node.style.opacity = (isHover ? 0.18 : 0.55) * Math.pow(t, 1.4);
+  });
+  requestAnimationFrame(animateTrail);
+})();
+
+// Hover state — head swells, trail dims
+document.querySelectorAll('a, button').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    isHover = true;
+    cursorHead.classList.add('is-hover');
+  });
+  el.addEventListener('mouseleave', () => {
+    isHover = false;
+    cursorHead.classList.remove('is-hover');
+  });
+});
+
+/* ── Scroll reveal ──────────────────────────── */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach((el, i) => {
+  observer.observe(el);
+});
+document.querySelectorAll('.thoughts-list .thought-item').forEach((el, i) => {
+  el.style.transitionDelay = (i * 55)+'ms';
+});
+
+/* ── Nav shrink ─────────────────────────────── */
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').style.padding =
+    window.scrollY > 20 ? '14px var(--gap)' : '20px var(--gap)';
+});
+
+/* ── Work tabs ──────────────────────────────── */
+document.querySelectorAll('.work-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.work-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.work-panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+  });
+});
+
+/* ── Project accordion ──────────────────────── */
+document.querySelectorAll('.project-head').forEach(head => {
+  head.addEventListener('click', () => {
+    const item = head.closest('.project-item');
+    const wasOpen = item.classList.contains('open');
+    // close all in same panel
+    head.closest('.project-list')
+        .querySelectorAll('.project-item')
+        .forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+/* ── Film carousel ──────────────────────────── */
+const track = document.getElementById('filmsTrack');
+const CARD_W = 160 + 20; // width + gap
+let filmIndex = 0;
+const filmCards = track.querySelectorAll('.film-card');
+const maxIndex = Math.max(0, filmCards.length - 4);
+
+function setFilmPos() {
+  track.style.transform = `translateX(-${filmIndex * CARD_W}px)`;
+}
+document.getElementById('filmPrev').addEventListener('click', () => {
+  filmIndex = Math.max(0, filmIndex - 1); setFilmPos();
+});
+document.getElementById('filmNext').addEventListener('click', () => {
+  filmIndex = Math.min(maxIndex, filmIndex + 1); setFilmPos();
+});
+
+// touch swipe
+let touchStartX = 0;
+track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, {passive:true});
+track.addEventListener('touchend',   e => {
+  const dx = touchStartX - e.changedTouches[0].clientX;
+  if (dx > 40)       { filmIndex = Math.min(maxIndex, filmIndex+1); setFilmPos(); }
+  else if (dx < -40) { filmIndex = Math.max(0, filmIndex-1); setFilmPos(); }
+});
+</script>
+</body>
+</html>
