@@ -121,9 +121,9 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .back:hover{color:var(--ink)}
 .meta{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--light);margin-bottom:20px}
 article h1{font-family:var(--serif-cn);font-size:clamp(30px,4.4vw,42px);font-weight:400;line-height:1.32;letter-spacing:.02em;margin-bottom:42px}
-article h2{font-family:var(--serif-en);font-style:italic;font-size:clamp(22px,3vw,30px);font-weight:400;line-height:1.3;margin:64px 0 22px;color:var(--ink)}
+article h2{font-family:var(--serif-cn);font-style:normal;font-size:clamp(21px,2.5vw,26px);font-weight:400;line-height:1.45;margin:68px 0 24px;color:var(--ink)}
 article h3{font-size:18px;font-weight:400;margin:44px 0 16px}
-article p{font-size:16px;line-height:2.05;margin:0 0 22px;color:var(--ink)}
+article p{font-size:16px;line-height:2;margin:0 0 20px;color:var(--ink);font-weight:400}
 article em{font-family:var(--serif-en);font-style:italic;color:var(--accent)}
 article strong{font-weight:500}
 article code{font-family:var(--mono);font-size:.9em;color:var(--accent)}
