@@ -52,6 +52,7 @@ function escapeHTML(str) {
 function renderInline(str) {
   return escapeHTML(str)
     .replace(/&lt;br\s*\/?&gt;/gi, '<br>')
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
     .replace(/\*([^*]+)\*/g, '<em>$1</em>')
     .replace(/`([^`]+)`/g, '<code>$1</code>');
@@ -125,6 +126,8 @@ article h2{font-family:var(--serif-cn);font-style:normal;font-size:clamp(21px,2.
 article h3{font-size:18px;font-weight:400;margin:44px 0 16px}
 article p{font-size:16px;line-height:2;margin:0 0 20px;color:var(--ink);font-weight:400}
 article em{font-family:var(--serif-en);font-style:italic;color:var(--accent)}
+article a{color:var(--accent);text-decoration:underline;text-decoration-color:rgba(45,74,62,.35);text-decoration-thickness:1px;text-underline-offset:4px}
+article a:hover{text-decoration-color:var(--accent)}
 article strong{font-weight:500}
 article code{font-family:var(--mono);font-size:.9em;color:var(--accent)}
 .footer{border-top:1px solid var(--rule);margin-top:64px;padding-top:28px;display:flex;justify-content:space-between;gap:24px;color:var(--light);font-family:var(--mono);font-size:10px;letter-spacing:.1em}
