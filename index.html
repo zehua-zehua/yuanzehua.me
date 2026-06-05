@@ -153,6 +153,36 @@ section:last-of-type { border-bottom: none; }
   font-family: var(--serif-en); font-size: 13px; color: var(--mid); display: block; margin-top: 2px;
 }
 
+/* ── Now ────────────────────────────────────── */
+.now-wrap {
+  margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--rule);
+}
+.now-label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--light); margin-bottom: 24px; display: block;
+}
+.now-list {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+}
+.now-item {
+  padding: 22px 24px 24px 0;
+  border-right: 1px solid var(--rule);
+}
+.now-item:last-child { border-right: none; padding-right: 0; padding-left: 24px; }
+.now-item:nth-child(2) { padding-left: 24px; }
+.now-kicker {
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--light); display: block; margin-bottom: 10px;
+}
+.now-title {
+  font-family: var(--serif-en); font-size: 17px; font-style: italic;
+  color: var(--ink); display: block; margin-bottom: 8px;
+}
+.now-desc {
+  font-size: 13px; color: var(--mid); line-height: 1.85; font-weight: 300;
+}
+
 /* ── Journey / Timeline ─────────────────────── */
 .journey-wrap { margin-top: 64px; padding-top: 56px; border-top: 1px solid var(--rule); }
 .journey-label {
@@ -462,6 +492,15 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
   .thought-tag { display: none; }
   .project-detail { grid-template-columns: 1fr; }
   nav ul { gap: 16px; }
+  .now-list { grid-template-columns: 1fr; }
+  .now-item,
+  .now-item:nth-child(2),
+  .now-item:last-child {
+    padding: 22px 0 24px;
+    border-right: none;
+    border-bottom: 1px solid var(--rule);
+  }
+  .now-item:last-child { border-bottom: none; }
   .film-card { width: 130px; }
   .film-poster { width: 130px; height: 185px; }
 }
@@ -538,6 +577,28 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
         <span class="meta-label">Keywords</span>
         <span class="meta-value">研究 · 产品 · 表达</span>
         <span class="meta-value-en">Research · Product · Communication</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Now -->
+  <div class="now-wrap reveal">
+    <span class="now-label">Now · 近况 · 2026.06</span>
+    <div class="now-list">
+      <div class="now-item">
+        <span class="now-kicker">Learning</span>
+        <span class="now-title">AI in Context</span>
+        <p class="now-desc">继续把联邦学习、医疗 AI 与大模型应用放回真实场景里理解：数据从哪里来，模型为谁服务，信任如何建立。</p>
+      </div>
+      <div class="now-item">
+        <span class="now-kicker">Building</span>
+        <span class="now-title">First AI Product</span>
+        <p class="now-desc">尝试把文档问答、知识库与交互体验做成一个可被使用的 AI 产品，而不只是一个技术 demo。</p>
+      </div>
+      <div class="now-item">
+        <span class="now-kicker">Writing</span>
+        <span class="now-title">Product Judgment</span>
+        <p class="now-desc">记录 AI 产品经理需要的新判断力：理解技术边界，也理解人如何困惑、犹豫、相信和放弃。</p>
       </div>
     </div>
   </div>
