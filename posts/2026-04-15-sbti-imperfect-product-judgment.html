@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="从 SBTI 一夜爆火出发，重新思考产品定义中&quot;准确&quot;与&quot;共鸣&quot;、&quot;完美&quot;与&quot;不完美&quot;之间的张力，以及产品经理真正需要判断的到底是什么。">
+<title>SBTI 刷屏那天，我重新理解了什么是不完美的产品判断力 · Zane Hua</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+SC:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#1a1814; --paper:#f5f2ed; --mid:#8c8880; --light:#c8c4bc;
+  --faint:#e4e0d8; --accent:#2d4a3e; --rule:rgba(26,24,20,0.10);
+  --serif-en:'EB Garamond', Georgia, serif;
+  --serif-cn:'Noto Serif SC', STSong, serif;
+  --mono:'DM Mono', 'Courier New', monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif-cn);font-weight:300;line-height:1.9;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");background-size:200px;pointer-events:none;z-index:9999;opacity:.6}
+.page{max-width:780px;margin:0 auto;padding:56px clamp(28px,6vw,72px) 72px}
+.top{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--rule);padding-bottom:22px;margin-bottom:64px}
+.brand{font-family:var(--serif-en);font-size:15px;font-style:italic;color:var(--ink);text-decoration:none;letter-spacing:.08em}
+.back{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--mid);text-decoration:none}
+.back:hover{color:var(--ink)}
+.meta{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--light);margin-bottom:20px}
+article h1{font-family:var(--serif-cn);font-size:clamp(30px,4.4vw,42px);font-weight:400;line-height:1.32;letter-spacing:.02em;margin-bottom:42px}
+article h2{font-family:var(--serif-cn);font-style:normal;font-size:clamp(21px,2.5vw,26px);font-weight:400;line-height:1.45;margin:68px 0 24px;color:var(--ink)}
+article h3{font-size:18px;font-weight:400;margin:44px 0 16px}
+article p{font-size:16px;line-height:2;margin:0 0 20px;color:var(--ink);font-weight:400}
+article em{font-family:var(--serif-en);font-style:italic;color:var(--accent)}
+article a{color:var(--accent);text-decoration:underline;text-decoration-color:rgba(45,74,62,.35);text-decoration-thickness:1px;text-underline-offset:4px}
+article a:hover{text-decoration-color:var(--accent)}
+article strong{font-weight:500}
+article code{font-family:var(--mono);font-size:.9em;color:var(--accent)}
+.footer{border-top:1px solid var(--rule);margin-top:64px;padding-top:28px;display:flex;justify-content:space-between;gap:24px;color:var(--light);font-family:var(--mono);font-size:10px;letter-spacing:.1em}
+@media(max-width:640px){.page{padding-top:36px}.top{margin-bottom:44px}.footer{flex-direction:column}}
+</style>
+</head>
+<body>
+<main class="page">
+  <div class="top">
+    <a class="brand" href="/">Zane Hua</a>
+    <a class="back" href="/#thinking">Back to home</a>
+  </div>
+  <article>
+    <div class="meta">2026.04.15 · Product</div>
+<h1>SBTI 刷屏那天，<br>我重新理解了什么是不完美的产品判断力</h1>
+<p>2026 年 4 月 9 日，我的朋友圈被一群&quot;死者&quot;和&quot;吗喽&quot;占领了。</p>
+<p>不是真的。是一个叫 SBTI 的人格测试在刷屏。全称 <em>Silly Big Personality Test</em>，一个 B 站 UP 主为了劝朋友戒酒而随手做的恶搞版 MBTI。测试结果是&quot;死者 DEAD&quot;&quot;狗屎人 SHIT&quot;&quot;送钱者 ATM-er&quot;这类标签。朋友圈里有人晒&quot;我是吗喽&quot;，有人晒&quot;我是草者&quot;，配文大多是&quot;笑死&quot;或者&quot;太准了&quot;。</p>
+<p>我第一反应是：又一个蹭 MBTI 热度的小测试。但当我点开测试链接，看到&quot;此题没有题目，请盲选&quot;这种题目的时候，我意识到这个产品不太一样。</p>
+<p>它号称&quot;不准&quot;。结果半随机，多次测完全不同。开发者自己都说&quot;随便搞了一个先这样玩玩&quot;。</p>
+<p>但它还是刷屏了。一天之内，微博话题阅读量逼近 2000 万，B 站视频播放超过 250 万，54 个话题冲上热榜。没有投流，没有营销，全靠用户自发分享。</p>
+<p>这件事让我停下来想了一会儿。一个&quot;不准&quot;的产品，为什么比无数精心设计的产品更有穿透力？</p>
+<h2>当&quot;准确&quot;不再是核心卖点</h2>
+<p>我花了两天时间认真拆解了 SBTI 的传播路径、产品设计和文化语境。最大的感受是：我对&quot;好产品&quot;的判断框架，可能从一开始就缺了一块。</p>
+<p>过去我习惯性地认为，产品的核心价值在于解决一个明确的问题，用一种可靠的方式。即使是 AI 产品，我们讨论最多的也是准确率、稳定性、幻觉率。但 SBTI 走了一条完全相反的路。</p>
+<p>它没有科学性。没有标准化量表，没有信效度验证，算法近乎随机。它甚至没有数据收集——所有逻辑写在前端代码里，gzip 后只有 26KB，没有后端，没有数据库，没有用户画像。</p>
+<p>但 26KB 的代码触达了数百万用户。</p>
+<p>这让我重新审视一个判断：产品经理最重要的工作，可能不是让产品&quot;更好&quot;，而是判断什么是&quot;多余&quot;的。</p>
+<h2>朋友圈里的一场信任传递</h2>
+<p>SBTI 的传播路径很有意思。它不是靠算法推荐火的，是靠微信、朋友圈的熟人链扩散。</p>
+<p>这本身就是一个产品判断。在微信生态里，一个被朋友分享出来的东西自带信任背书。你不会怀疑&quot;这个链接是不是在收集我的数据&quot;，你只会好奇&quot;我测出来是什么&quot;。传播链条上的每一步都没有摩擦——不需要注册，不需要付费，不需要下载，点开就能测，测完截图就能分享。</p>
+<p>但真正让它传播开来的，不只是低摩擦，更是一种<em>社交安全感</em>。</p>
+<p>想想看：你有多久没在朋友圈发过真实的情绪了？晒工作像炫耀，晒生活像矫情，直接说&quot;我很累&quot;又显得软弱。SBTI 给了一个完美的出口——不是我在说自己很累，是这个测试说我是&quot;死者&quot;。自嘲和黑色幽默把负面情绪包装成了社交货币。一句&quot;我测出来是狗屎人&quot;，既释放了情绪，又维护了自尊，还在三秒钟内完成了社交破冰。</p>
+<p>这是一种很精巧的设计，虽然开发者本人可能并没有刻意设计它。它精准地击中了一个需求：人们渴望表达真实的自己，但又需要一个安全的台阶。</p>
+<h2>不准，反而是一种解放</h2>
+<p>传统人格测试追求的是准确和稳定。MBTI 希望你每次测都是同一个结果，这样标签才有&quot;意义&quot;。但 SBTI 反过来——它用&quot;不准&quot;打破了标签本身。</p>
+<p>你测出来是&quot;死者&quot;，下一次可能是&quot;吗喽&quot;，再下一次变成&quot;伪人 FAKE&quot;。但这种不确定性没有让人不满，反而让人兴奋。因为 SBTI 的标签不是在<em>定义</em>你，而是在<em>释放</em>你。</p>
+<p>&quot;死者&quot;不是诅咒，而是&quot;看透人生虚无的终极贤者&quot;。&quot;吗喽&quot;不是贬低，而是&quot;拒绝社会规训的树栖灵魂&quot;。&quot;狗屎人&quot;不是侮辱，而是&quot;骂世界是屎，却默默收拾烂摊子&quot;的人。粗俗词汇配上诗意化解读，制造出一种奇妙的反差：它冒犯了你，同时又理解了你。</p>
+<p>我在分析报告里把这个特征称为&quot;松绑效应&quot;。当 MBTI 让人陷入&quot;因为我是 INTP，所以我必须这样&quot;的标签陷阱时，SBTI 的不确定性恰恰提供了一种解脱：你不用被定义，你可以是任何人，怎么开心怎么来。</p>
+<p>这让我想到 AI 产品里的一个类似问题。我们总在追求让 AI 给出&quot;更准确&quot;的答案，但有时候，用户需要的也许不是准确，而是一种被理解的感觉。一个偶尔犯傻但让你会心一笑的助手，和一个永远正确但让你紧张的助手——用户真正会选择哪个？这个问题没有标准答案，但它值得被认真对待。</p>
+<h2>产品经理判断的到底是什么</h2>
+<p>拆解完 SBTI 之后，我发现自己一直在想一个问题：产品经理的判断力，到底应该指向哪里？</p>
+<p>如果指向功能，SBTI 几乎没有功能。31 道题，一个半随机的算法，一张结果卡片。如果指向数据，SBTI 零数据收集，连用户是谁都不知道。如果指向商业模式，SBTI 完全免费，没有增长策略，没有留存机制。</p>
+<p>但它做到了很多精心打磨的产品没有做到的事：让几百万人在同一个下午笑了出来，并且愿意把这件事分享给朋友。</p>
+<p>我并不是说所有产品都应该学 SBTI。它不可持续——三天后热度就消退了，没有留存，没有用户体系，没有商业闭环。用产品经理的话说，它更像一颗流星而不是一颗恒星。</p>
+<p>但我觉得，用&quot;可持续性&quot;来否定 SBTI 的价值，本身就是一种判断力的局限。不是所有产品都需要成为平台。不是所有价值都需要用 DAU 曲线来衡量。一个产品在某个时刻精准地击中了一种情绪，让几百万人获得了片刻的释放和共鸣——这件事本身就是有价值的。</p>
+<h2>写在最后：定义式产品与释放式产品</h2>
+<p>如果把 MBTI 看作一种<em>定义式产品</em>——它告诉你&quot;你是谁&quot;，那么 SBTI 就是一种<em>释放式产品</em>——它告诉你&quot;你不用是谁&quot;。</p>
+<p>这两种产品逻辑，对应着两种截然不同的对人的理解。前者相信人需要秩序和分类来认识自己，后者相信人需要自由和幽默来接纳自己。前者的极致是精准，后者的极致是共鸣。</p>
+<p>我越来越觉得，AI 产品未来也会走向这两条路。一种试图成为更精准的助手，帮你把每一件事做到最好；一种试图成为更懂你的伙伴，在你需要的时候给你一个喘息的空间。最好的产品，也许能同时做到这两件事——但这对产品判断力的要求太高了。</p>
+<p>SBTI 至少提醒了我一件事：好的判断力不是知道如何让产品更强、更准、更完美。而是知道在什么时候，不完美本身就是答案。</p>
+<p>这也是我选择关注产品方向的原因之一。技术让人兴奋，但产品让人诚实。你得诚实地面对一个问题：用户真的需要你说的那些功能吗？还是他们只是需要一个台阶，一个出口，一个可以笑着说&quot;我其实挺累的&quot;的理由？</p>
+<p>SBTI 给了几百万人这个理由。它不是什么伟大的产品。但它是一个诚实的产品。</p>
+  </article>
+  <div class="footer">
+    <span>© 2026 Zane Hua</span>
+    <span>yuanzehua.me</span>
+  </div>
+</main>
+</body>
+</html>
