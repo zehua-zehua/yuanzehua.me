@@ -136,11 +136,14 @@ section:last-of-type { border-bottom: none; }
 /* ── About ──────────────────────────────────── */
 .about-grid {
   display: grid; grid-template-columns: 3fr 2fr;
-  gap: clamp(40px, 6vw, 80px); align-items: start;
+  gap: clamp(40px, 6vw, 80px); align-items: center;
+}
+.about-body {
+  max-width: 680px;
 }
 .about-body p {
   font-size: clamp(16px, 1.8vw, 18px); color: var(--ink);
-  line-height: 2; margin-bottom: 20px; font-weight: 400;
+  line-height: 2.05; margin-bottom: 22px; font-weight: 400;
 }
 .about-body p:last-child { margin-bottom: 0; }
 .about-body em { font-family: var(--serif-en); font-style: italic; color: var(--accent); }
@@ -328,10 +331,6 @@ section:last-of-type { border-bottom: none; }
 .project-desc .cn-note {
   color: var(--ink);
   font-weight: 400;
-}
-.project-desc .cn-label {
-  font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--warm); margin-right: 8px;
 }
 .project-meta-list { display: flex; flex-direction: column; gap: 0; }
 .pm-item { padding: 10px 0; border-bottom: 1px solid var(--rule); }
@@ -858,7 +857,7 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
           <div class="project-body-inner">
             <div class="project-detail">
               <div class="project-desc">
-                <p class="cn-note"><span class="cn-label">中文摘要</span>这是一段脱敏后的 AI 创作工具 0-1 案例：我负责把模糊的审美体验拆解成可评测指标，并用盲测数据支持产品判断。</p>
+                <p class="cn-note">这是一段脱敏后的 AI 创作工具 0-1 案例：我负责把模糊的审美体验拆解成可评测指标，并用盲测数据支持产品判断。</p>
                 <br>
                 <p class="cn-note">同时，我用 AI 原生工具链把产品想法推进到可运行 Demo 和 SOP 沉淀，验证的不只是页面，而是一套从需求、评测到交付的工作方式。</p>
                 <br>
