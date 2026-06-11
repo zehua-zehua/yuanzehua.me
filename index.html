@@ -679,13 +679,13 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
   </div>
 
   <div class="work-tabs reveal">
-    <button class="work-tab active" data-tab="research">Research</button>
+    <button class="work-tab active" data-tab="internship">Practice</button>
+    <button class="work-tab" data-tab="research">Research</button>
     <button class="work-tab" data-tab="projects">Projects</button>
-    <button class="work-tab" data-tab="internship">Practice</button>
   </div>
 
   <!-- Research -->
-  <div class="work-panel active" id="panel-research">
+  <div class="work-panel" id="panel-research">
     <div class="project-list">
 
       <div class="project-item">
@@ -788,6 +788,36 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
       <div class="project-item">
         <div class="project-head">
           <div class="project-title-wrap">
+            <span class="project-title">BlindReview: AI Image Blind Testing Platform</span>
+            <span class="project-badge proj">Evaluation Tool</span>
+          </div>
+          <span class="project-toggle">+</span>
+        </div>
+        <div class="project-body">
+          <div class="project-body-inner">
+            <div class="project-detail">
+              <div class="project-desc">
+                <p class="cn-note">一个面向 AI 生成图像策略评估的在线盲测平台，用于把“看图打分、方案对比、结论导出”这类评审流程产品化。</p>
+                <br>
+                <p>Built a lightweight web-based blind testing platform for evaluating AI-generated images across multiple strategies. Reviewers can score anonymous options, add quick labels and comments, then reveal strategy identities after review.</p>
+                <br>
+                <p><em>Product value:</em> Turns subjective visual comparison into structured, exportable evaluation data, making model and strategy discussions easier to align across product, design, and technical teams.</p>
+              </div>
+              <div class="project-meta-list">
+                <div class="pm-item"><span class="pm-label">Stack</span><span class="pm-val">Node.js · Vanilla JS · CSS · Python</span></div>
+                <div class="pm-item"><span class="pm-label">Year</span><span class="pm-val">2026</span></div>
+                <div class="pm-item"><span class="pm-label">Role</span><span class="pm-val">Product Design · Full-stack Build</span></div>
+                <div class="pm-item"><span class="pm-label">Focus</span><span class="pm-val">Blind Review · Evaluation Data · Decision Support</span></div>
+                <div class="pm-item"><span class="pm-label">Link</span><span class="pm-val"><a href="https://github.com/zehua-zehua/blind-review-platform" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none">GitHub ↗</a></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-item">
+        <div class="project-head">
+          <div class="project-title-wrap">
             <span class="project-title">RAG Document Q&A System</span>
             <span class="project-badge proj">AI Product</span>
           </div>
@@ -841,7 +871,7 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
   </div>
 
   <!-- Internship -->
-  <div class="work-panel" id="panel-internship">
+  <div class="work-panel active" id="panel-internship">
     <div class="project-list">
 
       <div class="project-item featured">
