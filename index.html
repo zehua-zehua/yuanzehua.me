@@ -18,6 +18,9 @@
   --light:    #c8c4bc;
   --faint:    #e4e0d8;
   --accent:   #2d4a3e;
+  --accent-soft: rgba(45,74,62,0.065);
+  --accent-rule: rgba(45,74,62,0.22);
+  --warm:     #8f5f2f;
   --rule:     rgba(26,24,20,0.10);
   --serif-en: 'EB Garamond', Georgia, serif;
   --serif-cn: 'Noto Serif SC', STSong, serif;
@@ -136,8 +139,8 @@ section:last-of-type { border-bottom: none; }
   gap: clamp(40px, 6vw, 80px); align-items: start;
 }
 .about-body p {
-  font-size: clamp(15px, 1.8vw, 17px); color: var(--ink);
-  line-height: 2; margin-bottom: 20px; font-weight: 300;
+  font-size: clamp(16px, 1.8vw, 18px); color: var(--ink);
+  line-height: 2; margin-bottom: 20px; font-weight: 400;
 }
 .about-body p:last-child { margin-bottom: 0; }
 .about-body em { font-family: var(--serif-en); font-style: italic; color: var(--accent); }
@@ -180,7 +183,7 @@ section:last-of-type { border-bottom: none; }
   color: var(--ink); display: block; margin-bottom: 8px;
 }
 .now-desc {
-  font-size: 13px; color: var(--mid); line-height: 1.85; font-weight: 300;
+  font-size: 14px; color: var(--mid); line-height: 1.85; font-weight: 400;
 }
 
 /* ── Journey / Timeline ─────────────────────── */
@@ -215,7 +218,7 @@ section:last-of-type { border-bottom: none; }
   letter-spacing: 0.12em; display: block; margin-bottom: 6px;
 }
 .tl-role {
-  font-size: 15px; font-weight: 400; color: var(--ink); display: block;
+  font-size: 16px; font-weight: 400; color: var(--ink); display: block;
   letter-spacing: 0.03em; margin-bottom: 2px;
 }
 .tl-org {
@@ -223,7 +226,7 @@ section:last-of-type { border-bottom: none; }
   color: var(--accent); display: block; margin-bottom: 8px;
 }
 .tl-desc {
-  font-size: 13px; color: var(--mid); line-height: 1.8; font-weight: 300;
+  font-size: 14px; color: var(--mid); line-height: 1.85; font-weight: 400;
   max-width: 520px;
 }
 .tl-tag {
@@ -256,8 +259,23 @@ section:last-of-type { border-bottom: none; }
 .project-list { display: flex; flex-direction: column; gap: 0; }
 .project-item {
   border-bottom: 1px solid var(--rule); overflow: hidden;
+  position: relative;
 }
 .project-item:first-child { border-top: 1px solid var(--rule); }
+.project-item.featured {
+  background: linear-gradient(90deg, var(--accent-soft), rgba(245,242,237,0) 64%);
+  border-bottom-color: var(--accent-rule);
+}
+.project-item.featured::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 2px; background: var(--accent);
+}
+.project-item.featured .project-head,
+.project-item.featured .project-body-inner {
+  padding-left: 18px; padding-right: 18px;
+}
+.project-item.featured .project-title { color: var(--accent); }
 
 .project-head {
   display: grid; grid-template-columns: 1fr auto;
@@ -268,7 +286,7 @@ section:last-of-type { border-bottom: none; }
 .project-head:hover { opacity: 0.7; }
 
 .project-title-wrap { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
-.project-title { font-size: 15px; font-weight: 400; color: var(--ink); letter-spacing: 0.03em; }
+.project-title { font-size: 16px; font-weight: 400; color: var(--ink); letter-spacing: 0.03em; }
 .project-badge {
   font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em;
   text-transform: uppercase; padding: 2px 8px;
@@ -277,6 +295,11 @@ section:last-of-type { border-bottom: none; }
 .project-badge.pub   { border-color: rgba(45,74,62,0.3); color: var(--accent); }
 .project-badge.proj  { border-color: rgba(140,136,128,0.3); }
 .project-badge.work  { border-color: rgba(26,24,20,0.15); }
+.project-badge.featured-badge {
+  border-color: rgba(143,95,47,0.28);
+  color: var(--warm);
+  background: rgba(143,95,47,0.055);
+}
 
 .project-toggle {
   font-family: var(--mono); font-size: 12px; color: var(--light);
@@ -300,8 +323,16 @@ section:last-of-type { border-bottom: none; }
   display: grid; grid-template-columns: 3fr 2fr; gap: 32px;
   padding-top: 4px;
 }
-.project-desc { font-size: 13px; color: var(--mid); line-height: 1.9; font-weight: 300; }
+.project-desc { font-size: 14px; color: var(--mid); line-height: 1.9; font-weight: 400; }
 .project-desc em { font-family: var(--serif-en); font-style: italic; color: var(--ink); }
+.project-desc .cn-note {
+  color: var(--ink);
+  font-weight: 400;
+}
+.project-desc .cn-label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--warm); margin-right: 8px;
+}
 .project-meta-list { display: flex; flex-direction: column; gap: 0; }
 .pm-item { padding: 10px 0; border-bottom: 1px solid var(--rule); }
 .pm-item:first-child { border-top: 1px solid var(--rule); }
@@ -309,7 +340,7 @@ section:last-of-type { border-bottom: none; }
   font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em;
   text-transform: uppercase; color: var(--light); display: block; margin-bottom: 2px;
 }
-.pm-val { font-size: 12px; color: var(--ink); font-weight: 300; }
+.pm-val { font-size: 13px; color: var(--ink); font-weight: 400; }
 
 /* ── Interests ──────────────────────────────── */
 .interests-grid {
@@ -334,7 +365,7 @@ section:last-of-type { border-bottom: none; }
   font-size: 12px; color: var(--mid); letter-spacing: 0.15em;
   display: block; margin-bottom: 16px;
 }
-.interest-desc { font-size: 13px; color: var(--mid); line-height: 1.8; font-weight: 300; }
+.interest-desc { font-size: 14px; color: var(--mid); line-height: 1.85; font-weight: 400; }
 
 /* ── Film Carousel ──────────────────────────── */
 .films-wrap {
@@ -422,7 +453,7 @@ section:last-of-type { border-bottom: none; }
   letter-spacing: 0.08em; white-space: nowrap;
 }
 .thought-title {
-  font-size: 15px; font-weight: 400; color: var(--ink);
+  font-size: 16px; font-weight: 400; color: var(--ink);
   transition: color 0.2s; letter-spacing: 0.03em;
 }
 .thought-tag {
@@ -444,7 +475,7 @@ section:last-of-type { border-bottom: none; }
   display: grid; grid-template-columns: 1fr 1fr;
   gap: var(--gap); align-items: start;
 }
-.connect-text p { font-size: 15px; color: var(--mid); line-height: 2; font-weight: 300; }
+.connect-text p { font-size: 16px; color: var(--mid); line-height: 2; font-weight: 400; }
 .connect-text em { font-family: var(--serif-en); font-style: italic; color: var(--ink); }
 .connect-links { display: flex; flex-direction: column; }
 .connect-link {
@@ -814,10 +845,11 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
   <div class="work-panel" id="panel-internship">
     <div class="project-list">
 
-      <div class="project-item">
+      <div class="project-item featured">
         <div class="project-head">
           <div class="project-title-wrap">
             <span class="project-title">AI Creative Tool Evaluation Case Study</span>
+            <span class="project-badge featured-badge">Featured</span>
             <span class="project-badge work">AI PM Internship</span>
           </div>
           <span class="project-toggle">+</span>
@@ -826,6 +858,10 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
           <div class="project-body-inner">
             <div class="project-detail">
               <div class="project-desc">
+                <p class="cn-note"><span class="cn-label">中文摘要</span>这是一段脱敏后的 AI 创作工具 0-1 案例：我负责把模糊的审美体验拆解成可评测指标，并用盲测数据支持产品判断。</p>
+                <br>
+                <p class="cn-note">同时，我用 AI 原生工具链把产品想法推进到可运行 Demo 和 SOP 沉淀，验证的不只是页面，而是一套从需求、评测到交付的工作方式。</p>
+                <br>
                 <p>Worked on a confidential 0-1 AI creative tool, covering user input, style control, color constraints, multi-turn editing, result evaluation, and creative workflow design.</p>
                 <br>
                 <p><em>Evaluation:</em> Translated subjective aesthetics into measurable dimensions including color consistency, color hierarchy, and semantic fit. Led blind tests across 3 candidate model routes, collecting 343 ratings on 230 experimental images to support evidence-based product decisions.</p>
