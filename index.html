@@ -87,12 +87,6 @@ nav ul a:hover { color: var(--ink); }
   font-weight: 400; line-height: 1.05; letter-spacing: -0.01em; color: var(--ink); display: block;
   opacity: 0; animation: fadeUp 0.9s ease 0.25s forwards;
 }
-.hero-name-cn {
-  font-family: var(--serif-cn); font-size: clamp(18px, 2.5vw, 26px);
-  font-weight: 300; color: var(--mid); display: block;
-  margin-top: 8px; letter-spacing: 0.25em;
-  opacity: 0; animation: fadeUp 0.9s ease 0.4s forwards;
-}
 .hero-right { padding-bottom: 6px; opacity: 0; animation: fadeUp 0.9s ease 0.55s forwards; }
 .hero-tagline {
   font-family: var(--serif-en); font-size: clamp(13px, 1.5vw, 16px);
@@ -472,8 +466,9 @@ section:last-of-type { border-bottom: none; }
 /* ── Connect ────────────────────────────────── */
 .connect-layout {
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: var(--gap); align-items: start;
+  gap: var(--gap); align-items: center;
 }
+.connect-text { max-width: 560px; }
 .connect-text p { font-size: 16px; color: var(--mid); line-height: 2; font-weight: 400; }
 .connect-text em { font-family: var(--serif-en); font-style: italic; color: var(--ink); }
 .connect-links { display: flex; flex-direction: column; }
@@ -558,7 +553,6 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
   <div class="hero-left">
     <span class="hero-label">yuanzehua.me</span>
     <span class="hero-name-en">Zane<br>Hua</span>
-    <span class="hero-name-cn">袁 泽 华</span>
   </div>
   <div class="hero-right">
     <p class="hero-tagline">
