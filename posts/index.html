@@ -17,10 +17,12 @@ body{background:var(--paper);color:var(--ink);font-family:var(--serif-cn);font-w
 h1{font-family:var(--serif-en);font-size:clamp(42px,8vw,76px);font-weight:400;line-height:1;font-style:italic;margin-bottom:18px}
 .sub{font-size:14px;color:var(--mid);margin-bottom:56px}
 .list{display:flex;flex-direction:column;border-top:1px solid var(--rule)}
-.list a{display:grid;grid-template-columns:110px 1fr auto;gap:28px;align-items:baseline;padding:28px 0;border-bottom:1px solid var(--rule);color:inherit;text-decoration:none}
+.list a{display:grid;grid-template-columns:110px 1fr auto;gap:28px;align-items:start;padding:28px 0;border-bottom:1px solid var(--rule);color:inherit;text-decoration:none}
 .list a:hover strong{color:var(--accent)}
-.list span{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--light)}
+.post-date{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--light)}
+.post-copy{display:block}
 .list strong{font-size:16px;font-weight:400;transition:color .2s}
+.list small{display:block;margin-top:9px;font-size:13px;line-height:1.8;font-weight:400;color:var(--mid)}
 .list em{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;font-style:normal;color:var(--mid);border:1px solid var(--rule);padding:3px 8px}
 .empty{color:var(--mid)}
 @media(max-width:640px){.list a{grid-template-columns:1fr;gap:8px}.list em{width:max-content}}
@@ -36,18 +38,27 @@ h1{font-family:var(--serif-en);font-size:clamp(42px,8vw,76px);font-weight:400;li
   <p class="sub">思考不是结论的堆放，而是判断力的缓慢成形。</p>
   <div class="list">
       <a href="/posts/2026-06-14-vibe-coding-product-validation.html">
-        <span>2026.06.14</span>
-        <strong>Vibe Coding 不是一套提示词，而是一种新的产品验证方式</strong>
+        <span class="post-date">2026.06.14</span>
+        <span class="post-copy">
+          <strong>Vibe Coding 不是一套提示词，而是一种新的产品验证方式</strong>
+          <small>从一次内部 Figma2Demo 实践出发，复盘我对 Vibe Coding、产品验证与产品经理判断力的理解。</small>
+        </span>
         <em>Product</em>
       </a>
       <a href="/posts/2026-06-04-ai-product-manager-judgment.html">
-        <span>2026.06.04</span>
-        <strong>AI 产品经理不是一个新头衔，而是一种新的判断力</strong>
+        <span class="post-date">2026.06.04</span>
+        <span class="post-copy">
+          <strong>AI 产品经理不是一个新头衔，而是一种新的判断力</strong>
+          <small>关于 AI 产品经理、技术转产品、时代机会与个人职业选择的一次自我梳理。</small>
+        </span>
         <em>Career</em>
       </a>
       <a href="/posts/2026-06-11-personal-homepage-coordinate.html">
-        <span>2026.05.11</span>
-        <strong>给自己留一个坐标：为什么我要做个人主页</strong>
+        <span class="post-date">2026.05.11</span>
+        <span class="post-copy">
+          <strong>给自己留一个坐标：为什么我要做个人主页</strong>
+          <small>关于个人主页、个人记录、作品、兴趣与自我表达的一次说明。</small>
+        </span>
         <em>Essay</em>
       </a>
   </div>

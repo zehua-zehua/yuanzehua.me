@@ -435,7 +435,7 @@ section:last-of-type { border-bottom: none; }
 .thoughts-list { display: flex; flex-direction: column; }
 .thought-item {
   display: grid; grid-template-columns: 100px 1fr auto;
-  gap: 32px; align-items: baseline;
+  gap: 32px; align-items: start;
   padding: 28px 0; border-bottom: 1px solid var(--rule);
   text-decoration: none; color: inherit;
 }
@@ -446,8 +446,19 @@ section:last-of-type { border-bottom: none; }
   letter-spacing: 0.08em; white-space: nowrap;
 }
 .thought-title {
+  display: block;
   font-size: 16px; font-weight: 400; color: var(--ink);
   transition: color 0.2s; letter-spacing: 0.03em;
+}
+.thought-summary {
+  display: block;
+  max-width: 720px;
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.85;
+  color: var(--mid);
+  font-weight: 400;
+  letter-spacing: 0.02em;
 }
 .thought-tag {
   font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em;
@@ -515,6 +526,7 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
   .connect-layout { grid-template-columns: 1fr; }
   .thought-item { grid-template-columns: 80px 1fr; }
   .thought-tag { display: none; }
+  .thought-summary { font-size: 12px; line-height: 1.75; }
   .project-detail { grid-template-columns: 1fr; }
   nav ul { gap: 16px; }
   .now-list { grid-template-columns: 1fr; }
@@ -1134,17 +1146,26 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
     <!-- POSTS_START -->
       <a href="/posts/2026-06-14-vibe-coding-product-validation.html" class="thought-item reveal">
         <span class="thought-date">2026.06</span>
-        <span class="thought-title">Vibe Coding 不是一套提示词，而是一种新的产品验证方式</span>
+        <span class="thought-copy">
+          <span class="thought-title">Vibe Coding 不是一套提示词，而是一种新的产品验证方式</span>
+          <span class="thought-summary">从一次内部 Figma2Demo 实践出发，复盘我对 Vibe Coding、产品验证与产品经理判断力的理解。</span>
+        </span>
         <span class="thought-tag">Product</span>
       </a>
       <a href="/posts/2026-06-04-ai-product-manager-judgment.html" class="thought-item reveal">
         <span class="thought-date">2026.06</span>
-        <span class="thought-title">AI 产品经理不是一个新头衔，而是一种新的判断力</span>
+        <span class="thought-copy">
+          <span class="thought-title">AI 产品经理不是一个新头衔，而是一种新的判断力</span>
+          <span class="thought-summary">关于 AI 产品经理、技术转产品、时代机会与个人职业选择的一次自我梳理。</span>
+        </span>
         <span class="thought-tag">Career</span>
       </a>
       <a href="/posts/2026-06-11-personal-homepage-coordinate.html" class="thought-item reveal">
         <span class="thought-date">2026.05</span>
-        <span class="thought-title">给自己留一个坐标：为什么我要做个人主页</span>
+        <span class="thought-copy">
+          <span class="thought-title">给自己留一个坐标：为什么我要做个人主页</span>
+          <span class="thought-summary">关于个人主页、个人记录、作品、兴趣与自我表达的一次说明。</span>
+        </span>
         <span class="thought-tag">Essay</span>
       </a>
       <!-- POSTS_END -->

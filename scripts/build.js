@@ -157,8 +157,11 @@ function renderPostsIndex(posts) {
   const listHTML = posts.length
     ? posts.map(p => `
       <a href="${p.url}">
-        <span>${formatDate(p.date)}</span>
-        <strong>${escapeHTML(p.title)}</strong>
+        <span class="post-date">${formatDate(p.date)}</span>
+        <span class="post-copy">
+          <strong>${escapeHTML(p.title)}</strong>
+          ${p.summary ? `<small>${escapeHTML(p.summary)}</small>` : ''}
+        </span>
         <em>${escapeHTML(p.tag)}</em>
       </a>`).join('')
     : '<p class="empty">暂无文章。</p>';
@@ -181,10 +184,12 @@ body{background:var(--paper);color:var(--ink);font-family:var(--serif-cn);font-w
 h1{font-family:var(--serif-en);font-size:clamp(42px,8vw,76px);font-weight:400;line-height:1;font-style:italic;margin-bottom:18px}
 .sub{font-size:14px;color:var(--mid);margin-bottom:56px}
 .list{display:flex;flex-direction:column;border-top:1px solid var(--rule)}
-.list a{display:grid;grid-template-columns:110px 1fr auto;gap:28px;align-items:baseline;padding:28px 0;border-bottom:1px solid var(--rule);color:inherit;text-decoration:none}
+.list a{display:grid;grid-template-columns:110px 1fr auto;gap:28px;align-items:start;padding:28px 0;border-bottom:1px solid var(--rule);color:inherit;text-decoration:none}
 .list a:hover strong{color:var(--accent)}
-.list span{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--light)}
+.post-date{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--light)}
+.post-copy{display:block}
 .list strong{font-size:16px;font-weight:400;transition:color .2s}
+.list small{display:block;margin-top:9px;font-size:13px;line-height:1.8;font-weight:400;color:var(--mid)}
 .list em{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;font-style:normal;color:var(--mid);border:1px solid var(--rule);padding:3px 8px}
 .empty{color:var(--mid)}
 @media(max-width:640px){.list a{grid-template-columns:1fr;gap:8px}.list em{width:max-content}}
@@ -232,7 +237,10 @@ const postsHTML = homePosts.length
       const dateStr = String(p.date).slice(0, 7).replace('-', '.');
       return `      <a href="${p.url}" class="thought-item reveal">
         <span class="thought-date">${dateStr}</span>
-        <span class="thought-title">${escapeHTML(p.title)}</span>
+        <span class="thought-copy">
+          <span class="thought-title">${escapeHTML(p.title)}</span>
+          ${p.summary ? `<span class="thought-summary">${escapeHTML(p.summary)}</span>` : ''}
+        </span>
         <span class="thought-tag">${escapeHTML(p.tag)}</span>
       </a>`;
     }).join('\n')
