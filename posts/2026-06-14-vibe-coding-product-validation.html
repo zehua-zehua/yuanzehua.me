@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="从一次内部 Figma2Demo 实践出发，复盘我对 Vibe Coding、产品验证与产品经理判断力的理解。">
+<title>Vibe Coding 不是一套提示词，而是一种新的产品验证方式 · Zane Hua</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+SC:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#1a1814; --paper:#f5f2ed; --mid:#8c8880; --light:#c8c4bc;
+  --faint:#e4e0d8; --accent:#2d4a3e; --rule:rgba(26,24,20,0.10);
+  --serif-en:'EB Garamond', Georgia, serif;
+  --serif-cn:'Noto Serif SC', STSong, serif;
+  --mono:'DM Mono', 'Courier New', monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif-cn);font-weight:300;line-height:1.9;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");background-size:200px;pointer-events:none;z-index:9999;opacity:.6}
+.page{max-width:780px;margin:0 auto;padding:56px clamp(28px,6vw,72px) 72px}
+.top{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--rule);padding-bottom:22px;margin-bottom:64px}
+.brand{font-family:var(--serif-en);font-size:15px;font-style:italic;color:var(--ink);text-decoration:none;letter-spacing:.08em}
+.back{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--mid);text-decoration:none}
+.back:hover{color:var(--ink)}
+.meta{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--light);margin-bottom:20px}
+article h1{font-family:var(--serif-cn);font-size:clamp(30px,4.4vw,42px);font-weight:400;line-height:1.32;letter-spacing:.02em;margin-bottom:42px}
+article h2{font-family:var(--serif-cn);font-style:normal;font-size:clamp(21px,2.5vw,26px);font-weight:400;line-height:1.45;margin:68px 0 24px;color:var(--ink)}
+article h3{font-size:18px;font-weight:400;margin:44px 0 16px}
+article p{font-size:16px;line-height:2;margin:0 0 20px;color:var(--ink);font-weight:400}
+article em{font-family:var(--serif-en);font-style:italic;color:var(--accent)}
+article a{color:var(--accent);text-decoration:underline;text-decoration-color:rgba(45,74,62,.35);text-decoration-thickness:1px;text-underline-offset:4px}
+article a:hover{text-decoration-color:var(--accent)}
+article strong{font-weight:500}
+article code{font-family:var(--mono);font-size:.9em;color:var(--accent)}
+.footer{border-top:1px solid var(--rule);margin-top:64px;padding-top:28px;display:flex;justify-content:space-between;gap:24px;color:var(--light);font-family:var(--mono);font-size:10px;letter-spacing:.1em}
+@media(max-width:640px){.page{padding-top:36px}.top{margin-bottom:44px}.footer{flex-direction:column}}
+</style>
+</head>
+<body>
+<main class="page">
+  <div class="top">
+    <a class="brand" href="/">Zane Hua</a>
+    <a class="back" href="/#thinking">Back to home</a>
+  </div>
+  <article>
+    <div class="meta">2026.06.14 · Product</div>
+<h1>Vibe Coding 不是一套提示词，<br>而是一种新的产品验证方式</h1>
+<p>我第一次认真沉淀 Vibe Coding，不是因为看到了某个惊艳的工具演示，而是因为自己真的用它完成了一次从 Figma 原型到可运行 Demo 的过程。</p>
+<p>这次实践来自一个内部产品原型。它最初只有 Figma 设计稿、页面结构和一组围绕核心用户任务展开的产品想法。但原型毕竟只是原型。它能说明页面应该长什么样，用户大概会怎么走，却无法真正回答另一个更重要的问题：这条路径能不能跑通？</p>
+<p>于是我开始尝试用 Codex 把 Figma 原型推进成一个可运行 Demo。过程中经历了设计还原、路由串联、状态补齐、Mock 兜底、真实 API 代理、数据留存、测试验收和演示材料整理。最后产出的不只是一段代码，也不只是一份 SOP，而是一种新的工作体感：产品经理可以更早、更直接地把一个想法推进到可点击、可演示、可验证的状态。</p>
+<p>这件事对我的触动很大。</p>
+<p>因为它让我意识到，Vibe Coding 的价值并不是“AI 可以替我写代码”。如果只是这样理解，它仍然停留在工具层。真正重要的是，它改变了产品验证的距离。过去从想法到 Demo，中间隔着设计、研发、排期、接口、部署和无数沟通成本。现在，只要产品经理能把目标、上下文、约束和验收标准说清楚，就有机会把模糊想法快速压缩成一个可运行的样品。</p>
+<p>这不是写代码能力的胜利，而是产品验证方式的变化。</p>
+<h2>它不是 Prompt 技巧</h2>
+<p>很多人谈 Vibe Coding，会很容易把重点放在 Prompt 上。</p>
+<p>Prompt 当然重要。一个模糊的指令和一个结构清楚的任务包，得到的结果会完全不同。但如果只把 Vibe Coding 理解成“怎么写提示词”，其实还是低估了它。</p>
+<p>在这次实践里，我慢慢形成了一个更稳定的理解：Vibe Coding 不是一套提示词，而是一种人与 Agent 的协作方式。</p>
+<p>在这种协作里，人不应该退到旁边等结果。相反，人需要更主动地定义方向。Agent 很擅长执行，擅长读代码、补页面、跑命令、修报错、整理文档。但它不会天然知道一个产品为什么要这样做，也不会天然知道做到什么程度应该停下来。</p>
+<p>所以产品经理的任务变成了另一种形态。</p>
+<p>不是把每一个按钮、每一行代码、每一个状态都手动写出来，而是把这次验证的 Goal、Context、Constraints 和 Done when 讲清楚。Goal 决定方向，Context 决定理解质量，Constraints 决定不跑偏，Done when 决定什么叫完成。</p>
+<p>这四件事听起来像 Prompt 结构，但本质上不是 Prompt 结构。它更像产品经理对问题的组织能力。</p>
+<p>你到底要验证什么？给谁看？哪些能力必须真实？哪些可以先 Mock？主流程走到哪里算成功？哪些需求应该放到下一轮？这些问题如果没有答案，Agent 越能干，项目越容易发散。它会帮你补很多东西，也会把一些本来不重要的东西做得很认真。</p>
+<p>Vibe Coding 让我更强烈地感受到：AI 放大执行力之后，定义问题的人必须更清醒。</p>
+<h2>Demo 改变了验证对象</h2>
+<p>过去看产品方案，很多评审都停留在静态材料上。</p>
+<p>看 PRD，看 Figma，看流程图，看页面文案。讨论的问题通常是页面是否美观、信息层级是否合理、按钮放在哪里、文案是否准确。这些当然重要，但它们验证的是产品的静态表达。</p>
+<p>可运行 Demo 验证的是另一件事。</p>
+<p>它验证用户路径能不能走通，状态变化是否自然，接口边界是否清楚，异常情况有没有兜底，演示时是否足够可信。一个 Figma 页面看起来完整，并不意味着它背后的数据流、状态流和用户旅程是完整的。只有真正跑起来，问题才会变得具体。</p>
+<p>在这次项目里，我最开始关注的是页面还原。入口页面、处理中状态、结果页面、记录页面，这些页面都需要像设计稿。但做着做着，我发现真正决定 Demo 是否成立的，不是某个页面的视觉细节，而是用户能不能从一个真实任务出发，一路走到一个可交付结果。</p>
+<p>用户提交一段需求，系统进入处理状态，返回可选择的结果，用户基于结果继续调整，再把最终产物沉淀下来。这个过程跑通之后，Demo 才开始有产品意义。</p>
+<p>这也是静态原型和可运行 Demo 最大的区别。</p>
+<p>静态原型回答“它看起来像什么”。可运行 Demo 回答“它能不能作为一个产品发生”。前者更接近展示，后者更接近验证。</p>
+<p>对产品经理来说，这种变化很重要。因为很多产品问题不是想出来的，而是跑出来的。路径一旦跑起来，哪些地方缺状态，哪些地方缺反馈，哪些地方接口不清楚，哪些地方用户会困惑，都会被迫浮出水面。</p>
+<h2>产品经理更需要判断何时介入</h2>
+<p>Vibe Coding 并不会让产品经理变得轻松。</p>
+<p>它会让一些执行动作变快，但也会把判断压力前置。过去很多问题会在研发阶段慢慢暴露，现在 Agent 很快就能产出结果，产品经理必须更早判断：这个结果是不是对的。</p>
+<p>我在这次实践里最深的体会，是产品经理需要掌握四个时机。</p>
+<p>第一个时机，是何时设立目标。</p>
+<p>每一轮开始前，都要先说清楚这一轮到底要推进什么。是补入口交互，还是串联从提交到结果的路径？是做 Mock 兜底，还是接真实 API？如果目标不清楚，Agent 很容易同时做很多看似相关的事情，最后每件事都差一点。</p>
+<p>第二个时机，是何时介入纠偏。</p>
+<p>当 Codex 开始优化非核心页面、增加不在演示路径里的配置项、或者把早期 Demo 理解成完整产品交付时，产品经理必须及时把它拉回来。不是所有“做得更多”都是进步。早期验证里，做少一点、但主链路更稳，往往更有价值。</p>
+<p>第三个时机，是何时局部修改。</p>
+<p>Agent 的产出不可能一次完美。页面可能有视觉偏差，状态可能不完整，接口错误可能没有合适提示。这时候不应该重新下一个巨大任务，而应该把问题切小：只修这个页面的首屏间距，只补这个接口的错误兜底，只检查这条演示路径的阻塞点。</p>
+<p>第四个时机，是何时停下来。</p>
+<p>这可能是最难的。因为 Agent 太容易让人产生“再优化一点”的冲动。再加一个功能，再补一个页面，再整理一下组件，再美化一下动画。但 Demo 的目标不是无限接近生产系统，而是在当前阶段证明一个产品假设。主流程可演示，异常可解释，材料可交付，就应该停下来，进入测试和复盘。</p>
+<p>我以前会觉得产品经理的判断更多发生在需求定义阶段。但 Vibe Coding 让我看到，判断其实贯穿整个执行过程。目标、范围、优先级、验收、停止，每一步都需要产品经理在场。</p>
+<h2>输入和输出决定了任务质量</h2>
+<p>从程序员视角看开发，最重要的往往是输入和输出。</p>
+<p>系统接收什么？用户会给它文字、文件、选择项，还是一段自然语言指令？系统产出什么？是一个结果列表、一个可继续编辑的状态，还是一份可保存、可下载、可分享的交付物？</p>
+<p>这听起来像技术问题，但我越来越觉得，它首先是产品问题。</p>
+<p>因为输入和输出定义的是用户价值的两端。输入端决定用户如何把自己的意图交给系统，输出端决定系统如何把能力还给用户。中间当然有模型、接口、状态管理和数据存储，但如果两端没有想清楚，中间实现得再漂亮，也可能只是一个没有闭环的功能。</p>
+<p>在这次实践里，如果只说“做一个 AI 产品 Demo”，这个任务其实很空。它可以被理解成一个输入框加一个结果页，也可以被理解成一整套面向真实任务的工作台。</p>
+<p>真正让任务变得可执行的，是把输入和输出拆清楚。</p>
+<p>输入可以是文本、文件、配置项和追加说明。输出则应该包括处理结果、中间状态、历史记录，以及可以复制、下载或继续使用的交付物。这样一来，Agent 才能围绕具体链路补页面、补状态、补数据，而不是凭感觉生成一个“看起来像 AI 产品”的界面。</p>
+<p>这也是我觉得 Vibe Coding 对产品经理很有训练价值的地方。</p>
+<p>它逼迫你把抽象愿望变成可执行任务。你不能只说“做得高级一点”“交互顺一点”“页面活一点”。你必须说明用户从哪里开始，到哪里结束，过程中发生什么，失败时看到什么，刷新后什么还应该存在。</p>
+<p>这些问题越具体，Agent 的执行就越稳定。反过来说，如果你自己没有理解业务闭环，Agent 也很难替你理解。</p>
+<h2>Mock 不是偷懒</h2>
+<p>这次实践里，我对 Mock 的理解也发生了变化。</p>
+<p>过去我会下意识觉得，Mock 是真实能力不足时的临时替代。它能让页面先跑起来，但总归不如真实接口有价值。后来我发现，这种理解太窄了。</p>
+<p>Mock 的意义不是伪装真实，而是把验证拆成阶段。</p>
+<p>早期 Demo 最重要的事情，是先证明用户路径成立。用户能否从输入进入处理，能否看到结果，能否基于结果继续调整，能否把关键记录保存下来。这些问题不一定要等真实 API 完全稳定之后才能验证。</p>
+<p>真实 API 当然重要。没有真实服务，Demo 的可信度会有上限。但如果一开始就被真实 API 的额度、网络、认证、响应格式和服务波动卡住，产品验证反而会被技术细节绑架。</p>
+<p>所以更合理的路径是：先用 Mock 跑通主链路，再接真实 API 验证关键能力。</p>
+<p>Mock 模式应该和真实模式保持一致的返回结构，让前端体验、状态流转和记录留存都能完整发生。真实服务可用时，切到真实 provider；真实服务不可用时，Demo 仍然可以演示完整路径。这样一来，Mock 不是遮羞布，而是产品验证的脚手架。</p>
+<p>它让团队先讨论路径是否成立，再讨论技术如何逼近真实。对早期产品来说，这个顺序很重要。</p>
+<h2>开始做，才有问题</h2>
+<p>我很喜欢这次复盘里形成的一个简单链条：开始做，遇到问题，展开讨论，沉淀经验。</p>
+<p>很多事情在没开始之前，看起来都只是方法论。要准备 Figma 原型，要写任务包，要定义验收标准，要做 Mock，要跑测试，这些话都对，但也都很容易停留在正确废话的层面。</p>
+<p>真正的经验不是从正确表述里长出来的，而是从具体问题里长出来的。</p>
+<p>比如，Figma Frame 没有按状态拆分，Codex 就很难判断页面边界。只给设计链接不提供截图，视觉偏差就很难复盘。Prompt 里没有停止标准，Agent 就会不断扩展 scope。没有 Mock 兜底，真实接口一出问题，整条演示路径就被卡住。验收只说“看起来可以”，最后就没有任何可重复检查的标准。</p>
+<p>这些问题只有做起来才会出现。</p>
+<p>也正是因为出现过，才有必要把它们沉淀成 SOP、Prompt 模板、Checklist 和 AGENTS.md。沉淀不是为了把下一次变成机械复制，而是为了让下一次少踩一些已知的坑，把注意力留给真正新的问题。</p>
+<p>Vibe Coding 的过程并不完全可复现。</p>
+<p>大模型有随机性，产品需求有差异，项目上下文也不同。你不能指望把同一段 Prompt 复制到另一个项目里，就得到同样质量的结果。真正可复用的，不是某一句提示词，而是背后的工作方式：先定义验证目标，再准备上下文，再约束范围，再建立验收标准，最后把问题和经验留下来。</p>
+<h2>结语</h2>
+<p>这次 Figma2Demo 实践让我更确认了一件事：AI 并没有削弱产品经理的价值。</p>
+<p>它削弱的是一些机械执行的门槛，比如搭页面、写样板代码、补状态、整理文档、跑基础检查。但它放大了另一类能力的重要性：判断什么值得做，判断做到什么程度足够，判断一个结果是否真正服务于产品目标。</p>
+<p>当执行变快，方向就更重要。当生成变容易，边界就更重要。当 Demo 可以被快速搭出来，验证意识就更重要。</p>
+<p>所以我不想把 Vibe Coding 理解成一种炫技。它更像一种新的产品工作方式：产品经理用目标、上下文、约束和验收标准调动 Agent 的执行力，把想法更快推进到真实世界里接受检验。</p>
+<p>这也是我从这次实践里得到的最大收获。</p>
+<p>未来的产品经理不一定都要成为传统意义上的工程师，但一定要更懂如何和智能系统协作。不是为了证明自己也会写代码，而是为了更快、更准确地把一个想法带到能被看见、能被使用、能被讨论的位置。</p>
+<p>真正稀缺的，可能从来不是“会不会让 AI 写代码”。</p>
+<p>而是一个人能不能判断，什么值得被做出来。</p>
+  </article>
+  <div class="footer">
+    <span>© 2026 Zane Hua</span>
+    <span>yuanzehua.me</span>
+  </div>
+</main>
+</body>
+</html>
