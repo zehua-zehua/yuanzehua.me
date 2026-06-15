@@ -48,6 +48,7 @@ yuanzehua.me/
 | 博客文章列表       | `content/posts/*.md` + build.js  | 写 md 后构建 |
 | 电影片单           | `content/films.yml`              | 加一条后构建 |
 | 联系方式 / 社交    | `index.html` → `#connect`        | 直接编辑     |
+| Loopi 反馈数据库   | `docs/pet-database-setup.md`     | Cloudflare 后台一次性配置 |
 
 ## 部署信息
 
@@ -56,5 +57,7 @@ yuanzehua.me/
 - **构建命令**：`node scripts/build.js`（或留空，纯静态直接部署）
 - **输出目录**：`/`（根目录）
 - **分支**：`main`
+- **Loopi D1 binding**：`PET_DB`
 
 详细部署步骤见 `docs/deployment-guide.md`。
+Loopi 数据库配置见 `docs/pet-database-setup.md`。

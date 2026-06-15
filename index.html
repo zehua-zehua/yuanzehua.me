@@ -107,6 +107,90 @@ nav ul a:hover { color: var(--ink); }
   letter-spacing: 0.15em; text-transform: uppercase; color: var(--light);
 }
 
+/* ── Loopi / Pet feedback ───────────────────── */
+.pet-loop-strip {
+  padding: 56px 0 72px;
+  border-bottom: 1px solid var(--rule);
+}
+.pet-loop-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+  gap: var(--gap);
+  align-items: start;
+}
+.pet-loop-kicker {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--light); display: block; margin-bottom: 18px;
+}
+.pet-loop-title {
+  font-family: var(--serif-en); font-size: clamp(24px, 3.4vw, 36px);
+  font-weight: 400; font-style: italic; line-height: 1.2; margin-bottom: 18px;
+}
+.pet-loop-desc {
+  max-width: 560px; font-size: 15px; line-height: 2; color: var(--mid); font-weight: 400;
+}
+.pet-loop-link {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 24px;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--mid); text-decoration: none;
+}
+.pet-loop-link:hover { color: var(--ink); }
+.pet-loop-link::after { content: '→'; }
+.pet-feedback {
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 22px 0 24px;
+}
+.pet-feedback-title {
+  display: block; margin-bottom: 14px;
+  font-size: 14px; font-weight: 400; color: var(--ink); letter-spacing: 0.03em;
+}
+.pet-feedback-tags {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;
+}
+.pet-tag,
+.pet-score,
+.pet-submit {
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em;
+  text-transform: uppercase; border: 1px solid var(--rule);
+  background: transparent; color: var(--mid); cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.pet-tag { padding: 5px 9px; }
+.pet-tag[aria-pressed="true"],
+.pet-score[aria-pressed="true"] {
+  border-color: var(--accent-rule);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+.pet-score-row {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin-bottom: 14px;
+}
+.pet-score { height: 32px; }
+.pet-feedback textarea {
+  width: 100%; min-height: 72px; resize: vertical;
+  background: rgba(255,255,255,0.14); border: 1px solid var(--rule);
+  color: var(--ink); padding: 10px 12px;
+  font-family: var(--serif-cn); font-size: 13px; line-height: 1.7;
+  outline: none; margin-bottom: 14px;
+}
+.pet-feedback textarea:focus { border-color: var(--accent-rule); }
+.pet-submit {
+  width: 100%; height: 34px;
+}
+.pet-submit:hover,
+.pet-submit:focus {
+  color: var(--ink); border-color: var(--ink);
+}
+.pet-submit:disabled {
+  opacity: 0.5; cursor: wait;
+}
+.pet-feedback-status,
+.pet-summary-line {
+  display: block; margin-top: 12px; font-size: 12px; color: var(--light);
+  line-height: 1.7; font-weight: 400;
+}
+
 /* ── Section base ───────────────────────────── */
 section { padding: 80px 0; border-bottom: 1px solid var(--rule); }
 section:last-of-type { border-bottom: none; }
@@ -522,6 +606,7 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
   #hero { grid-template-columns: 1fr; gap: 40px; padding-bottom: 60px; }
   .hero-tagline { margin-left: 0; text-align: left; }
   .about-grid { grid-template-columns: 1fr; }
+  .pet-loop-grid { grid-template-columns: 1fr; }
   .interests-grid { grid-template-columns: 1fr; }
   .connect-layout { grid-template-columns: 1fr; }
   .thought-item { grid-template-columns: 80px 1fr; }
@@ -575,6 +660,44 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
   <div class="scroll-hint">
     <span class="scroll-line"></span>
     <span>Scroll to explore</span>
+  </div>
+</section>
+
+<!-- ── Loopi Pet Feedback ───────────────────── -->
+<section id="pet-loop" class="pet-loop-strip reveal">
+  <div class="pet-loop-grid">
+    <div>
+      <span class="pet-loop-kicker">Loopi v0.1 Seed</span>
+      <h2 class="pet-loop-title">Meet Loopi, my evolving AI companion.</h2>
+      <p class="pet-loop-desc">Loopi 是 yuanzehua.me 的 AI 小马搭档。它会根据真实访客反馈、模拟评分和 Codex 分析持续进化，和这个主页一起成长。</p>
+      <a class="pet-loop-link" href="/pet-lab/">Pet Lab · 查看进化实验</a>
+    </div>
+
+    <form class="pet-feedback" data-pet-feedback data-version-name="loopi_v0_1">
+      <span class="pet-feedback-title">你觉得 Loopi 应该传达怎样的气质？</span>
+      <div class="pet-feedback-tags" aria-label="Loopi feedback tags">
+        <button type="button" class="pet-tag" data-pet-tag="懂技术" aria-pressed="false">懂技术</button>
+        <button type="button" class="pet-tag" data-pet-tag="有产品感" aria-pressed="false">有产品感</button>
+        <button type="button" class="pet-tag" data-pet-tag="有亲和力" aria-pressed="false">有亲和力</button>
+        <button type="button" class="pet-tag" data-pet-tag="有记忆点" aria-pressed="false">有记忆点</button>
+        <button type="button" class="pet-tag" data-pet-tag="有点幼稚" aria-pressed="false">有点幼稚</button>
+        <button type="button" class="pet-tag" data-pet-tag="不够专业" aria-pressed="false">不够专业</button>
+      </div>
+      <span class="pet-feedback-title">它是否提升了你对这个主页的第一印象？</span>
+      <div class="pet-score-row" aria-label="Loopi feedback score">
+        <button type="button" class="pet-score" data-pet-score="1" aria-pressed="false">1</button>
+        <button type="button" class="pet-score" data-pet-score="2" aria-pressed="false">2</button>
+        <button type="button" class="pet-score" data-pet-score="3" aria-pressed="false">3</button>
+        <button type="button" class="pet-score" data-pet-score="4" aria-pressed="false">4</button>
+        <button type="button" class="pet-score" data-pet-score="5" aria-pressed="false">5</button>
+      </div>
+      <textarea data-pet-feedback-text maxlength="500" placeholder="可选：一句第一印象或建议"></textarea>
+      <button type="submit" class="pet-submit" data-pet-feedback-submit>Submit Feedback</button>
+      <span class="pet-feedback-status" data-pet-feedback-status>反馈会匿名保存，用来帮助 Loopi 迭代。</span>
+      <span class="pet-summary-line" data-pet-summary-panel data-version-name="loopi_v0_1">
+        <span data-pet-summary-status>正在读取反馈统计...</span>
+      </span>
+    </form>
   </div>
 </section>
 
@@ -1212,6 +1335,7 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
 
 </div><!-- /container -->
 
+<script src="/assets/pet-feedback.js"></script>
 <script>
 /* ── Scroll reveal ──────────────────────────── */
 const observer = new IntersectionObserver(entries => {
