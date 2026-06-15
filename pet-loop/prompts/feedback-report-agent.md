@@ -9,6 +9,28 @@ Use this prompt when generating a Loopi feedback report from exported D1 feedbac
 - Recent feedback rows from `/api/pet-feedback-export`
 - Optional simulated reviews
 
+## Feedback Model
+
+The public score is a homepage contribution score: does Loopi make visitors more willing to keep learning about Zehua?
+
+Positive tags:
+
+- `增强第一印象`
+- `有个人品牌感`
+- `像AI伙伴`
+- `专业可信`
+- `温暖有记忆点`
+- `想继续探索`
+
+Risk tags:
+
+- `太像宠物`
+- `太幼态`
+- `AI感不足`
+- `不够专业`
+- `和主页关系弱`
+- `有点抢戏`
+
 ## Output
 
 Write a Markdown report under `pet-loop/reports/YYYY-MM-DD-loopi-vX.md`.
@@ -18,6 +40,7 @@ The report must include:
 - Current version and report date.
 - Real feedback count and average score.
 - Tag distribution.
+- Positive signal summary and risk signal summary.
 - Open feedback summary.
 - Strengths.
 - Weaknesses.

@@ -2,7 +2,7 @@
   "candidate_id": "loopi_v0_2_c01",
   "based_on_version": "loopi_v0_1",
   "candidate_name": "Friendly Signal",
-  "status": "prompt_ready",
+  "status": "superseded_by_manual_v0_2",
   "changed_variables": [
     "expression",
     "welcome pose"
@@ -12,5 +12,5 @@
     "homepage first impression"
   ],
   "risk_to_watch": "Could become too cute if eyes or head-body ratio are exaggerated.",
-  "prompt": "Generate Loopi v0.2 candidate c01. Preserve Loopi's pony silhouette, silver-white body, blue-purple mane and tail, warm cyan-blue intelligent eyes, and minimal smart collar. Change only expression and welcome pose: make Loopi slightly more welcoming, with a calm gentle smile and one front hoof subtly lifted. Keep premium 3D mascot style, clean personal-brand fit, and professional AI product homepage credibility. Avoid toy-like cuteness, children's cartoon style, oversized eyes, rainbow colors, game effects, and cyberpunk mecha."
+  "prompt": "Superseded. The v0.2 direction changed manually from literal pony to virtual companion avatar after user feedback that the first visual felt too animal-like."
 }

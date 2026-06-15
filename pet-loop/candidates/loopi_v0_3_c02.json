@@ -1,0 +1,16 @@
+{
+  "candidate_id": "loopi_v0_3_c02",
+  "based_on_version": "loopi_v0_2",
+  "candidate_name": "ENFP Warmth",
+  "status": "prompt_ready",
+  "changed_variables": [
+    "smile",
+    "ear posture"
+  ],
+  "expected_improvement": [
+    "friendliness",
+    "homepage first impression"
+  ],
+  "risk_to_watch": "Could become too much like a generic puppy if dog-like cues dominate.",
+  "prompt": "Generate Loopi v0.3 candidate c02. Preserve Loopi's virtual AI companion identity, silver-white body, blue-purple hair and tail-like energy plume, cyan AI marks, smart collar, and professional homepage fit. Change only smile and ear posture: increase ENFP-like openness and curious warmth, but keep the character as a virtual companion avatar rather than a literal dog. Avoid pure puppy mascot, four-legged pony, hooves, overly cute eyes, children's cartoon style, rainbow colors, and game magic."
+}

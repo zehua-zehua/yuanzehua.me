@@ -23,6 +23,7 @@ Each candidate must include:
 Rules:
 
 - Change only 1-2 variables per candidate.
-- Preserve pony species, silver-white body, blue-purple mane/tail, warm intelligent eyes, AI companion identity, and professional homepage fit.
+- Preserve virtual AI companion identity, pony-origin momentum, silver-white body, blue-purple hair or tail-like energy, warm intelligent eyes, subtle AI markings, and professional homepage fit.
+- Do not return to literal four-legged pony anatomy or drift into a generic puppy mascot.
 - Do not publish candidates automatically.
 - Do not replace homepage production without human approval.

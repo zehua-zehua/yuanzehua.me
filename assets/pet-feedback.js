@@ -1,5 +1,5 @@
 (function () {
-  const DEFAULT_VERSION = "loopi_v0_1";
+  const DEFAULT_VERSION = "loopi_v0_2";
   const VISITOR_KEY = "loopi_feedback_visitor_id";
 
   function getVisitorId() {
@@ -146,6 +146,10 @@
 
         status.textContent = "已收到，谢谢你帮助 Loopi 进化。";
         form.querySelector("[data-pet-feedback-text]").value = "";
+        selectedScore = null;
+        form
+          .querySelectorAll("[data-pet-score], [data-pet-tag]")
+          .forEach((item) => item.setAttribute("aria-pressed", "false"));
         await loadSummaries();
       } catch (_error) {
         status.textContent = "暂时保存失败。数据库配置完成后这里会自动可用。";

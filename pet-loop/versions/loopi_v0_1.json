@@ -1,7 +1,7 @@
 {
   "version_name": "loopi_v0_1",
   "display_name": "Loopi v0.1 Seed",
-  "status": "active",
+  "status": "superseded",
   "pet_dna_version": "Loopi Pet DNA v1.0",
   "asset_status": "static_seed_ready",
   "image_url": "/assets/images/pets/loopi/v0-1/loopi-v0-1.webp",
@@ -23,5 +23,7 @@
   "feedback_endpoint": "/api/pet-feedback",
   "summary_endpoint": "/api/pet-feedback-summary?version=loopi_v0_1",
   "pet_lab_url": "/pet-lab/",
-  "created_at": "2026-06-15T00:00:00Z"
+  "created_at": "2026-06-15T00:00:00Z",
+  "superseded_by": "loopi_v0_2",
+  "superseded_reason": "User feedback said the first visual felt too animal-like for a personal-brand virtual companion."
 }

@@ -154,9 +154,16 @@ nav ul a:hover { color: var(--ink); }
   display: block; margin-bottom: 14px;
   font-size: 14px; font-weight: 400; color: var(--ink); letter-spacing: 0.03em;
 }
+.pet-feedback-note {
+  display: block; margin: -4px 0 14px;
+  font-size: 12px; line-height: 1.8; color: var(--light); font-weight: 400;
+}
+.pet-feedback-group { margin-bottom: 18px; }
+.pet-feedback-group:last-of-type { margin-bottom: 20px; }
 .pet-feedback-tags {
   display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;
 }
+.pet-feedback-group .pet-feedback-tags { margin-bottom: 0; }
 .pet-tag,
 .pet-score,
 .pet-submit {
@@ -676,37 +683,54 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
 <section id="pet-loop" class="pet-loop-strip reveal">
   <div class="pet-loop-grid">
     <div>
-      <span class="pet-loop-kicker">Loopi v0.1 Seed</span>
+      <span class="pet-loop-kicker">Loopi v0.2 Companion</span>
       <h2 class="pet-loop-title">Meet Loopi, my evolving AI companion.</h2>
-      <p class="pet-loop-desc">Loopi 是 yuanzehua.me 的 AI 小马搭档。它会根据真实访客反馈、模拟评分和 Codex 分析持续进化，和这个主页一起成长。</p>
+      <p class="pet-loop-desc">Loopi 是 yuanzehua.me 的虚拟 AI companion。它从生肖马的行动力出发，加入一点 ENFP 小狗式亲和，但不再是过分拟动物的宠物形象。</p>
       <a class="pet-loop-link" href="/pet-lab/">Pet Lab · 查看进化实验</a>
-      <figure class="pet-loop-visual" aria-label="Loopi v0.1 Seed mascot">
-        <img src="/assets/images/pets/loopi/v0-1/loopi-v0-1.webp" alt="Loopi，一只银白色蓝紫鬃毛的 3D AI 小马搭档" loading="lazy">
+      <figure class="pet-loop-visual" aria-label="Loopi v0.2 virtual companion avatar">
+        <img src="/assets/images/pets/loopi/v0-2/loopi-v0-2.webp" alt="Loopi v0.2，银白色蓝紫发束的虚拟 AI companion 形象" loading="lazy">
       </figure>
     </div>
 
-    <form class="pet-feedback" data-pet-feedback data-version-name="loopi_v0_1">
-      <span class="pet-feedback-title">你觉得 Loopi 应该传达怎样的气质？</span>
-      <div class="pet-feedback-tags" aria-label="Loopi feedback tags">
-        <button type="button" class="pet-tag" data-pet-tag="懂技术" aria-pressed="false">懂技术</button>
-        <button type="button" class="pet-tag" data-pet-tag="有产品感" aria-pressed="false">有产品感</button>
-        <button type="button" class="pet-tag" data-pet-tag="有亲和力" aria-pressed="false">有亲和力</button>
-        <button type="button" class="pet-tag" data-pet-tag="有记忆点" aria-pressed="false">有记忆点</button>
-        <button type="button" class="pet-tag" data-pet-tag="有点幼稚" aria-pressed="false">有点幼稚</button>
-        <button type="button" class="pet-tag" data-pet-tag="不够专业" aria-pressed="false">不够专业</button>
-      </div>
-      <span class="pet-feedback-title">它是否提升了你对这个主页的第一印象？</span>
-      <div class="pet-score-row" aria-label="Loopi feedback score">
+    <form class="pet-feedback" data-pet-feedback data-version-name="loopi_v0_2">
+      <span class="pet-feedback-title">作为首页里的 AI 虚拟形象，Loopi 是否让你更想继续了解这个人？</span>
+      <span class="pet-feedback-note">1 = 分散注意力，5 = 明显增强第一印象</span>
+      <div class="pet-score-row" aria-label="Loopi homepage contribution score">
         <button type="button" class="pet-score" data-pet-score="1" aria-pressed="false">1</button>
         <button type="button" class="pet-score" data-pet-score="2" aria-pressed="false">2</button>
         <button type="button" class="pet-score" data-pet-score="3" aria-pressed="false">3</button>
         <button type="button" class="pet-score" data-pet-score="4" aria-pressed="false">4</button>
         <button type="button" class="pet-score" data-pet-score="5" aria-pressed="false">5</button>
       </div>
-      <textarea data-pet-feedback-text maxlength="500" placeholder="可选：一句第一印象或建议"></textarea>
+
+      <div class="pet-feedback-group">
+        <span class="pet-feedback-title">它目前最加分的地方是什么？</span>
+        <div class="pet-feedback-tags" aria-label="Loopi positive evaluation tags">
+          <button type="button" class="pet-tag" data-pet-tag="增强第一印象" aria-pressed="false">增强第一印象</button>
+          <button type="button" class="pet-tag" data-pet-tag="有个人品牌感" aria-pressed="false">有个人品牌感</button>
+          <button type="button" class="pet-tag" data-pet-tag="像AI伙伴" aria-pressed="false">像AI伙伴</button>
+          <button type="button" class="pet-tag" data-pet-tag="专业可信" aria-pressed="false">专业可信</button>
+          <button type="button" class="pet-tag" data-pet-tag="温暖有记忆点" aria-pressed="false">温暖有记忆点</button>
+          <button type="button" class="pet-tag" data-pet-tag="想继续探索" aria-pressed="false">想继续探索</button>
+        </div>
+      </div>
+
+      <div class="pet-feedback-group">
+        <span class="pet-feedback-title">它目前最大的风险是什么？</span>
+        <div class="pet-feedback-tags" aria-label="Loopi risk evaluation tags">
+          <button type="button" class="pet-tag" data-pet-tag="太像宠物" aria-pressed="false">太像宠物</button>
+          <button type="button" class="pet-tag" data-pet-tag="太幼态" aria-pressed="false">太幼态</button>
+          <button type="button" class="pet-tag" data-pet-tag="AI感不足" aria-pressed="false">AI感不足</button>
+          <button type="button" class="pet-tag" data-pet-tag="不够专业" aria-pressed="false">不够专业</button>
+          <button type="button" class="pet-tag" data-pet-tag="和主页关系弱" aria-pressed="false">和主页关系弱</button>
+          <button type="button" class="pet-tag" data-pet-tag="有点抢戏" aria-pressed="false">有点抢戏</button>
+        </div>
+      </div>
+
+      <textarea data-pet-feedback-text maxlength="500" placeholder="可选：如果你只改一处，会改什么？"></textarea>
       <button type="submit" class="pet-submit" data-pet-feedback-submit>Submit Feedback</button>
       <span class="pet-feedback-status" data-pet-feedback-status>反馈会匿名保存，用来帮助 Loopi 迭代。</span>
-      <span class="pet-summary-line" data-pet-summary-panel data-version-name="loopi_v0_1">
+      <span class="pet-summary-line" data-pet-summary-panel data-version-name="loopi_v0_2">
         <span data-pet-summary-status>正在读取反馈统计...</span>
       </span>
     </form>

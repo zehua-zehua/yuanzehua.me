@@ -2,7 +2,7 @@
   "candidate_id": "loopi_v0_2_c03",
   "based_on_version": "loopi_v0_1",
   "candidate_name": "AI Product Cue",
-  "status": "prompt_ready",
+  "status": "superseded_by_manual_v0_2",
   "changed_variables": [
     "smart collar detail",
     "data cue intensity"
@@ -12,5 +12,5 @@
     "product-minded feeling"
   ],
   "risk_to_watch": "Could drift toward generic AI robot if the data cue becomes too literal.",
-  "prompt": "Generate Loopi v0.2 candidate c03. Preserve Loopi's pony silhouette, silver-white body, blue-purple mane and tail, warm intelligent eyes, and friendly professional tone. Change only smart collar detail and data cue intensity: add a subtle, minimal cyan-lit collar detail and a few restrained data-particle accents close to the body. Keep all effects physically attached or very close, not floating like game magic. Avoid UI panels, readable text, cyberpunk, heavy mecha, generic robot, excessive neon, and magical sparkles."
+  "prompt": "Superseded. The v0.2 direction changed manually from literal pony to virtual companion avatar after user feedback that the first visual felt too animal-like."
 }

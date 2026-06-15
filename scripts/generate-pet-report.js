@@ -4,14 +4,14 @@
  *
  * Usage:
  *   PET_ADMIN_TOKEN=... node scripts/generate-pet-report.js
- *   PET_ADMIN_TOKEN=... node scripts/generate-pet-report.js loopi_v0_1
+ *   PET_ADMIN_TOKEN=... node scripts/generate-pet-report.js loopi_v0_2
  */
 
 const fs = require("fs");
 const path = require("path");
 
 const ROOT = path.join(__dirname, "..");
-const VERSION = process.argv[2] || "loopi_v0_1";
+const VERSION = process.argv[2] || "loopi_v0_2";
 const SITE = process.env.PET_SITE_URL || "https://yuanzehua.me";
 const TOKEN = process.env.PET_ADMIN_TOKEN || "";
 
@@ -108,11 +108,11 @@ ${openFeedback.length ? openFeedback.map((item) => `- ${item}`).join("\n") : "- 
 
 ## Diagnosis
 
-Loopi is still in the seed validation stage. Do not generate a production replacement until there is enough feedback or a simulated visitor review pass.
+Loopi is validating homepage contribution, not generic cuteness. Read the score as continuation intent and use tags to separate positive signals from risks.
 
 ## Recommended Next Step
 
-Keep \`${VERSION}\` active. If feedback remains low, run simulated visitor reviews against the three prepared v0.2 candidate lanes before generating visual assets.
+Keep \`${VERSION}\` active. If feedback remains low, run simulated visitor reviews against the three prepared v0.3 candidate lanes before generating visual assets.
 `;
 
   const outDir = path.join(ROOT, "pet-loop", "reports");
