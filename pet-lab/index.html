@@ -63,6 +63,8 @@ h1{font-family:var(--serif-en);font-size:clamp(46px,8vw,82px);font-weight:400;fo
 h2{font-family:var(--serif-en);font-size:26px;font-style:italic;font-weight:400;margin-bottom:18px}
 .section-lead{max-width:680px;font-size:14px;line-height:1.9;color:var(--mid);font-weight:400;margin-bottom:28px}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.evaluation-steps{grid-template-columns:repeat(4,minmax(0,1fr))}
+.evaluation-steps .step{padding:24px}
 .step{background:var(--paper);padding:28px}
 .step em{display:block;font-family:var(--mono);font-style:normal;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--light);margin-bottom:12px}
 .step strong{display:block;font-size:15px;font-weight:400;margin-bottom:8px}
@@ -332,7 +334,7 @@ h2{font-family:var(--serif-en);font-size:26px;font-style:italic;font-weight:400;
     <div class="formula">
       总分 = 8 题平均分；维度 = 视觉第一印象、主页适配度、个人气质匹配、小马 + 小狗设定
     </div>
-    <div class="steps">
+    <div class="steps evaluation-steps">
       <div class="step">
         <em>A</em>
         <strong>视觉第一印象</strong>
