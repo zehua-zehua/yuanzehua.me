@@ -3,7 +3,10 @@
   "display_name": "Loopi v0.1 Seed",
   "status": "active",
   "pet_dna_version": "Loopi Pet DNA v1.0",
-  "asset_status": "sprite_planned",
+  "asset_status": "static_seed_ready",
+  "image_url": "/assets/images/pets/loopi/v0-1/loopi-v0-1.webp",
+  "source_image_url": "/assets/images/pets/loopi/v0-1/loopi-v0-1-source.png",
+  "sprite_url": null,
   "homepage_role": "secondary_companion",
   "design_goal": "Validate whether an AI pony companion inspired by Zehua's zodiac sign fits yuanzehua.me.",
   "changed_variables": [

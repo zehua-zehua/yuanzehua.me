@@ -129,6 +129,15 @@ nav ul a:hover { color: var(--ink); }
 .pet-loop-desc {
   max-width: 560px; font-size: 15px; line-height: 2; color: var(--mid); font-weight: 400;
 }
+.pet-loop-visual {
+  margin-top: 28px;
+  width: min(280px, 100%);
+}
+.pet-loop-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 .pet-loop-link {
   display: inline-flex; align-items: center; gap: 8px; margin-top: 24px;
   font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
@@ -671,6 +680,9 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
       <h2 class="pet-loop-title">Meet Loopi, my evolving AI companion.</h2>
       <p class="pet-loop-desc">Loopi 是 yuanzehua.me 的 AI 小马搭档。它会根据真实访客反馈、模拟评分和 Codex 分析持续进化，和这个主页一起成长。</p>
       <a class="pet-loop-link" href="/pet-lab/">Pet Lab · 查看进化实验</a>
+      <figure class="pet-loop-visual" aria-label="Loopi v0.1 Seed mascot">
+        <img src="/assets/images/pets/loopi/v0-1/loopi-v0-1.webp" alt="Loopi，一只银白色蓝紫鬃毛的 3D AI 小马搭档" loading="lazy">
+      </figure>
     </div>
 
     <form class="pet-feedback" data-pet-feedback data-version-name="loopi_v0_1">
