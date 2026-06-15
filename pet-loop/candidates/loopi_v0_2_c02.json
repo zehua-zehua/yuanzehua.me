@@ -1,0 +1,16 @@
+{
+  "candidate_id": "loopi_v0_2_c02",
+  "based_on_version": "loopi_v0_1",
+  "candidate_name": "Professional Finish",
+  "status": "prompt_ready",
+  "changed_variables": [
+    "material finish",
+    "body proportion"
+  ],
+  "expected_improvement": [
+    "professional trust",
+    "visual quality"
+  ],
+  "risk_to_watch": "Could become too distant if the expression loses warmth.",
+  "prompt": "Generate Loopi v0.2 candidate c02. Preserve Loopi's pony identity, silver-white body, blue-purple mane and tail, cyan eye highlight, and AI companion role. Change only material finish and body proportion: make the 3D rendering more premium and less toy-like, with slightly more restrained proportions and a cleaner silhouette. Keep the expression warm and curious. Avoid cold robot styling, heavy metal, cyberpunk armor, childish toy texture, NFT avatar style, and exaggerated glow."
+}
