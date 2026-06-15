@@ -28,27 +28,58 @@
     "friendly but professional tone"
   ],
   "feedback_model": {
-    "primary_question": "As an AI virtual avatar on the homepage, does Loopi make the visitor more willing to keep learning about Zehua?",
+    "schema": "loopi_homepage_feedback_v1",
+    "rating_scale": "1 = very disagree, 3 = neutral, 5 = very agree",
+    "storage_rule": "Store the 8-question average as score and store per-question scores as structured tags.",
     "score_meaning": {
-      "1": "distracts from the homepage",
-      "3": "neutral or unclear contribution",
-      "5": "clearly improves first impression and continuation intent"
+      "1": "very negative fit",
+      "3": "neutral or unclear fit",
+      "5": "strong positive fit"
     },
-    "positive_tags": [
-      "增强第一印象",
-      "有个人品牌感",
-      "像AI伙伴",
-      "专业可信",
-      "温暖有记忆点",
-      "想继续探索"
+    "dimensions": [
+      {
+        "key": "visual_first_impression",
+        "label": "视觉第一印象",
+        "questions": [
+          "Loopi 整体看起来是好看的。",
+          "Loopi 的视觉质感适合一个专业个人主页。"
+        ]
+      },
+      {
+        "key": "homepage_fit",
+        "label": "主页适配度",
+        "questions": [
+          "Loopi 放在 yuanzehua.me 首页不会显得突兀。",
+          "Loopi 会增强我对站主的第一印象，而不是分散注意力。"
+        ]
+      },
+      {
+        "key": "personal_fit",
+        "label": "个人气质匹配",
+        "questions": [
+          "Loopi 让我觉得站主是一个有好奇心、愿意探索 AI 的人。",
+          "Loopi 让我觉得站主有亲和力，也比较容易交流。"
+        ]
+      },
+      {
+        "key": "pony_dog_concept",
+        "label": "小马 + 小狗设定",
+        "questions": [
+          "Loopi 能让我感受到“小马”的行动力、成长感和向前感。",
+          "Loopi 能让我感受到“小狗”式的亲和、快乐和陪伴感。"
+        ]
+      }
     ],
-    "risk_tags": [
-      "太像宠物",
-      "太幼态",
-      "AI感不足",
-      "不够专业",
-      "和主页关系弱",
-      "有点抢戏"
+    "structured_tags": [
+      "survey:loopi_homepage_feedback_v1",
+      "q1_visual_beauty:{1-5}",
+      "q2_visual_quality_professional:{1-5}",
+      "q3_homepage_not_abrupt:{1-5}",
+      "q4_first_impression_not_distracting:{1-5}",
+      "q5_ai_curiosity_exploration:{1-5}",
+      "q6_friendliness_approachable:{1-5}",
+      "q7_pony_momentum_growth:{1-5}",
+      "q8_dog_warmth_companionship:{1-5}"
     ]
   },
   "feedback_endpoint": "/api/pet-feedback",

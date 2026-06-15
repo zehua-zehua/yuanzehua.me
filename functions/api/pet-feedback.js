@@ -1,5 +1,5 @@
 const MAX_TEXT_LENGTH = 500;
-const MAX_TAGS = 6;
+const MAX_TAGS = 12;
 const DEFAULT_SOURCE = "real_user";
 
 const ALLOWED_TAGS = new Set([
@@ -13,7 +13,10 @@ const ALLOWED_TAGS = new Set([
   "专业可信",
   "轻科技",
   "持续进化",
+  "survey:loopi_homepage_feedback_v1",
 ]);
+
+const STRUCTURED_SCORE_TAG = /^q[1-8]_[a-z0-9_]+:[1-5]$/;
 
 async function ensureFeedbackTable(db) {
   await db
@@ -82,8 +85,9 @@ function cleanTags(value) {
   const tags = [];
 
   for (const raw of value) {
-    const tag = cleanText(raw, 24);
-    if (!tag || seen.has(tag) || !ALLOWED_TAGS.has(tag)) continue;
+    const tag = cleanText(raw, 80);
+    const isAllowed = ALLOWED_TAGS.has(tag) || STRUCTURED_SCORE_TAG.test(tag);
+    if (!tag || seen.has(tag) || !isAllowed) continue;
     seen.add(tag);
     tags.push(tag);
     if (tags.length >= MAX_TAGS) break;

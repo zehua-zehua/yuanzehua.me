@@ -1,4 +1,4 @@
-const DEFAULT_VERSION = "loopi_v0_1";
+const DEFAULT_VERSION = "loopi_v0_2";
 const MAX_EXPORT_ROWS = 500;
 
 async function ensureFeedbackTable(db) {

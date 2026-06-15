@@ -11,6 +11,11 @@
     "friendliness",
     "homepage first impression"
   ],
+  "target_questions": [
+    "q5_ai_curiosity_exploration",
+    "q6_friendliness_approachable",
+    "q8_dog_warmth_companionship"
+  ],
   "risk_to_watch": "Could become too much like a generic puppy if dog-like cues dominate.",
   "prompt": "Generate Loopi v0.3 candidate c02. Preserve Loopi's virtual AI companion identity, silver-white body, blue-purple hair and tail-like energy plume, cyan AI marks, smart collar, and professional homepage fit. Change only smile and ear posture: increase ENFP-like openness and curious warmth, but keep the character as a virtual companion avatar rather than a literal dog. Avoid pure puppy mascot, four-legged pony, hooves, overly cute eyes, children's cartoon style, rainbow colors, and game magic."
 }

@@ -103,13 +103,15 @@ h2{font-family:var(--serif-en);font-size:26px;font-style:italic;font-weight:400;
           <strong data-pet-summary-score>--</strong>
         </div>
       </div>
+      <span class="label">Dimension Scores</span>
+      <div class="tags" data-pet-summary-dimensions></div>
       <div class="tags" data-pet-summary-tags></div>
     </div>
   </section>
 
   <section class="section">
     <h2>Current Version</h2>
-    <p class="section-lead">MVP 阶段先验证 Loopi 作为个人品牌虚拟 AI companion 是否能提升主页第一印象、继续阅读意愿和专业可信度。版本、候选、报告保存在仓库中；数据库只保存真实访客反馈。</p>
+    <p class="section-lead">MVP 阶段用 8 题首页反馈问卷验证 Loopi 是否好看、是否适配专业个人主页、是否匹配站主气质，以及“小马 + 小狗”的角色设定是否成立。版本、候选、报告保存在仓库中；数据库只保存真实访客反馈。</p>
     <div class="lab-grid">
       <div class="lab-panel">
         <span class="panel-label">Active</span>
@@ -140,12 +142,12 @@ h2{font-family:var(--serif-en);font-size:26px;font-style:italic;font-weight:400;
       <div class="step">
         <em>01</em>
         <strong>收集真实反馈</strong>
-        <p>首页只收集一个首页贡献总分、加分标签、风险标签和可选文字，避免把访客拖进重问卷。</p>
+        <p>首页收集 8 个 1-5 分评价和一个可选建议；系统保存平均分，并把每题分数作为结构化标签进入同一张反馈表。</p>
       </div>
       <div class="step">
         <em>02</em>
         <strong>生成分析报告</strong>
-        <p>Codex 定期读取反馈，归纳当前版本的优势、问题和下一轮方向。</p>
+        <p>Codex 定期读取总分、每题均分、四个维度均分和开放建议，归纳当前版本的优势、问题和下一轮方向。</p>
       </div>
       <div class="step">
         <em>03</em>
@@ -157,7 +159,7 @@ h2{font-family:var(--serif-en);font-size:26px;font-style:italic;font-weight:400;
 
   <section class="section">
     <h2>Candidate Queue</h2>
-    <p class="section-lead">下一轮候选会围绕 v0.2 的虚拟形象继续微调。每个候选只改变 1-2 个变量，方便判断到底是什么因素影响评分。</p>
+    <p class="section-lead">下一轮候选会围绕 v0.2 的问卷低分项继续微调。每个候选只改变 1-2 个变量，并明确对应要提升的题目或维度。</p>
     <div class="candidate-list">
       <div class="candidate">
         <span class="panel-label">v0.3 c01</span>
@@ -194,25 +196,30 @@ h2{font-family:var(--serif-en);font-size:26px;font-style:italic;font-weight:400;
 
   <section class="section">
     <h2>Homepage Evaluation Model</h2>
-    <p class="section-lead">主页场景里，Loopi 不是单纯“可不可爱”的宠物评分，而是判断它是否帮访客更快理解 Zane Hua：AI-native、产品感、可信赖，同时保持温暖和记忆点。</p>
+    <p class="section-lead">主页场景里，Loopi 不是单纯“可不可爱”的宠物评分，而是用 8 题问卷判断它作为个人品牌虚拟形象是否成立。每题 1-5 分：1 = 非常不同意，3 = 一般，5 = 非常同意。</p>
     <div class="formula">
-      首页贡献分 = 继续了解意愿 × 25% + 个人品牌匹配 × 20% + 专业可信度 × 15% + AI 伙伴清晰度 × 15% + 温暖亲和 × 10% + 记忆点 × 10% + 不抢主页注意力 × 5%
+      总分 = 8 题平均分；维度 = 视觉第一印象、主页适配度、个人气质匹配、小马 + 小狗设定
     </div>
     <div class="steps">
       <div class="step">
-        <em>+</em>
-        <strong>加分信号</strong>
-        <p>增强第一印象、有个人品牌感、像 AI 伙伴、专业可信、温暖有记忆点、想继续探索。</p>
+        <em>A</em>
+        <strong>视觉第一印象</strong>
+        <p>判断 Loopi 是否好看，以及视觉质感是否适合一个专业个人主页。</p>
       </div>
       <div class="step">
-        <em>-</em>
-        <strong>风险信号</strong>
-        <p>太像宠物、太幼态、AI 感不足、不够专业、和主页关系弱、有点抢戏。</p>
+        <em>B</em>
+        <strong>主页适配度</strong>
+        <p>判断 Loopi 放在 yuanzehua.me 是否自然，并且增强第一印象而不是分散注意力。</p>
       </div>
       <div class="step">
-        <em>✓</em>
-        <strong>上线门槛</strong>
-        <p>高分但风险标签集中时不直接替换主页；优先看是否提升信任、理解和继续阅读意愿。</p>
+        <em>C</em>
+        <strong>个人气质匹配</strong>
+        <p>判断它是否传达好奇、AI 探索、亲和、容易交流的站主气质。</p>
+      </div>
+      <div class="step">
+        <em>D</em>
+        <strong>小马 + 小狗设定</strong>
+        <p>判断它是否同时保留小马的行动力、成长感、向前感，以及小狗式亲和、快乐、陪伴感。</p>
       </div>
     </div>
   </section>

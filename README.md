@@ -65,7 +65,7 @@ Loopi 数据库配置见 `docs/pet-database-setup.md`。
 ## Loopi 报告生成
 
 ```bash
-PET_ADMIN_TOKEN=你的 Cloudflare 变量值 node scripts/generate-pet-report.js loopi_v0_1
+PET_ADMIN_TOKEN=你的 Cloudflare 变量值 node scripts/generate-pet-report.js loopi_v0_2
 ```
 
 报告会保存到 `pet-loop/reports/`。

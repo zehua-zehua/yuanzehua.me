@@ -11,6 +11,10 @@
     "professional trust",
     "visual quality"
   ],
+  "target_questions": [
+    "q1_visual_beauty",
+    "q2_visual_quality_professional"
+  ],
   "risk_to_watch": "Could lose warmth if the expression becomes too restrained.",
   "prompt": "Generate Loopi v0.3 candidate c01. Preserve Loopi's virtual AI companion identity, silver-white body, blue-purple hair and tail-like energy plume, cyan forehead ring, smart collar, and subtle zodiac-horse momentum. Change only eye proportion and material finish: make the avatar feel slightly more mature and premium, with less toy-like softness while keeping warmth. Avoid literal pony anatomy, hooves, generic puppy mascot, cold robot styling, heavy mecha, excessive neon, and childish cartoon proportions."
 }

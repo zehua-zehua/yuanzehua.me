@@ -8,6 +8,13 @@ Read:
 - Latest report in `pet-loop/reports/`
 - Current version JSON in `pet-loop/versions/`
 
+Use the `loopi_homepage_feedback_v1` survey as the diagnosis map:
+
+- q1/q2 low: improve visual beauty or professional material quality.
+- q3/q4 low: improve homepage fit or reduce attention stealing.
+- q5/q6 low: improve curiosity, AI exploration signal, friendliness, or approachability.
+- q7/q8 low: improve pony momentum or dog-like warmth without becoming a literal animal mascot.
+
 Generate exactly 3 candidate JSON files under `pet-loop/candidates/`.
 
 Each candidate must include:
@@ -23,6 +30,7 @@ Each candidate must include:
 Rules:
 
 - Change only 1-2 variables per candidate.
+- Every candidate must name the survey question or dimension it is trying to improve.
 - Preserve virtual AI companion identity, pony-origin momentum, silver-white body, blue-purple hair or tail-like energy, warm intelligent eyes, subtle AI markings, and professional homepage fit.
 - Do not return to literal four-legged pony anatomy or drift into a generic puppy mascot.
 - Do not publish candidates automatically.

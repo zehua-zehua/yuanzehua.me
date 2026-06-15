@@ -11,6 +11,10 @@
     "AI-native feeling",
     "product-minded feeling"
   ],
+  "target_questions": [
+    "q5_ai_curiosity_exploration",
+    "q2_visual_quality_professional"
+  ],
   "risk_to_watch": "Could drift toward generic AI robot if the tech cue becomes too literal.",
   "prompt": "Generate Loopi v0.3 candidate c03. Preserve Loopi's virtual companion avatar shape, silver-white body, blue-purple hair and tail-like energy plume, warm intelligent eyes, and ENFP-friendly tone. Change only glow intensity and forehead/collar details: make the cyan AI marks feel more intentional and product-native while staying minimal. Avoid UI panels, readable text, cyberpunk armor, heavy mecha, generic robot mascot, excessive neon, and magical sparkles."
 }

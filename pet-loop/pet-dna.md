@@ -69,47 +69,39 @@ Required traits:
 
 ## Evaluation Dimensions
 
-The homepage question asks one primary outcome:
+The homepage feedback survey is `loopi_homepage_feedback_v1`.
 
-> As an AI virtual avatar on this homepage, does Loopi make the visitor more willing to keep learning about Zehua?
+Rating scale:
 
-Weighted model:
+- 1 = very disagree.
+- 3 = neutral.
+- 5 = very agree.
 
-- Continue-learning intent: 25%
-- Personal-brand fit: 20%
-- Professional trust: 15%
-- AI companion clarity: 15%
-- Warmth and friendliness: 10%
-- Memorability: 10%
-- Non-distraction from homepage content: 5%
+The public `score` is the rounded average of eight questions.
 
-Positive visitor tags:
+Dimensions and questions:
 
-- Enhances first impression.
-- Has personal-brand fit.
-- Feels like an AI companion.
-- Feels professionally credible.
-- Feels warm and memorable.
-- Makes the visitor want to keep exploring.
-
-Risk visitor tags:
-
-- Too much like a pet.
-- Too childish.
-- Not AI-native enough.
-- Not professional enough.
-- Weak relationship to the homepage.
-- Steals too much attention.
+- Visual first impression:
+  - Loopi looks good overall.
+  - Loopi's visual quality fits a professional personal homepage.
+- Homepage fit:
+  - Loopi does not feel abrupt on `yuanzehua.me`.
+  - Loopi strengthens the first impression of the site owner instead of distracting from it.
+- Personal fit:
+  - Loopi makes the site owner feel curious and willing to explore AI.
+  - Loopi makes the site owner feel friendly and easy to talk to.
+- Pony + dog concept:
+  - Loopi communicates pony-like momentum, growth, and forward motion.
+  - Loopi communicates dog-like warmth, happiness, and companionship.
 
 Red lines:
 
-- Professional trust below 3.5.
-- Personal-brand fit below 3.5.
-- Continue-learning intent below 3.5.
-- Two consecutive rounds tagged as too childish.
-- Two consecutive rounds tagged as generic pet.
-- Two consecutive rounds tagged as too animal-like.
-- Two consecutive rounds tagged as stealing attention.
+- Visual first impression average below 3.5.
+- Homepage fit average below 3.5.
+- Personal fit average below 3.5.
+- Pony + dog concept average below 3.3.
+- Question 4, first impression without distraction, below 3.5.
+- Question 7 or 8 repeatedly below 3.3, indicating the hybrid character concept is not readable.
 - Pet DNA drift.
 
 ## Base Generation Prompt

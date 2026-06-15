@@ -1,6 +1,7 @@
 (function () {
   const DEFAULT_VERSION = "loopi_v0_2";
   const VISITOR_KEY = "loopi_feedback_visitor_id";
+  const SURVEY_TAG = "survey:loopi_homepage_feedback_v1";
 
   function getVisitorId() {
     try {
@@ -48,6 +49,8 @@
         : "正在等待第一条真实反馈。"
     );
 
+    renderDimensionScores(panel, data);
+
     const tagRoot = panel.querySelector("[data-pet-summary-tags]");
     if (!tagRoot) return;
 
@@ -65,6 +68,32 @@
       tag.className = "pet-summary-tag";
       tag.textContent = `${item.tag} · ${item.count}`;
       tagRoot.appendChild(tag);
+    });
+  }
+
+  function renderDimensionScores(panel, data) {
+    const root = panel.querySelector("[data-pet-summary-dimensions]");
+    if (!root) return;
+
+    root.innerHTML = "";
+    const dimensions = data.dimension_scores || [];
+    if (!dimensions.length || dimensions.every((item) => !item.count)) {
+      const empty = document.createElement("span");
+      empty.className = "pet-summary-tag is-empty";
+      empty.textContent = "暂无分项评分";
+      root.appendChild(empty);
+      return;
+    }
+
+    dimensions.forEach((item) => {
+      const score = document.createElement("span");
+      score.className = "pet-summary-tag";
+      score.textContent = `${item.label} · ${
+        item.average === null || item.average === undefined
+          ? "--"
+          : Number(item.average).toFixed(1)
+      }`;
+      root.appendChild(score);
     });
   }
 
@@ -87,20 +116,14 @@
     const versionName = form.dataset.versionName || DEFAULT_VERSION;
     const status = form.querySelector("[data-pet-feedback-status]");
     const submit = form.querySelector("[data-pet-feedback-submit]");
-    let selectedScore = null;
 
-    form.querySelectorAll("[data-pet-tag]").forEach((button) => {
+    form.querySelectorAll("[data-pet-question-score]").forEach((button) => {
       button.addEventListener("click", () => {
-        const pressed = button.getAttribute("aria-pressed") === "true";
-        button.setAttribute("aria-pressed", pressed ? "false" : "true");
-      });
-    });
-
-    form.querySelectorAll("[data-pet-score]").forEach((button) => {
-      button.addEventListener("click", () => {
-        selectedScore = Number(button.dataset.petScore);
-        form
-          .querySelectorAll("[data-pet-score]")
+        const question = button.closest("[data-pet-question]");
+        if (!question) return;
+        question.dataset.petSelectedScore = button.dataset.petQuestionScore;
+        question
+          .querySelectorAll("[data-pet-question-score]")
           .forEach((item) => item.setAttribute("aria-pressed", "false"));
         button.setAttribute("aria-pressed", "true");
       });
@@ -109,14 +132,28 @@
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
 
-      if (!selectedScore) {
-        status.textContent = "请先选择 1-5 分。";
+      const answers = Array.from(form.querySelectorAll("[data-pet-question]")).map(
+        (question) => ({
+          key: question.dataset.petQuestion,
+          dimension: question.dataset.petDimension,
+          label: question.dataset.petQuestionLabel,
+          score: Number(question.dataset.petSelectedScore || 0),
+        })
+      );
+
+      const missing = answers.filter((answer) => !answer.score);
+      if (missing.length) {
+        status.textContent = `请完成 8 个评分后再提交，还差 ${missing.length} 题。`;
         return;
       }
 
-      const tags = Array.from(form.querySelectorAll("[data-pet-tag]"))
-        .filter((button) => button.getAttribute("aria-pressed") === "true")
-        .map((button) => button.dataset.petTag);
+      const average =
+        answers.reduce((sum, answer) => sum + answer.score, 0) / answers.length;
+      const score = Math.round(average);
+      const tags = [
+        SURVEY_TAG,
+        ...answers.map((answer) => `${answer.key}:${answer.score}`),
+      ];
       const freeText = form.querySelector("[data-pet-feedback-text]")?.value || "";
 
       submit.disabled = true;
@@ -131,7 +168,7 @@
           },
           body: JSON.stringify({
             version_name: versionName,
-            score: selectedScore,
+            score,
             tags,
             free_text_feedback: freeText,
             page_path: window.location.pathname || "/",
@@ -146,10 +183,12 @@
 
         status.textContent = "已收到，谢谢你帮助 Loopi 进化。";
         form.querySelector("[data-pet-feedback-text]").value = "";
-        selectedScore = null;
         form
-          .querySelectorAll("[data-pet-score], [data-pet-tag]")
+          .querySelectorAll("[data-pet-question-score]")
           .forEach((item) => item.setAttribute("aria-pressed", "false"));
+        form
+          .querySelectorAll("[data-pet-question]")
+          .forEach((question) => delete question.dataset.petSelectedScore);
         await loadSummaries();
       } catch (_error) {
         status.textContent = "暂时保存失败。数据库配置完成后这里会自动可用。";
