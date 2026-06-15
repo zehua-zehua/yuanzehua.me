@@ -1,5 +1,30 @@
 const DEFAULT_VERSION = "loopi_v0_1";
 
+async function ensureFeedbackTable(db) {
+  await db
+    .prepare(
+      `CREATE TABLE IF NOT EXISTS pet_feedback (
+        id TEXT PRIMARY KEY,
+        version_name TEXT NOT NULL,
+        score INTEGER NOT NULL CHECK (score BETWEEN 1 AND 5),
+        tags TEXT NOT NULL DEFAULT '[]',
+        free_text_feedback TEXT,
+        page_path TEXT NOT NULL DEFAULT '/',
+        visitor_id_hash TEXT NOT NULL,
+        source TEXT NOT NULL DEFAULT 'real_user',
+        created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
+      )`
+    )
+    .run();
+
+  await db
+    .prepare(
+      `CREATE INDEX IF NOT EXISTS idx_pet_feedback_version_created
+        ON pet_feedback (version_name, created_at DESC)`
+    )
+    .run();
+}
+
 function jsonResponse(body, init = {}) {
   return new Response(JSON.stringify(body), {
     status: init.status || 200,
@@ -39,22 +64,34 @@ export async function onRequestGet(context) {
   const url = new URL(request.url);
   const versionName = cleanVersion(url.searchParams.get("version"));
 
-  const summary = await env.PET_DB.prepare(
-    `SELECT
-       COUNT(*) AS feedback_count,
-       AVG(score) AS average_score,
-       MAX(created_at) AS latest_feedback_at
-     FROM pet_feedback
-     WHERE version_name = ?`
-  )
-    .bind(versionName)
-    .first();
+  let summary;
+  let tagRows;
 
-  const tagRows = await env.PET_DB.prepare(
-    `SELECT tags FROM pet_feedback WHERE version_name = ? ORDER BY created_at DESC LIMIT 500`
-  )
-    .bind(versionName)
-    .all();
+  try {
+    await ensureFeedbackTable(env.PET_DB);
+
+    summary = await env.PET_DB.prepare(
+      `SELECT
+         COUNT(*) AS feedback_count,
+         AVG(score) AS average_score,
+         MAX(created_at) AS latest_feedback_at
+       FROM pet_feedback
+       WHERE version_name = ?`
+    )
+      .bind(versionName)
+      .first();
+
+    tagRows = await env.PET_DB.prepare(
+      `SELECT tags FROM pet_feedback WHERE version_name = ? ORDER BY created_at DESC LIMIT 500`
+    )
+      .bind(versionName)
+      .all();
+  } catch (_error) {
+    return jsonResponse(
+      { ok: false, error: "database_query_failed" },
+      { status: 500, headers: { "cache-control": "no-store" } }
+    );
+  }
 
   const tagCounts = {};
   for (const row of tagRows.results || []) {

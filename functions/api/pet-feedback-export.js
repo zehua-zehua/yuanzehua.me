@@ -1,6 +1,24 @@
 const DEFAULT_VERSION = "loopi_v0_1";
 const MAX_EXPORT_ROWS = 500;
 
+async function ensureFeedbackTable(db) {
+  await db
+    .prepare(
+      `CREATE TABLE IF NOT EXISTS pet_feedback (
+        id TEXT PRIMARY KEY,
+        version_name TEXT NOT NULL,
+        score INTEGER NOT NULL CHECK (score BETWEEN 1 AND 5),
+        tags TEXT NOT NULL DEFAULT '[]',
+        free_text_feedback TEXT,
+        page_path TEXT NOT NULL DEFAULT '/',
+        visitor_id_hash TEXT NOT NULL,
+        source TEXT NOT NULL DEFAULT 'real_user',
+        created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
+      )`
+    )
+    .run();
+}
+
 function jsonResponse(body, init = {}) {
   return new Response(JSON.stringify(body), {
     status: init.status || 200,
@@ -47,23 +65,31 @@ export async function onRequestGet(context) {
     Math.max(1, Number(url.searchParams.get("limit") || 100))
   );
 
-  const rows = await env.PET_DB.prepare(
-    `SELECT
-       id,
-       version_name,
-       score,
-       tags,
-       free_text_feedback,
-       page_path,
-       source,
-       created_at
-     FROM pet_feedback
-     WHERE version_name = ?
-     ORDER BY created_at DESC
-     LIMIT ?`
-  )
-    .bind(versionName, limit)
-    .all();
+  let rows;
+
+  try {
+    await ensureFeedbackTable(env.PET_DB);
+
+    rows = await env.PET_DB.prepare(
+      `SELECT
+         id,
+         version_name,
+         score,
+         tags,
+         free_text_feedback,
+         page_path,
+         source,
+         created_at
+       FROM pet_feedback
+       WHERE version_name = ?
+       ORDER BY created_at DESC
+       LIMIT ?`
+    )
+      .bind(versionName, limit)
+      .all();
+  } catch (_error) {
+    return jsonResponse({ ok: false, error: "database_export_failed" }, { status: 500 });
+  }
 
   return jsonResponse({
     ok: true,

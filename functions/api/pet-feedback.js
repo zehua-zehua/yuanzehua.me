@@ -15,6 +15,38 @@ const ALLOWED_TAGS = new Set([
   "持续进化",
 ]);
 
+async function ensureFeedbackTable(db) {
+  await db
+    .prepare(
+      `CREATE TABLE IF NOT EXISTS pet_feedback (
+        id TEXT PRIMARY KEY,
+        version_name TEXT NOT NULL,
+        score INTEGER NOT NULL CHECK (score BETWEEN 1 AND 5),
+        tags TEXT NOT NULL DEFAULT '[]',
+        free_text_feedback TEXT,
+        page_path TEXT NOT NULL DEFAULT '/',
+        visitor_id_hash TEXT NOT NULL,
+        source TEXT NOT NULL DEFAULT 'real_user',
+        created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
+      )`
+    )
+    .run();
+
+  await db
+    .prepare(
+      `CREATE INDEX IF NOT EXISTS idx_pet_feedback_version_created
+        ON pet_feedback (version_name, created_at DESC)`
+    )
+    .run();
+
+  await db
+    .prepare(
+      `CREATE INDEX IF NOT EXISTS idx_pet_feedback_visitor_version
+        ON pet_feedback (visitor_id_hash, version_name, created_at DESC)`
+    )
+    .run();
+}
+
 function jsonResponse(body, init = {}) {
   return new Response(JSON.stringify(body), {
     status: init.status || 200,
@@ -120,22 +152,28 @@ export async function onRequestPost(context) {
   const visitorHash = await hashVisitorId(visitorId, env);
   const id = crypto.randomUUID();
 
-  await env.PET_DB.prepare(
-    `INSERT INTO pet_feedback
-      (id, version_name, score, tags, free_text_feedback, page_path, visitor_id_hash, source)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
-  )
-    .bind(
-      id,
-      versionName,
-      score,
-      JSON.stringify(tags),
-      freeText || null,
-      pagePath,
-      visitorHash,
-      DEFAULT_SOURCE
+  try {
+    await ensureFeedbackTable(env.PET_DB);
+
+    await env.PET_DB.prepare(
+      `INSERT INTO pet_feedback
+        (id, version_name, score, tags, free_text_feedback, page_path, visitor_id_hash, source)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
     )
-    .run();
+      .bind(
+        id,
+        versionName,
+        score,
+        JSON.stringify(tags),
+        freeText || null,
+        pagePath,
+        visitorHash,
+        DEFAULT_SOURCE
+      )
+      .run();
+  } catch (_error) {
+    return jsonResponse({ ok: false, error: "database_write_failed" }, { status: 500 });
+  }
 
   return jsonResponse({ ok: true, id });
 }
