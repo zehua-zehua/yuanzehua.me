@@ -23,8 +23,8 @@ It is not just a pet image. It is a personal-brand AI companion system that uses
 
 Latest production check:
 
-- Homepage contains the v0.2 Loopi module and 8-question `Loopi 首页反馈问卷 v1.0`.
-- Pet Lab contains `Homepage Evaluation Model`, dimension scores, v0.2 status, and v0.3 candidate queue.
+- Homepage contains the v0.2 Loopi display module, compact feedback status, and Pet Lab entry.
+- Pet Lab contains the 8-question `Loopi 首页反馈问卷 v1.0`, `Homepage Evaluation Model`, dimension scores, v0.2 status, and v0.3 candidate queue.
 - Active WebP image returns HTTP 200.
 - Public summary API returns JSON with total, question, and dimension scores.
 - Export API returns 401 without admin token.
@@ -41,8 +41,8 @@ Keep the MVP deliberately simple.
 
 Important files:
 
-- `index.html` - homepage Loopi display and feedback form.
-- `pet-lab/index.html` - Pet Lab dashboard and system explanation.
+- `index.html` - homepage Loopi display and compact Pet Lab entry.
+- `pet-lab/index.html` - Pet Lab dashboard, feedback form, and system explanation.
 - `assets/pet-feedback.js` - frontend feedback submit and summary loading logic.
 - `functions/api/pet-feedback.js` - public feedback submit API.
 - `functions/api/pet-feedback-summary.js` - public aggregate summary API.
@@ -86,6 +86,12 @@ Privacy rules:
 ## Active Evaluation Model
 
 The homepage score is not a generic cuteness score. It uses `Loopi 首页反馈问卷 v1.0`.
+
+Placement rule:
+
+- Keep the full 8-question form inside Pet Lab.
+- The homepage should stay a lightweight display and entry point, with only compact summary metrics.
+- Do not place the long questionnaire in the homepage right column; it disrupts the homepage layout and leaves the main content visually unbalanced.
 
 Rating scale:
 
@@ -275,7 +281,7 @@ Before committing Loopi changes:
 5. Run `git diff --check`.
 6. Preview homepage and Pet Lab locally.
 7. Confirm no horizontal overflow on mobile.
-8. Confirm feedback form uses the active version name.
+8. Confirm the Pet Lab feedback form uses the active version name.
 
 After deploying:
 
