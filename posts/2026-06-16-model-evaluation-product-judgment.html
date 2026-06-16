@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="从图像编辑场景里的 bad case 归因出发，思考模型评测如何从 benchmark 跑分走向产品可用性的判断体系。">
+<title>模型评测不是跑分，而是定义什么叫可用 · Zane Hua</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+SC:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#1a1814; --paper:#f5f2ed; --mid:#8c8880; --light:#c8c4bc;
+  --faint:#e4e0d8; --accent:#2d4a3e; --rule:rgba(26,24,20,0.10);
+  --serif-en:'EB Garamond', Georgia, serif;
+  --serif-cn:'Noto Serif SC', STSong, serif;
+  --mono:'DM Mono', 'Courier New', monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif-cn);font-weight:300;line-height:1.9;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");background-size:200px;pointer-events:none;z-index:9999;opacity:.6}
+.page{max-width:780px;margin:0 auto;padding:56px clamp(28px,6vw,72px) 72px}
+.top{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--rule);padding-bottom:22px;margin-bottom:64px}
+.brand{font-family:var(--serif-en);font-size:15px;font-style:italic;color:var(--ink);text-decoration:none;letter-spacing:.08em}
+.back{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--mid);text-decoration:none}
+.back:hover{color:var(--ink)}
+.meta{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--light);margin-bottom:20px}
+article h1{font-family:var(--serif-cn);font-size:clamp(30px,4.4vw,42px);font-weight:400;line-height:1.32;letter-spacing:.02em;margin-bottom:42px}
+article h2{font-family:var(--serif-cn);font-style:normal;font-size:clamp(21px,2.5vw,26px);font-weight:400;line-height:1.45;margin:68px 0 24px;color:var(--ink)}
+article h3{font-size:18px;font-weight:400;margin:44px 0 16px}
+article p{font-size:16px;line-height:2;margin:0 0 20px;color:var(--ink);font-weight:400}
+article em{font-family:var(--serif-en);font-style:italic;color:var(--accent)}
+article a{color:var(--accent);text-decoration:underline;text-decoration-color:rgba(45,74,62,.35);text-decoration-thickness:1px;text-underline-offset:4px}
+article a:hover{text-decoration-color:var(--accent)}
+article strong{font-weight:500}
+article code{font-family:var(--mono);font-size:.9em;color:var(--accent)}
+.footer{border-top:1px solid var(--rule);margin-top:64px;padding-top:28px;display:flex;justify-content:space-between;gap:24px;color:var(--light);font-family:var(--mono);font-size:10px;letter-spacing:.1em}
+@media(max-width:640px){.page{padding-top:36px}.top{margin-bottom:44px}.footer{flex-direction:column}}
+</style>
+</head>
+<body>
+<main class="page">
+  <div class="top">
+    <a class="brand" href="/">Zane Hua</a>
+    <a class="back" href="/#thinking">Back to home</a>
+  </div>
+  <article>
+    <div class="meta">2026.06.16 · AI</div>
+<h1>模型评测不是跑分，<br>而是定义什么叫可用</h1>
+<p>今天做了一轮新的模型评测工作。</p>
+<p>任务本身很具体：针对图像编辑场景里的文字消除与背景补全 bad case 做技术归因。当前链路大致是先定位需要处理的文字区域，再对消除后的背景进行补全。真正要评估的，不只是“文字有没有被擦掉”，而是擦掉之后的画面是否自然，背景纹理是否连续，边缘是否突兀，是否引入了新的伪影，以及问题到底来自定位、掩膜、补全模型、后处理，还是样本本身超出了当前能力边界。</p>
+<p>这类工作看起来像是一个很细的工程问题，但做着做着，我发现它背后其实牵出一个更大的问题：模型能力到底应该怎么评测？</p>
+<p>进入实习阶段之后，我越来越强烈地感觉到，模型评测可能是学术界和企业界差异最大的板块之一。</p>
+<p>在学术语境里，一个模型训练出来之后，往往会被放到 benchmark 上跑分。分数当然重要。它提供了一个相对统一的比较场，也让不同模型之间有了可交流的基准。但 benchmark 的问题也很明显：它会把复杂能力压缩成一个或几个数字，而真实产品场景里的问题，往往并不能被一个数字完整表达。</p>
+<p>企业里不是这样。</p>
+<p>企业面对的是具体场景、具体用户和具体交付。一个模型在公开榜单上分数很高，不代表它在某个产品链路里就能稳定可用。用户并不关心模型在通用测试集上赢了多少分，用户只关心自己的任务有没有被完成，输出是否符合预期，失败时是否可理解，成本和等待时间是否可接受。</p>
+<p>所以模型评测从来不只是技术问题。它也是产品问题。</p>
+<h2>分数不能代替场景</h2>
+<p>模型能力很容易被讲成一个单点比较：A 模型比 B 模型强，某个指标提升了多少，某个榜单排名上升了几位。</p>
+<p>但真实产品不会这样使用模型。</p>
+<p>一个模型进入产品之后，它面对的是被具体场景切碎的任务。图像编辑里，用户关心的可能是局部修改是否自然；内容生成里，用户关心的是风格是否稳定、语义是否准确；办公场景里，用户关心的是信息是否可靠、格式是否可控；客服场景里，用户关心的是答案是否合规、情绪是否得体。</p>
+<p>同一个模型，在不同场景里表现出来的“强”并不是同一种强。</p>
+<p>这也是我觉得企业评测难的地方。它不能只回答“哪个模型更强”，而要回答一组更细的问题：在什么任务上更强？对哪类用户更强？在哪些输入分布下更强？失败时会以什么方式失败？这些失败是否会被用户容忍？如果不可容忍，产品上能不能通过交互、兜底、人工确认或后处理把风险收回来？</p>
+<p>这些问题都不是 benchmark 能直接替你回答的。</p>
+<p>benchmark 更像一个公共参照。它告诉你模型的大致水平，但不能替你定义产品里的可用性。产品场景中的评测，必须从用户任务和业务目标重新出发。</p>
+<h2>评测需要能够归因</h2>
+<p>我以前会把评测理解成判断好坏：这个结果好，那个结果差，这个模型胜出，那个模型淘汰。</p>
+<p>现在我越来越觉得，真正有价值的评测不应该只判断好坏，还要能解释为什么。</p>
+<p>以今天做的文字消除与背景补全为例，一个 bad case 出现时，直接给它打低分并没有太多意义。更重要的是拆开看：是不是文字区域没有定位准？是不是掩膜范围太小，留下了残影？是不是范围太大，把原本不该改的背景也带进去了？是不是背景补全模型无法理解局部纹理？是不是画面本身有复杂透视、阴影、重复图案或强语义结构？</p>
+<p>这些归因会导向完全不同的改进方向。</p>
+<p>如果问题来自定位，就要优化检测和框选策略。如果问题来自掩膜，就要调整膨胀、边缘过渡和区域约束。如果问题来自补全模型，就要看模型是否需要换路线、补数据、加约束或重新定义适用边界。如果问题来自输入样本本身，就要把这类样本标记成当前能力的高风险区域，而不是假装模型可以处理所有情况。</p>
+<p>评测的价值，正在于把“模型不行”这种粗糙判断拆成可以行动的问题。</p>
+<p>这也是 bad case 库很重要的原因。一个坏例子如果只是被截图放在文档里，它的价值很有限；但如果它被标注了场景、输入特征、失败类型、归因判断和修复建议，它就变成了模型迭代和产品决策的共同语言。</p>
+<h2>主观偏好也需要被结构化</h2>
+<p>多模态模型评测里，最难处理的一类问题是主观性。</p>
+<p>很多输出并不是绝对对或错。尤其是图像、视频、设计、内容创作这类场景，用户会用“自然”“舒服”“干净”“高级”“不违和”这样的词来描述质量。它们听起来很主观，但产品又必须对它们做判断。</p>
+<p>主观并不意味着不能评估。</p>
+<p>它意味着评测体系需要把主观偏好结构化。比如在图像编辑里，可以把总体质量拆成文字残留、背景连续性、边缘自然度、纹理一致性、语义合理性、伪影程度等维度；在内容生成里，可以拆成事实准确性、表达清晰度、风格一致性、可控性和用户可编辑性。</p>
+<p>这些维度不一定都能被自动指标捕捉。自动指标能提供效率和稳定性，但人类判断仍然非常重要。</p>
+<p>关键不在于排除人的主观判断，而在于让主观判断变得可复用、可讨论、可统计。盲测、成对比较、分层评分、评审规则、样本抽样和一致性校验，都是在把人的偏好从“我觉得”推进到“我们可以基于一套标准讨论”。</p>
+<p>这件事很像把审美变成一种产品语言。</p>
+<p>一个产品经理不可能要求所有人审美一致，但可以设计一套机制，让分歧被看见，让偏好被记录，让模型路线之间的差异不只停留在口头感受里。</p>
+<h2>可用性是被定义出来的</h2>
+<p>模型评测最容易被忽略的一点，是“可用”本身不是天然存在的。</p>
+<p>同一个输出，对不同用户可能有完全不同的意义。普通用户觉得已经足够好的结果，专业用户可能一眼就能看出问题；内部演示可以接受的瑕疵，外部客户可能完全不能接受；探索型工具可以容忍一定随机性，生产型工具则需要稳定、可控和可追溯。</p>
+<p>所以评测体系必须回答一个非常产品化的问题：对这个场景来说，什么叫可用？</p>
+<p>可用不是完美。可用是结果质量、失败概率、修复成本、用户预期和业务风险之间的平衡。它取决于用户是谁，任务是什么，输出会被用在哪里，以及错误会造成多大影响。</p>
+<p>这也是为什么企业里的模型评测往往需要定制。</p>
+<p>不同业务不应该直接照搬同一套指标。即使是同一个模型，不同产品线也可能需要完全不同的评测集和验收标准。因为产品真正需要的不是“模型整体能力画像”，而是“模型在我这个场景里能不能承担这个任务”。</p>
+<p>从这个角度看，模型评测不是模型训练结束之后的附属动作，而是产品定义的一部分。</p>
+<p>你如何设计评测集，如何定义指标，如何区分主观与客观，如何设置通过线，如何记录 bad case，其实都在回答同一个问题：这个产品到底承诺给用户什么？</p>
+<h2>它和 AB Test 很像</h2>
+<p>站在产品视角看，模型评测和 AB Test 在本质上有一些重合之处。</p>
+<p>AB Test 不是为了得到一个漂亮数字，而是为了支持产品决策。它需要假设、样本、指标、分组、置信度和解释框架。模型评测也是这样。它同样需要先明确要验证什么能力，选什么样本，怎么分层，观察哪些指标，怎样处理主观偏好，最后如何把结果转化成“是否上线”“上线到哪里”“还需要补什么”的决策。</p>
+<p>两者都在处理不确定性。</p>
+<p>AB Test 处理的是用户行为的不确定性，模型评测处理的是模型输出的不确定性。前者问的是：用户会不会因为这个改动产生更好的行为？后者问的是：模型会不会在这个任务里稳定地产生可接受的结果？</p>
+<p>更进一步看，模型评测可以被理解成 AI 产品里的前置实验系统。</p>
+<p>在真正放量之前，团队需要先通过离线评测、专家盲测、小规模灰度和线上反馈，逐步建立对模型能力的信心。这个过程和 AB Test 一样，不是一次性动作，而是一套持续迭代的实验机制。</p>
+<p>模型上线之后，评测也不应该结束。</p>
+<p>用户输入会变化，模型版本会变化，数据分布会变化，产品定位也会变化。一个在今天可用的能力，未来可能因为场景扩展而暴露新的问题。评测体系如果不能持续更新，就会很快变成过期的安全感。</p>
+<h2>从输出评测到系统评测</h2>
+<p>我觉得接下来模型评测还会发生一个重要变化：它会从单次输出评测，走向系统级评测。</p>
+<p>过去我们经常评估一个模型面对一个输入，能否给出一个好的输出。但 AI 产品越来越不只是单点输出。它会有多轮交互，会调用工具，会读上下文，会保存状态，会在失败后尝试恢复，也会被嵌入一个完整工作流。</p>
+<p>这意味着评测对象也要变化。</p>
+<p>我们不仅要看单次结果好不好，还要看整个系统能不能完成任务。它是否知道什么时候需要追问用户？是否能在不确定时表达不确定？是否能遵守约束？是否能避免把错误扩大？是否能在失败后给出可理解的下一步？</p>
+<p>对产品经理来说，这个趋势很重要。</p>
+<p>因为真正影响用户体验的，往往不是模型某一次回答的分数，而是整个产品系统对模型不确定性的管理方式。模型有边界并不可怕，可怕的是产品假装它没有边界。评测体系如果只看平均分，就很容易忽略边界条件；而用户的不信任，往往正是在这些边界条件里产生的。</p>
+<p>所以未来的模型评测，可能会越来越像一种产品实验科学。</p>
+<p>它既要理解模型能力，也要理解用户任务；既要有自动化指标，也要有人类判断；既要评估结果，也要评估过程；既要看平均表现，也要看失败模式。</p>
+<h2>结语</h2>
+<p>今天这轮 bad case 归因让我再次意识到，模型评测不是一个冷冰冰的打分动作。</p>
+<p>它更像是在技术能力和用户价值之间建立翻译关系。模型输出的是概率性的结果，用户需要的是稳定的体验；模型有复杂的能力边界，产品需要把这些边界变成清晰的承诺、合理的预期和可控的风险。</p>
+<p>所以一个好的评测体系，不应该只告诉我们哪个模型更强。</p>
+<p>它应该告诉我们：哪个模型在什么场景下更适合，适合给谁用，能承担什么任务，不能承担什么任务，失败会以什么方式发生，产品是否有能力兜住这些失败。</p>
+<p>这也是我越来越觉得模型评测有意思的地方。</p>
+<p>它表面上是在评估模型，实际上是在训练一种产品判断力。判断什么是质量，什么是可用，什么是风险，什么是足够好，什么又只是看起来分数很高。</p>
+<p>在 AI 产品里，真正重要的问题也许不是“模型能不能做到”。</p>
+<p>而是：我们能不能定义清楚，做到什么程度，才值得交给用户。</p>
+  </article>
+  <div class="footer">
+    <span>© 2026 Zane Hua</span>
+    <span>yuanzehua.me</span>
+  </div>
+</main>
+</body>
+</html>
