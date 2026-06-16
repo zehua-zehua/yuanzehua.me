@@ -11,6 +11,7 @@
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
+  overflow: hidden;
 }
 
 /* ── Sprite stage ─────────────────────────────── */
@@ -23,7 +24,7 @@
   background-repeat: no-repeat;
   image-rendering: auto;
   /* Idle animation starts immediately */
-  animation: loopi-sprite-idle 1.2s steps(6) infinite;
+  animation: loopi-sprite-idle 1.2s steps(6, jump-none) infinite;
 }
 
 /* ── Per-state animations (steps-based) ───────── */
@@ -46,16 +47,16 @@
 
 /* ── State classes ────────────────────────────── */
 .loopi-pet[data-state="idle"] .loopi-pet__sprite {
-  animation: loopi-sprite-idle 1.2s steps(6) infinite;
+  animation: loopi-sprite-idle 1.2s steps(6, jump-none) infinite;
 }
 .loopi-pet[data-state="wave"] .loopi-pet__sprite {
-  animation: loopi-sprite-wave 0.75s steps(6) 1 forwards;
+  animation: loopi-sprite-wave 0.75s steps(6, jump-none) 1 forwards;
 }
 .loopi-pet[data-state="thinking"] .loopi-pet__sprite {
-  animation: loopi-sprite-thinking 1.2s steps(6) 1 forwards;
+  animation: loopi-sprite-thinking 1.2s steps(6, jump-none) 1 forwards;
 }
 .loopi-pet[data-state="happy"] .loopi-pet__sprite {
-  animation: loopi-sprite-happy 0.6s steps(6) 1 forwards;
+  animation: loopi-sprite-happy 0.6s steps(6, jump-none) 1 forwards;
 }
 .loopi-pet[data-state="sleep"] .loopi-pet__sprite {
   animation: none;
