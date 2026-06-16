@@ -1,6 +1,9 @@
 /* ── Loopi Pet Animation Module ──────────────────
  * Standalone CSS for Loopi sprite-based companion.
  * Works with loopi-pet.js — do not remove either.
+ *
+ * Frame stepping is driven by JS (requestAnimationFrame)
+ * using pixel-based background-position for reliability.
  */
 
 /* ── Container ────────────────────────────────── */
@@ -20,51 +23,9 @@
   width: 100%;
   /* aspect ratio = cell_height / cell_width = 400/340 ≈ 1.176 */
   aspect-ratio: 340 / 400;
-  background-size: 600% 400%;       /* 6 cols × 4 rows */
   background-repeat: no-repeat;
   image-rendering: auto;
-  /* Idle animation starts immediately */
-  animation: loopi-sprite-idle 1.2s steps(6) infinite;
-}
-
-/* ── Per-state animations (steps-based) ───────── */
-/* 6 frames per state. steps(6) + to=83.33% gives exactly 6 positions:
-   0/6, 1/6, 2/6, 3/6, 4/6, 5/6 → frames 0-5 with no overshoot */
-@keyframes loopi-sprite-idle {
-  from { background-position: 0% 0%; }
-  to   { background-position: 83.33% 0%; }
-}
-@keyframes loopi-sprite-wave {
-  from { background-position: 0% 33.33%; }
-  to   { background-position: 83.33% 33.33%; }
-}
-@keyframes loopi-sprite-thinking {
-  from { background-position: 0% 66.67%; }
-  to   { background-position: 83.33% 66.67%; }
-}
-@keyframes loopi-sprite-happy {
-  from { background-position: 0% 100%; }
-  to   { background-position: 83.33% 100%; }
-}
-
-/* ── State classes ────────────────────────────── */
-.loopi-pet[data-state="idle"] .loopi-pet__sprite {
-  animation: loopi-sprite-idle 1.2s steps(6) infinite;
-}
-.loopi-pet[data-state="wave"] .loopi-pet__sprite {
-  animation: loopi-sprite-wave 0.75s steps(6) 1 forwards;
-}
-.loopi-pet[data-state="thinking"] .loopi-pet__sprite {
-  animation: loopi-sprite-thinking 1.2s steps(6) 1 forwards;
-}
-.loopi-pet[data-state="happy"] .loopi-pet__sprite {
-  animation: loopi-sprite-happy 0.6s steps(6) 1 forwards;
-}
-.loopi-pet[data-state="sleep"] .loopi-pet__sprite {
-  animation: none;
-  background-position: 0% 0%;       /* first idle frame */
-  opacity: 0.6;
-  filter: grayscale(0.3);
+  /* background-size and background-position set by JS */
 }
 
 /* ── Glow aura (behind sprite) ────────────────── */
@@ -175,11 +136,16 @@
   display: block;
 }
 
+/* ── Sleep state visual (JS handles frame) ────── */
+.loopi-pet[data-state="sleep"] .loopi-pet__sprite {
+  opacity: 0.6;
+  filter: grayscale(0.3);
+}
+
 /* ── Reduced motion ───────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .loopi-pet__sprite {
-    animation: none !important;
-    background-position: 0% 0%;
+    /* JS checks this media query and won't animate */
   }
   .loopi-pet::before {
     animation: none !important;

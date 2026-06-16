@@ -2,6 +2,8 @@
  * Loopi Pet — lightweight sprite animation + state machine
  * for yuanzehua.me personal homepage companion.
  *
+ * v0.3.1 — Frame stepping via requestAnimationFrame + pixel bg-position.
+ *
  * Mount point:  <div id="loopi-pet" data-version="loopi_v0_3"></div>
  * Dependencies: none (vanilla JS)
  */
@@ -24,6 +26,16 @@
   let mountEl  = null;
   let lastInteraction = Date.now();
 
+  // ── Frame stepper (requestAnimationFrame) ──────
+  let rafId = null;
+  let frameIndex = 0;
+  let frameAccum = 0;        // ms accumulated since last frame advance
+  let lastTickTime = 0;      // timestamp of last rAF tick
+  let currentRow = 0;
+  let currentFps = 5;
+  let currentFrameCount = 6;
+  let currentLoop = true;
+
   // ── Init ────────────────────────────────────────
   function init() {
     mountEl = document.getElementById('loopi-pet');
@@ -42,9 +54,20 @@
 
     // Load motion config
     loadMotionConfig().then(() => {
-      setState('idle');
+      // Apply initial idle state settings (bypass setState's same-state guard)
+      const idleCfg = motionConfig.states['idle'];
+      if (idleCfg) {
+        currentRow = idleCfg.row;
+        currentFps = idleCfg.fps;
+        currentFrameCount = idleCfg.frames;
+        currentLoop = idleCfg.loop;
+      }
+      mountEl.setAttribute('data-state', 'idle');
+      applyFrame();
+
       bindEvents();
       startIdleTimers();
+      startAnimation();
     }).catch(() => {
       // Fallback to static if config fails
       mountEl.classList.add('is-static');
@@ -97,11 +120,92 @@
       .then(cfg => {
         motionConfig = cfg;
         // Preload spritesheet
-        const img = new Image();
-        img.src = cfg.spritesheet;
-        // Set background image on sprite element
-        spriteEl.style.backgroundImage = `url("${cfg.spritesheet}")`;
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          img.onload = () => {
+            // Store actual image dimensions for pixel-accurate positioning
+            motionConfig._imgW = img.naturalWidth;
+            motionConfig._imgH = img.naturalHeight;
+            spriteEl.style.backgroundImage = 'url("' + cfg.spritesheet + '")';
+            // background-size is set per-frame in applyFrame() using px units
+            resolve();
+          };
+          img.onerror = reject;
+          img.src = cfg.spritesheet;
+        });
       });
+  }
+
+  // ── Frame stepper (rAF-driven) ─────────────────
+  function startAnimation() {
+    lastTickTime = performance.now();
+    frameAccum = 0;
+    frameIndex = 0;
+    rafId = requestAnimationFrame(tick);
+  }
+
+  function stopAnimation() {
+    if (rafId) {
+      cancelAnimationFrame(rafId);
+      rafId = null;
+    }
+  }
+
+  function tick(now) {
+    // Don't advance frames during sleep
+    if (currentState === 'sleep') {
+      rafId = requestAnimationFrame(tick);
+      return;
+    }
+
+    const dt = now - lastTickTime;
+    lastTickTime = now;
+    frameAccum += dt;
+
+    const frameDuration = 1000 / currentFps;
+
+    if (frameAccum >= frameDuration) {
+      frameAccum -= frameDuration;
+
+      // Advance frame
+      if (currentLoop) {
+        frameIndex = (frameIndex + 1) % currentFrameCount;
+      } else {
+        // One-shot: stop at last frame
+        if (frameIndex < currentFrameCount - 1) {
+          frameIndex++;
+        }
+        // else: stay on last frame, JS revert timer handles state change
+      }
+
+      applyFrame();
+    }
+
+    rafId = requestAnimationFrame(tick);
+  }
+
+  function applyFrame() {
+    if (!spriteEl || !motionConfig) return;
+
+    const cols = motionConfig.columns || 6;
+    const rows = Object.keys(motionConfig.states).length || 4;
+
+    // Pixel-based positioning:
+    // Get actual container dimensions
+    const cw = spriteEl.clientWidth;
+    const ch = spriteEl.clientHeight;
+    if (cw === 0 || ch === 0) return; // not yet rendered
+
+    // Set background-size to fill the full grid at pixel level
+    const bgW = cols * cw;
+    const bgH = rows * ch;
+    spriteEl.style.backgroundSize = bgW + 'px ' + bgH + 'px';
+
+    // Each cell is exactly cw × ch pixels
+    // background-position for cell (col, row) = (-col * cw, -row * ch)
+    const xPx = -(frameIndex * cw);
+    const yPx = -(currentRow * ch);
+    spriteEl.style.backgroundPosition = xPx + 'px ' + yPx + 'px';
   }
 
   // ── State transitions ──────────────────────────
@@ -124,9 +228,28 @@
       label.textContent = stateInfo ? stateInfo.description : newState;
     }
 
+    // Configure frame stepper for this state
+    const stateCfg = motionConfig.states[newState];
+    if (stateCfg) {
+      currentRow = stateCfg.row;
+      currentFps = stateCfg.fps;
+      currentFrameCount = stateCfg.frames;
+      currentLoop = stateCfg.loop;
+      frameIndex = 0;
+      frameAccum = 0;
+      applyFrame();
+    } else if (newState === 'sleep') {
+      // Sleep: show first idle frame, stop animation
+      const idleCfg = motionConfig.states['idle'];
+      if (idleCfg) {
+        currentRow = idleCfg.row;
+        frameIndex = 0;
+        applyFrame();
+      }
+    }
+
     // Handle one-shot states (wave, thinking, happy → revert to idle)
     clearTimeout(timers.revert);
-    const stateCfg = motionConfig.states[newState];
     if (stateCfg && !stateCfg.loop) {
       const duration = (stateCfg.frames / stateCfg.fps) * 1000;
       timers.revert = setTimeout(() => {
@@ -169,10 +292,21 @@
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) {
         clearAllTimers();
+        stopAnimation();
       } else {
         startIdleTimers();
+        startAnimation();
         setState('idle');
       }
+    });
+
+    // Recalculate pixel positions on resize
+    let resizeTimer = null;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        applyFrame();
+      }, 100);
     });
   }
 
