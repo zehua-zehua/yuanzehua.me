@@ -163,10 +163,14 @@ nav ul a:hover { color: var(--ink); }
   display: block;
   font-size: 13px; line-height: 1.7; font-weight: 400; color: var(--ink);
 }
-/* Loopi pet animation — see /assets/loopi-pet.css */
 .pet-loop-visual {
   width: min(340px, 100%);
   margin: 0 auto 22px;
+}
+.pet-loop-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 .pet-loop-link {
   display: inline-flex; align-items: center; gap: 8px;
@@ -725,9 +729,9 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
     </div>
 
     <div class="pet-loop-panel" data-pet-summary-panel data-version-name="loopi_v0_2">
-      <div class="pet-loop-visual">
-        <div id="loopi-pet" class="loopi-pet" data-version="loopi_v0_3" data-state="idle"></div>
-      </div>
+      <figure class="pet-loop-visual" aria-label="Loopi v0.2 virtual companion avatar">
+        <img src="/assets/images/pets/loopi/v0-2/loopi-v0-2.webp" alt="Loopi v0.2，银白色蓝紫发束的虚拟 AI companion 形象" loading="lazy">
+      </figure>
       <span class="pet-loop-panel-label">Active Experiment</span>
       <strong class="pet-loop-panel-title">v0.2 正在通过 Pet Lab 收集 8 题评估信号。</strong>
       <p class="pet-loop-panel-copy">首页只保留轻量展示；完整问卷、维度分数、候选队列和迭代逻辑统一放在 Lab。</p>
@@ -1486,10 +1490,6 @@ track.addEventListener('touchend',   e => {
   if (dx > 40)       moveFilm(1);
   else if (dx < -40) moveFilm(-1);
 });
-
-// ── Loopi pet animation (see /assets/loopi-pet.js) ──
 </script>
-<link rel="stylesheet" href="/assets/loopi-pet.css?v=0.3.1">
-<script src="/assets/loopi-pet.js?v=0.3.1" defer></script>
 </body>
 </html>
