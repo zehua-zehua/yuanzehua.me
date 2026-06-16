@@ -1,0 +1,188 @@
+/* ── Loopi Pet Animation Module ──────────────────
+ * Standalone CSS for Loopi sprite-based companion.
+ * Works with loopi-pet.js — do not remove either.
+ */
+
+/* ── Container ────────────────────────────────── */
+.loopi-pet {
+  position: relative;
+  width: min(340px, 100%);
+  margin: 0 auto;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+/* ── Sprite stage ─────────────────────────────── */
+.loopi-pet__sprite {
+  display: block;
+  width: 100%;
+  /* aspect ratio = cell_height / cell_width = 400/340 ≈ 1.176 */
+  aspect-ratio: 340 / 400;
+  background-size: 600% 400%;       /* 6 cols × 4 rows */
+  background-repeat: no-repeat;
+  image-rendering: auto;
+  /* Idle animation starts immediately */
+  animation: loopi-sprite-idle 1.2s steps(6) infinite;
+}
+
+/* ── Per-state animations (steps-based) ───────── */
+@keyframes loopi-sprite-idle {
+  from { background-position: 0% 0%; }
+  to   { background-position: 100% 0%; }
+}
+@keyframes loopi-sprite-wave {
+  from { background-position: 0% 33.33%; }
+  to   { background-position: 100% 33.33%; }
+}
+@keyframes loopi-sprite-thinking {
+  from { background-position: 0% 66.67%; }
+  to   { background-position: 100% 66.67%; }
+}
+@keyframes loopi-sprite-happy {
+  from { background-position: 0% 100%; }
+  to   { background-position: 100% 100%; }
+}
+
+/* ── State classes ────────────────────────────── */
+.loopi-pet[data-state="idle"] .loopi-pet__sprite {
+  animation: loopi-sprite-idle 1.2s steps(6) infinite;
+}
+.loopi-pet[data-state="wave"] .loopi-pet__sprite {
+  animation: loopi-sprite-wave 0.75s steps(6) 1 forwards;
+}
+.loopi-pet[data-state="thinking"] .loopi-pet__sprite {
+  animation: loopi-sprite-thinking 1.2s steps(6) 1 forwards;
+}
+.loopi-pet[data-state="happy"] .loopi-pet__sprite {
+  animation: loopi-sprite-happy 0.6s steps(6) 1 forwards;
+}
+.loopi-pet[data-state="sleep"] .loopi-pet__sprite {
+  animation: none;
+  background-position: 0% 0%;       /* first idle frame */
+  opacity: 0.6;
+  filter: grayscale(0.3);
+}
+
+/* ── Glow aura (behind sprite) ────────────────── */
+.loopi-pet::before {
+  content: '';
+  position: absolute;
+  top: 45%; left: 50%;
+  width: 50%; height: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse, rgba(94,234,212,0.10) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: loopi-aura 3s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+.loopi-pet[data-state="happy"]::before {
+  background: radial-gradient(ellipse, rgba(94,234,212,0.22) 0%, transparent 70%);
+  animation: loopi-aura-fast 0.6s ease-in-out 1;
+}
+.loopi-pet[data-state="thinking"]::before {
+  background: radial-gradient(ellipse, rgba(155,124,255,0.14) 0%, transparent 70%);
+}
+.loopi-pet[data-state="sleep"]::before {
+  animation: none;
+  opacity: 0.3;
+}
+
+@keyframes loopi-aura {
+  0%, 100% { opacity: 0.5; transform: translate(-50%,-50%) scale(1); }
+  50%      { opacity: 1;   transform: translate(-50%,-50%) scale(1.12); }
+}
+@keyframes loopi-aura-fast {
+  0%   { opacity: 0.6; transform: translate(-50%,-50%) scale(1); }
+  50%  { opacity: 1;   transform: translate(-50%,-50%) scale(1.35); }
+  100% { opacity: 0.6; transform: translate(-50%,-50%) scale(1); }
+}
+
+/* ── Floating particles ───────────────────────── */
+.loopi-pet__particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.loopi-pet__particle {
+  position: absolute;
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  opacity: 0;
+  animation: loopi-particle 4s ease-in-out infinite;
+}
+.loopi-pet__particle:nth-child(1) {
+  left: 20%; bottom: 25%;
+  background: #5EEAD4;
+  animation-delay: 0s;
+}
+.loopi-pet__particle:nth-child(2) {
+  left: 72%; bottom: 30%;
+  background: #8EA7FF;
+  width: 3px; height: 3px;
+  animation-delay: 1.4s;
+}
+.loopi-pet__particle:nth-child(3) {
+  left: 42%; bottom: 18%;
+  background: #9B7CFF;
+  width: 3px; height: 3px;
+  animation-delay: 2.8s;
+}
+
+@keyframes loopi-particle {
+  0%, 100% { opacity: 0;   transform: translateY(0) scale(0.5); }
+  20%      { opacity: 0.5; transform: translateY(-18px) scale(1); }
+  50%      { opacity: 0.3; transform: translateY(-45px) scale(0.7); }
+  80%      { opacity: 0;   transform: translateY(-70px) scale(0.2); }
+}
+
+/* hide particles during sleep */
+.loopi-pet[data-state="sleep"] .loopi-pet__particles {
+  display: none;
+}
+
+/* ── State label (optional debug / Pet Lab) ───── */
+.loopi-pet__label {
+  display: block;
+  text-align: center;
+  font-family: var(--mono, ui-monospace, monospace);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--light, #aaa);
+  margin-top: 8px;
+  min-height: 14px;
+  transition: opacity 0.3s;
+}
+
+/* ── Static poster fallback ───────────────────── */
+.loopi-pet__poster {
+  display: none;
+  width: 100%;
+  height: auto;
+}
+.loopi-pet.is-static .loopi-pet__sprite,
+.loopi-pet.is-static .loopi-pet__particles,
+.loopi-pet.is-static::before {
+  display: none;
+}
+.loopi-pet.is-static .loopi-pet__poster {
+  display: block;
+}
+
+/* ── Reduced motion ───────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .loopi-pet__sprite {
+    animation: none !important;
+    background-position: 0% 0%;
+  }
+  .loopi-pet::before {
+    animation: none !important;
+  }
+  .loopi-pet__particle {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+}

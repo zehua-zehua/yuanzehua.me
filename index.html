@@ -163,108 +163,10 @@ nav ul a:hover { color: var(--ink); }
   display: block;
   font-size: 13px; line-height: 1.7; font-weight: 400; color: var(--ink);
 }
+/* Loopi pet animation — see /assets/loopi-pet.css */
 .pet-loop-visual {
-  position: relative;
   width: min(340px, 100%);
   margin: 0 auto 22px;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-}
-.pet-loop-visual img {
-  display: block;
-  width: 100%;
-  height: auto;
-  animation: loopi-breathe 3s ease-in-out infinite;
-  transform-origin: bottom center;
-  transition: filter 0.4s ease;
-}
-/* Glow aura behind Loopi */
-.pet-loop-visual::before {
-  content: '';
-  position: absolute;
-  top: 50%; left: 50%;
-  width: 55%; height: 55%;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(ellipse, rgba(94,234,212,0.12) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: loopi-glow-pulse 3s ease-in-out infinite;
-  pointer-events: none;
-  z-index: -1;
-}
-/* Floating data particles */
-.pet-loop-visual .loopi-particles {
-  position: absolute; inset: 0;
-  pointer-events: none; overflow: hidden;
-}
-.pet-loop-visual .loopi-particle {
-  position: absolute;
-  width: 4px; height: 4px;
-  border-radius: 50%;
-  background: var(--cyan, #5EEAD4);
-  opacity: 0;
-  animation: loopi-particle-float 4s ease-in-out infinite;
-}
-.pet-loop-visual .loopi-particle:nth-child(1) { left: 22%; top: 68%; animation-delay: 0s; }
-.pet-loop-visual .loopi-particle:nth-child(2) { left: 72%; top: 62%; animation-delay: 1.3s; background: #8EA7FF; width: 3px; height: 3px; }
-.pet-loop-visual .loopi-particle:nth-child(3) { left: 42%; top: 78%; animation-delay: 2.6s; background: #9B7CFF; width: 3px; height: 3px; }
-/* Hover: wave + glow */
-.pet-loop-visual:hover img {
-  animation: loopi-wave 0.6s ease-in-out;
-  filter: drop-shadow(0 0 10px rgba(94,234,212,0.3)) drop-shadow(0 0 20px rgba(142,167,255,0.15));
-}
-.pet-loop-visual:hover::before {
-  animation: loopi-glow-hover 0.6s ease-in-out;
-}
-/* Click: thinking */
-.pet-loop-visual.is-thinking img {
-  animation: loopi-think 1.2s ease-in-out;
-  filter: drop-shadow(0 0 14px rgba(155,124,255,0.35)) drop-shadow(0 0 28px rgba(142,167,255,0.2));
-}
-.pet-loop-visual.is-thinking::before {
-  animation: loopi-glow-think 1.2s ease-in-out;
-  background: radial-gradient(ellipse, rgba(155,124,255,0.15) 0%, transparent 70%);
-}
-/* ── Loopi keyframes ── */
-@keyframes loopi-breathe {
-  0%, 100% { transform: translateY(0) scaleY(1); }
-  50%      { transform: translateY(-6px) scaleY(1.012); }
-}
-@keyframes loopi-wave {
-  0%   { transform: translateY(0) rotate(0deg) scaleY(1); }
-  20%  { transform: translateY(-8px) rotate(3deg) scaleY(1.02); }
-  40%  { transform: translateY(-4px) rotate(-2deg) scaleY(1.01); }
-  60%  { transform: translateY(-8px) rotate(2deg) scaleY(1.02); }
-  80%  { transform: translateY(-4px) rotate(-1deg) scaleY(1.01); }
-  100% { transform: translateY(0) rotate(0deg) scaleY(1); }
-}
-@keyframes loopi-think {
-  0%   { transform: translateY(0) rotate(0deg) scale(1); }
-  15%  { transform: translateY(-3px) rotate(-4deg) scale(1.02); }
-  40%  { transform: translateY(-5px) rotate(-5deg) scale(1.03); }
-  70%  { transform: translateY(-5px) rotate(-5deg) scale(1.03); }
-  85%  { transform: translateY(-3px) rotate(-2deg) scale(1.01); }
-  100% { transform: translateY(0) rotate(0deg) scale(1); }
-}
-@keyframes loopi-glow-pulse {
-  0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
-  50%      { opacity: 1;   transform: translate(-50%, -50%) scale(1.1); }
-}
-@keyframes loopi-glow-hover {
-  0%   { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
-  50%  { opacity: 1;   transform: translate(-50%, -50%) scale(1.3); }
-  100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.1); }
-}
-@keyframes loopi-glow-think {
-  0%   { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
-  30%  { opacity: 1;   transform: translate(-50%, -50%) scale(1.4); }
-  60%  { opacity: 0.9; transform: translate(-50%, -50%) scale(1.3); }
-  100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
-}
-@keyframes loopi-particle-float {
-  0%, 100% { opacity: 0;   transform: translateY(0) scale(0.5); }
-  20%      { opacity: 0.6; transform: translateY(-20px) scale(1); }
-  50%      { opacity: 0.4; transform: translateY(-50px) scale(0.8); }
-  80%      { opacity: 0.1; transform: translateY(-80px) scale(0.3); }
 }
 .pet-loop-link {
   display: inline-flex; align-items: center; gap: 8px;
@@ -823,14 +725,9 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
     </div>
 
     <div class="pet-loop-panel" data-pet-summary-panel data-version-name="loopi_v0_2">
-      <figure class="pet-loop-visual" id="loopiStage" aria-label="Loopi v0.2 virtual companion avatar">
-        <div class="loopi-particles">
-          <span class="loopi-particle"></span>
-          <span class="loopi-particle"></span>
-          <span class="loopi-particle"></span>
-        </div>
-        <img src="/assets/sprites/loopi-v02/loopi-transparent-2x.webp" alt="Loopi v0.2，银白色蓝紫发束的虚拟 AI companion 形象" loading="lazy" draggable="false">
-      </figure>
+      <div class="pet-loop-visual">
+        <div id="loopi-pet" class="loopi-pet" data-version="loopi_v0_3" data-state="idle"></div>
+      </div>
       <span class="pet-loop-panel-label">Active Experiment</span>
       <strong class="pet-loop-panel-title">v0.2 正在通过 Pet Lab 收集 8 题评估信号。</strong>
       <p class="pet-loop-panel-copy">首页只保留轻量展示；完整问卷、维度分数、候选队列和迭代逻辑统一放在 Lab。</p>
@@ -1590,20 +1487,9 @@ track.addEventListener('touchend',   e => {
   else if (dx < -40) moveFilm(-1);
 });
 
-// ── Loopi click-to-think interaction ──────────
-(function() {
-  const stage = document.getElementById('loopiStage');
-  if (!stage) return;
-  let thinkTimeout = null;
-  stage.addEventListener('click', () => {
-    if (stage.classList.contains('is-thinking')) return;
-    stage.classList.add('is-thinking');
-    clearTimeout(thinkTimeout);
-    thinkTimeout = setTimeout(() => {
-      stage.classList.remove('is-thinking');
-    }, 1200);
-  });
-})();
+// ── Loopi pet animation (see /assets/loopi-pet.js) ──
 </script>
+<link rel="stylesheet" href="/assets/loopi-pet.css">
+<script src="/assets/loopi-pet.js" defer></script>
 </body>
 </html>
