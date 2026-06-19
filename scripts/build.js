@@ -23,6 +23,9 @@ const INDEX_PATH = path.join(ROOT, 'index.html');
 const POSTS_DIR  = path.join(ROOT, 'content', 'posts');
 const POSTS_OUT  = path.join(ROOT, 'posts');
 const FILMS_PATH = path.join(ROOT, 'content', 'films.yml');
+const SITEMAP_PATH = path.join(ROOT, 'sitemap.xml');
+const SITE_URL = 'https://yuanzehua.me';
+const SHARE_IMAGE = `${SITE_URL}/assets/images/pets/loopi/v0-2/loopi-v0-2-source.png`;
 
 // ── 1. Read posts ──────────────────────────────────────────────────────────
 
@@ -102,7 +105,18 @@ function renderPostPage(post) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="${escapeHTML(description)}">
 <title>${escapeHTML(post.title)} · Zane Hua</title>
+<link rel="canonical" href="${SITE_URL}${post.url}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="${escapeHTML(post.title)} · Zane Hua">
+<meta property="og:description" content="${escapeHTML(description)}">
+<meta property="og:url" content="${SITE_URL}${post.url}">
+<meta property="og:image" content="${SHARE_IMAGE}">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="${escapeHTML(post.title)} · Zane Hua">
+<meta name="twitter:description" content="${escapeHTML(description)}">
+<meta name="twitter:image" content="${SHARE_IMAGE}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+SC:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -170,8 +184,20 @@ function renderPostsIndex(posts) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Zane Hua 的文章与阶段性思考。">
 <title>Writing · Zane Hua</title>
+<link rel="canonical" href="${SITE_URL}/posts/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Writing · Zane Hua">
+<meta property="og:description" content="Zane Hua 的文章与阶段性思考。">
+<meta property="og:url" content="${SITE_URL}/posts/">
+<meta property="og:image" content="${SHARE_IMAGE}">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Writing · Zane Hua">
+<meta name="twitter:description" content="Zane Hua 的文章与阶段性思考。">
+<meta name="twitter:image" content="${SHARE_IMAGE}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+SC:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
 :root{--ink:#1a1814;--paper:#f5f2ed;--mid:#8c8880;--light:#c8c4bc;--accent:#2d4a3e;--rule:rgba(26,24,20,.10);--serif-en:'EB Garamond',Georgia,serif;--serif-cn:'Noto Serif SC',STSong,serif;--mono:'DM Mono','Courier New',monospace}
@@ -252,6 +278,23 @@ posts.forEach(post => {
 });
 fs.writeFileSync(path.join(POSTS_OUT, 'index.html'), renderPostsIndex(posts), 'utf8');
 
+const sitemapURLs = [
+  { loc: `${SITE_URL}/`, lastmod: posts[0]?.date },
+  { loc: `${SITE_URL}/posts/`, lastmod: posts[0]?.date },
+  { loc: `${SITE_URL}/pet-lab/` },
+  { loc: `${SITE_URL}/pet-loop/reports/2026-06-15-loopi-v0-2.html`, lastmod: '2026-06-15' },
+  ...posts.map(post => ({ loc: `${SITE_URL}${post.url}`, lastmod: post.date })),
+];
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${sitemapURLs.map(item => `  <url>
+    <loc>${item.loc}</loc>${item.lastmod ? `
+    <lastmod>${item.lastmod}</lastmod>` : ''}
+  </url>`).join('\n')}
+</urlset>
+`;
+fs.writeFileSync(SITEMAP_PATH, sitemap, 'utf8');
+
 // ── 2. Read films ──────────────────────────────────────────────────────────
 
 function parseYamlFilms(raw) {
@@ -283,7 +326,7 @@ if (fs.existsSync(FILMS_PATH)) {
   const films = parseYamlFilms(raw);
   filmsHTML = films.map(f => {
     const posterInner = f.image
-      ? `<img src="${f.image}" alt="${f.title}" style="width:100%;height:100%;object-fit:cover;display:block;">`
+      ? `<img src="${f.image}" alt="${f.title}" width="160" height="228" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">`
       : `<div class="film-poster-bg">${f.symbol}</div>`;
     const scoreHTML = f.score ? `\n            <span class="film-score">★ ${f.score}</span>` : '';
     return `
@@ -321,5 +364,6 @@ fs.writeFileSync(INDEX_PATH, html, 'utf8');
 
 console.log(`✓ ${posts.length} post(s) injected`);
 console.log(`✓ ${posts.length} post page(s) generated`);
+console.log('✓ sitemap.xml generated');
 if (filmsHTML) console.log(`✓ films injected`);
 console.log('✓ index.html updated');

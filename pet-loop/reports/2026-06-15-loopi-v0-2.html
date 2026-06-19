@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loopi v0.2 Evolution Report · Zane Hua</title>
+<meta name="description" content="Loopi v0.2 的角色诊断、设计决策与首页反馈模型。">
+<link rel="canonical" href="https://yuanzehua.me/pet-loop/reports/2026-06-15-loopi-v0-2.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Loopi v0.2 Evolution Report · Zane Hua">
+<meta property="og:description" content="Loopi v0.2 的角色诊断、设计决策与首页反馈模型。">
+<meta property="og:url" content="https://yuanzehua.me/pet-loop/reports/2026-06-15-loopi-v0-2.html">
+<meta property="og:image" content="https://yuanzehua.me/assets/images/pets/loopi/v0-2/loopi-v0-2-source.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<style>
+:root {
+  --ink:#1a1814; --paper:#f5f2ed; --mid:#77736c; --light:#aaa69e;
+  --rule:rgba(26,24,20,.12); --accent:#2d4a3e; --accent-soft:rgba(45,74,62,.07);
+  --serif:Georgia,'Songti SC',STSong,serif; --mono:'SFMono-Regular',Consolas,monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:17px;line-height:1.9;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+a:focus-visible{outline:1px solid var(--accent);outline-offset:4px}
+.page{width:min(820px,calc(100% - 48px));margin:0 auto;padding:40px 0 96px}
+.top{display:flex;justify-content:space-between;align-items:center;padding-bottom:20px;border-bottom:1px solid var(--rule)}
+.brand{font-style:italic;text-decoration:none}.back{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);text-decoration:none}
+header{padding:92px 0 64px;border-bottom:1px solid var(--rule)}
+.eyebrow,.meta dt{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--light)}
+h1{font-size:clamp(46px,8vw,76px);font-weight:400;font-style:italic;line-height:1.05;margin:18px 0 24px}
+.lead{max-width:650px;margin:0;color:var(--mid);font-size:19px;line-height:1.8}
+.meta{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:40px 0 0;background:var(--rule);border:1px solid var(--rule)}
+.meta div{background:var(--paper);padding:18px}.meta dt{margin-bottom:6px}.meta dd{margin:0;font-size:15px;color:var(--accent)}
+main{padding-top:24px}
+section{display:grid;grid-template-columns:150px 1fr;gap:40px;padding:44px 0;border-bottom:1px solid var(--rule)}
+h2{margin:0;font-family:var(--mono);font-size:10px;font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:var(--light)}
+.content p{margin:0 0 18px}.content p:last-child{margin-bottom:0}
+ul{margin:0;padding-left:20px;color:var(--mid)}li{padding-left:6px;margin-bottom:8px}
+.decision{background:var(--accent-soft);border-left:2px solid var(--accent);padding:22px 24px;color:var(--accent)}
+.source{margin-top:40px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--light)}
+@media(max-width:640px){.page{width:min(100% - 32px,820px)}header{padding:64px 0 48px}.meta{grid-template-columns:1fr}section{grid-template-columns:1fr;gap:14px;padding:36px 0}.lead{font-size:17px}.top{padding-top:4px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="page">
+  <nav class="top" aria-label="Report navigation">
+    <a class="brand" href="/">Zane Hua</a>
+    <a class="back" href="/pet-lab/">Back to Pet Lab</a>
+  </nav>
+
+  <header>
+    <span class="eyebrow">Product Experiment · 2026.06.15</span>
+    <h1>Loopi v0.2<br>Evolution Report</h1>
+    <p class="lead">一次从“可爱的动物形象”转向“属于个人主页的 AI companion”的角色迭代，也是一份关于反馈如何进入设计决策的实验记录。</p>
+    <dl class="meta">
+      <div><dt>Version</dt><dd>loopi_v0_2</dd></div>
+      <div><dt>Status</dt><dd>Active</dd></div>
+      <div><dt>Decision</dt><dd>Promoted</dd></div>
+    </dl>
+  </header>
+
+  <main>
+    <section>
+      <h2>Trigger</h2>
+      <div class="content"><p>v0.1 验证了最小反馈系统和生肖马的角色来源，但四足小马的完整动物形态过于明确。访客更容易先把它理解成宠物插画，而不是承载个人品牌的虚拟伙伴。</p></div>
+    </section>
+    <section>
+      <h2>Diagnosis</h2>
+      <div class="content"><p>问题不在于“可爱”，而在于角色重心偏离：动物物种压过了 AI companion 的身份，也削弱了它与 AI 产品主页之间的关联。</p></div>
+    </section>
+    <section>
+      <h2>Design Move</h2>
+      <div class="content">
+        <p>v0.2 转向半直立的虚拟 companion。马的来源被收进蓝紫发束、尾部能量与行动感，小狗式气质只保留柔和耳朵、开放表情和 ENFP 式亲和力。</p>
+        <p>青色 AI 标记、智能项圈与银白主体承担科技身份，让角色保持温暖，但不牺牲职业可信度。</p>
+      </div>
+    </section>
+    <section>
+      <h2>Expected Shift</h2>
+      <div class="content">
+        <ul>
+          <li>更明确的虚拟伙伴感，而不是动物插画感。</li>
+          <li>更自然的亲和力与第一印象。</li>
+          <li>更贴合 AI 产品经理个人主页的专业语境。</li>
+          <li>保留生肖马作为可持续演化的记忆点。</li>
+        </ul>
+      </div>
+    </section>
+    <section>
+      <h2>Feedback Model</h2>
+      <div class="content">
+        <p>Pet Lab 使用 8 道 1–5 分量表，从视觉第一印象、首页适配度、个人气质匹配度，以及“小马行动力 + 小狗亲和力”的概念成立度四组维度评估 Loopi。</p>
+        <p>公开平均分取 8 题综合得分的真实均值，并保留到两位小数；维度数据则用于判断下一轮应调整角色成熟度、温暖强度还是 AI 产品线索。</p>
+      </div>
+    </section>
+    <section>
+      <h2>Risks</h2>
+      <div class="content">
+        <ul>
+          <li>眼睛或笑容过强时，仍可能显得过分可爱。</li>
+          <li>继续增加犬类线索，会稀释生肖马的来源。</li>
+          <li>“图片好看”不等于“适合首页”，两者需要分别判断。</li>
+        </ul>
+      </div>
+    </section>
+    <section>
+      <h2>Decision</h2>
+      <div class="content"><p class="decision">将 Loopi v0.2 设为主页当前版本，持续收集真实访客反馈；v0.1 作为历史版本归档，下一轮只围绕角色成熟度、ENFP 温暖强度和 AI 产品线索做受控迭代。</p></div>
+    </section>
+  </main>
+
+  <p class="source">Source record: pet-loop/reports/2026-06-15-loopi-v0-2.md</p>
+</div>
+</body>
+</html>
