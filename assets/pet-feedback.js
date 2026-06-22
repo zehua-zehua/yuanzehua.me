@@ -37,7 +37,7 @@
     const average =
       data.average_score === null || data.average_score === undefined
         ? "--"
-        : Number(data.average_score).toFixed(1);
+        : Number(data.average_score).toFixed(2);
 
     setText(panel, "[data-pet-summary-count]", String(count));
     setText(panel, "[data-pet-summary-score]", average);

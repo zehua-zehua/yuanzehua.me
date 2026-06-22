@@ -4,10 +4,45 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Zane Hua · 袁泽华</title>
+<meta name="description" content="袁泽华（Zane Hua）的个人主页：浙江大学人工智能硕士，关注 AI 产品、模型评测、Vibe Coding 与技术表达。">
+<link rel="canonical" href="https://yuanzehua.me/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Zane Hua · 袁泽华">
+<meta property="og:description" content="AI 产品、模型评测、Vibe Coding 与持续生长的个人实践。">
+<meta property="og:url" content="https://yuanzehua.me/">
+<meta property="og:image" content="https://yuanzehua.me/assets/images/pets/loopi/v0-2/loopi-v0-2-source.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Zane Hua · 袁泽华">
+<meta name="twitter:description" content="AI 产品、模型评测、Vibe Coding 与持续生长的个人实践。">
+<meta name="twitter:image" content="https://yuanzehua.me/assets/images/pets/loopi/v0-2/loopi-v0-2-source.png">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <meta name="theme-color" content="#f5f2ed">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+SC:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "袁泽华",
+  "alternateName": "Zane Hua",
+  "url": "https://yuanzehua.me/",
+  "email": "mailto:zehua@zju.edu.cn",
+  "jobTitle": "AI Product Manager",
+  "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "浙江大学"
+  },
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "华中科技大学"
+  },
+  "sameAs": [
+    "https://github.com/zehua-zehua",
+    "https://www.xiaohongshu.com/user/profile/607105946"
+  ]
+}
+</script>
 
 <style>
 /* ── Reset & tokens ─────────────────────────── */
@@ -63,6 +98,7 @@ nav {
 nav .logo {
   font-family: var(--serif-en); font-size: 15px;
   letter-spacing: 0.08em; color: var(--ink); text-decoration: none; font-style: italic;
+  white-space: nowrap;
 }
 nav ul { list-style: none; display: flex; gap: 28px; }
 nav ul a {
@@ -80,14 +116,14 @@ nav ul a:hover { color: var(--ink); }
 .hero-label {
   font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
   text-transform: uppercase; color: var(--mid); display: block; margin-bottom: 20px;
-  opacity: 0; animation: fadeUp 0.8s ease 0.1s forwards;
+  opacity: 1;
 }
 .hero-name-en {
   font-family: var(--serif-en); font-size: clamp(44px, 7vw, 80px);
   font-weight: 400; line-height: 1.05; letter-spacing: -0.01em; color: var(--ink); display: block;
-  opacity: 0; animation: fadeUp 0.9s ease 0.25s forwards;
+  opacity: 1;
 }
-.hero-right { padding-bottom: 6px; opacity: 0; animation: fadeUp 0.9s ease 0.55s forwards; }
+.hero-right { padding-bottom: 6px; opacity: 1; }
 .hero-tagline {
   font-family: var(--serif-en); font-size: clamp(13px, 1.5vw, 16px);
   font-style: italic; color: var(--mid); line-height: 1.7;
@@ -99,7 +135,7 @@ nav ul a:hover { color: var(--ink); }
 }
 .scroll-hint {
   grid-column: 1/-1; margin-top: 60px; display: flex; align-items: center; gap: 12px;
-  opacity: 0; animation: fadeUp 0.9s ease 0.85s forwards;
+  opacity: 1;
 }
 .scroll-line { width: 40px; height: 1px; background: var(--light); display: block; }
 .scroll-hint span {
@@ -109,63 +145,40 @@ nav ul a:hover { color: var(--ink); }
 
 /* ── Loopi / Pet Lab entry ──────────────────── */
 .pet-loop-strip {
-  padding: 58px 0 72px;
+  padding: 50px 0 56px;
   border-bottom: 1px solid var(--rule);
 }
 .pet-loop-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(300px, 420px);
-  gap: clamp(42px, 7vw, 92px);
+  grid-template-columns: minmax(0, 1fr) minmax(210px, 270px);
+  gap: clamp(36px, 6vw, 64px);
   align-items: center;
 }
 .pet-loop-copy {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 420px;
 }
 .pet-loop-kicker {
   font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
   text-transform: uppercase; color: var(--light); display: block; margin-bottom: 18px;
 }
 .pet-loop-title {
-  font-family: var(--serif-en); font-size: clamp(24px, 3.4vw, 36px);
+  font-family: var(--serif-en); font-size: clamp(24px, 3vw, 32px);
   font-weight: 400; font-style: italic; line-height: 1.2; margin-bottom: 18px;
 }
 .pet-loop-desc {
-  max-width: 560px; font-size: 15px; line-height: 2; color: var(--mid); font-weight: 400;
+  max-width: 560px; font-size: 14px; line-height: 1.9; color: var(--mid); font-weight: 400;
 }
 .pet-loop-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 16px 22px;
-  margin-top: 26px;
-}
-.pet-loop-note-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1px;
-  max-width: 520px;
-  margin-top: 42px;
-  background: var(--rule);
-  border: 1px solid var(--rule);
-}
-.pet-loop-note {
-  background: var(--paper);
-  padding: 18px 20px;
-}
-.pet-loop-note span {
-  display: block;
-  font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em;
-  text-transform: uppercase; color: var(--light); margin-bottom: 6px;
-}
-.pet-loop-note strong {
-  display: block;
-  font-size: 13px; line-height: 1.7; font-weight: 400; color: var(--ink);
+  margin-top: 20px;
 }
 .pet-loop-visual {
-  width: min(340px, 100%);
-  margin: 0 auto 22px;
+  width: min(180px, 100%);
+  margin: 0 auto 14px;
 }
 .pet-loop-visual img {
   display: block;
@@ -180,9 +193,8 @@ nav ul a:hover { color: var(--ink); }
 .pet-loop-link:hover { color: var(--ink); }
 .pet-loop-link::after { content: '→'; }
 .pet-loop-panel {
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-  padding: 28px 0;
+  border-left: 1px solid var(--rule);
+  padding: 0 0 0 28px;
 }
 .pet-loop-panel-label {
   display: block;
@@ -216,7 +228,7 @@ nav ul a:hover { color: var(--ink); }
   text-transform: uppercase; color: var(--light); margin-bottom: 4px;
 }
 .pet-loop-metric strong {
-  font-family: var(--serif-en); font-size: 28px; line-height: 1; font-weight: 400;
+  font-family: var(--serif-en); font-size: 24px; line-height: 1; font-weight: 400;
   color: var(--accent);
 }
 .pet-summary-tags {
@@ -228,7 +240,6 @@ nav ul a:hover { color: var(--ink); }
   border: 1px solid var(--rule); padding: 4px 8px;
 }
 .pet-summary-tag.is-empty { color: var(--light); }
-}
 
 /* ── Section base ───────────────────────────── */
 section { padding: 80px 0; border-bottom: 1px solid var(--rule); }
@@ -285,7 +296,7 @@ section:last-of-type { border-bottom: none; }
   text-transform: uppercase; color: var(--light); margin-bottom: 24px; display: block;
 }
 .now-list {
-  display: grid; grid-template-columns: repeat(3, 1fr);
+  display: grid; grid-template-columns: repeat(2, 1fr);
   border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
 }
 .now-item {
@@ -372,6 +383,13 @@ section:last-of-type { border-bottom: none; }
 }
 .work-tab.active { color: var(--ink); border-bottom-color: var(--ink); }
 .work-tab:hover { color: var(--mid); }
+
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 4px;
+}
 
 .work-panel { display: none; }
 .work-panel.active { display: block; }
@@ -640,15 +658,36 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero-label,
+  .hero-right,
+  .scroll-hint,
+  .reveal {
+    opacity: 1;
+    transform: none;
+    animation: none;
+    transition: none;
+  }
+  .films-track,
+  .film-poster,
+  .project-body,
+  .project-body-inner {
+    transition: none;
+  }
+}
+
 /* ── Responsive ──────────────────────────────── */
 @media (max-width: 768px) {
+  nav { gap: 18px; }
+  nav ul { gap: 18px; }
+  nav .nav-secondary { display: none; }
   #hero { grid-template-columns: 1fr; gap: 40px; padding-bottom: 60px; }
   .hero-tagline { margin-left: 0; text-align: left; }
   .about-grid { grid-template-columns: 1fr; }
   .pet-loop-grid { grid-template-columns: 1fr; }
-  .pet-loop-copy { min-height: auto; }
-  .pet-loop-note-grid { grid-template-columns: 1fr; }
-  .pet-loop-panel { padding: 24px 0; }
+  .pet-loop-panel { padding: 24px 0 0; border-left: none; border-top: 1px solid var(--rule); }
+  .pet-loop-visual { width: min(160px, 100%); }
   .interests-grid { grid-template-columns: 1fr; }
   .connect-layout { grid-template-columns: 1fr; }
   .thought-item { grid-template-columns: 80px 1fr; }
@@ -674,12 +713,12 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
 <body>
 
 <!-- Nav -->
-<nav>
+<nav aria-label="Primary navigation">
   <a href="#" class="logo">Zane Hua</a>
   <ul>
-    <li><a href="#about">About</a></li>
+    <li class="nav-secondary"><a href="#about">About</a></li>
     <li><a href="#work">Work</a></li>
-    <li><a href="#interests">Interests</a></li>
+    <li class="nav-secondary"><a href="#interests">Interests</a></li>
     <li><a href="#thinking">Thinking</a></li>
     <li><a href="#connect">Connect</a></li>
   </ul>
@@ -702,52 +741,6 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
   <div class="scroll-hint">
     <span class="scroll-line"></span>
     <span>Scroll to explore</span>
-  </div>
-</section>
-
-<!-- ── Loopi Pet Feedback ───────────────────── -->
-<section id="pet-loop" class="pet-loop-strip reveal">
-  <div class="pet-loop-grid">
-    <div class="pet-loop-copy">
-      <span class="pet-loop-kicker">Loopi v0.2 Companion</span>
-      <h2 class="pet-loop-title">Meet Loopi, my evolving AI companion.</h2>
-      <p class="pet-loop-desc">Loopi 是 yuanzehua.me 的虚拟 AI companion。它从生肖马的行动力出发，加入一点 ENFP 小狗式亲和；完整评估问卷放在 Pet Lab，避免打断主页本身的阅读节奏。</p>
-      <div class="pet-loop-actions">
-        <a class="pet-loop-link" href="/pet-lab/">Pet Lab · 参与评估</a>
-        <a class="pet-loop-link" href="/pet-loop/reports/2026-06-15-loopi-v0-2.md">Evolution Report</a>
-      </div>
-      <div class="pet-loop-note-grid" aria-label="Loopi system notes">
-        <div class="pet-loop-note">
-          <span>Role</span>
-          <strong>个人品牌里的 AI 虚拟形象，不是普通宠物装饰。</strong>
-        </div>
-        <div class="pet-loop-note">
-          <span>Loop</span>
-          <strong>真实反馈会进入下一轮形象迭代和候选评估。</strong>
-        </div>
-      </div>
-    </div>
-
-    <div class="pet-loop-panel" data-pet-summary-panel data-version-name="loopi_v0_2">
-      <figure class="pet-loop-visual" aria-label="Loopi v0.2 virtual companion avatar">
-        <img src="/assets/images/pets/loopi/v0-2/loopi-v0-2.webp" alt="Loopi v0.2，银白色蓝紫发束的虚拟 AI companion 形象" loading="lazy">
-      </figure>
-      <span class="pet-loop-panel-label">Active Experiment</span>
-      <strong class="pet-loop-panel-title">v0.2 正在通过 Pet Lab 收集 8 题评估信号。</strong>
-      <p class="pet-loop-panel-copy">首页只保留轻量展示；完整问卷、维度分数、候选队列和迭代逻辑统一放在 Lab。</p>
-      <div class="pet-loop-metrics">
-        <div class="pet-loop-metric">
-          <span>Feedback</span>
-          <strong data-pet-summary-count>--</strong>
-        </div>
-        <div class="pet-loop-metric">
-          <span>Avg Score</span>
-          <strong data-pet-summary-score>--</strong>
-        </div>
-      </div>
-      <p class="pet-loop-status" data-pet-summary-status>正在读取反馈统计...</p>
-      <div class="pet-summary-tags" data-pet-summary-dimensions></div>
-    </div>
   </div>
 </section>
 
@@ -795,19 +788,14 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
     <span class="now-label">Now · 近况 · 2026.06</span>
     <div class="now-list">
       <div class="now-item">
-        <span class="now-kicker">Interning</span>
+        <span class="now-kicker">Building</span>
         <span class="now-title">AI Creative Tool</span>
-        <p class="now-desc">参与某 AI 创作工具的 0-1 验证，关注从需求定义、风格控制到结果评估的完整创作工作流。</p>
+        <p class="now-desc">参与生成式创作产品的 0-1 验证，用模型评测与盲测数据支撑产品判断。</p>
       </div>
       <div class="now-item">
-        <span class="now-kicker">Measuring</span>
-        <span class="now-title">Model Evaluation</span>
-        <p class="now-desc">把主观审美拆成配色统一度、色彩层级感、语义适配度等指标，用盲测数据支撑产品判断。</p>
-      </div>
-      <div class="now-item">
-        <span class="now-kicker">Practicing</span>
+        <span class="now-kicker">Documenting</span>
         <span class="now-title">AI-native Workflow</span>
-        <p class="now-desc">用 Figma、Codex、MCP 等工具进行 Vibe Coding，把产品想法快速推到可演示、可评审、可复用的 Demo 状态。</p>
+        <p class="now-desc">用 Figma、Codex 与 MCP 推进可运行 Demo，也持续记录 AI 产品实践与阶段性思考。</p>
       </div>
     </div>
   </div>
@@ -822,7 +810,7 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
         <span class="tl-period">2026.04 — 2026.07</span>
         <span class="tl-role">AI 产品经理实习 · AI Product Manager Intern</span>
         <span class="tl-org">浙大系 AI 研究机构 · 生成式创作产品</span>
-        <p class="tl-desc">参与 AI 创作工具 0-1 验证，围绕用户输入、风格控制、配色约束、多轮编辑、结果评估与 Demo 部署，把模型能力转化为可验证的产品方案。</p>
+        <p class="tl-desc">参与生成式创作产品 0-1 验证，负责需求拆解、模型评测与 Demo 交付。</p>
         <span class="tl-tag">AI Product · Internship</span>
       </div>
 
@@ -831,7 +819,7 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
         <span class="tl-period">2025.09 — 至今</span>
         <span class="tl-role">人工智能硕士 · AI Master's Student</span>
         <span class="tl-org">浙江大学 · 人工智能</span>
-        <p class="tl-desc">研究生入学考试初试 403 分，学院综合成绩排名 3 / 176；核心课程包括数据挖掘与应用、人工智能算法与系统。</p>
+        <p class="tl-desc">学院综合成绩排名 3 / 176，关注 AI 产品、模型评测与医疗 AI。</p>
         <span class="tl-tag">AI · Product</span>
       </div>
 
@@ -840,7 +828,7 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
         <span class="tl-period">2021.09 — 2025.06</span>
         <span class="tl-role">网络空间安全本科 · Bachelor's Student</span>
         <span class="tl-org">华中科技大学 · 网络空间安全</span>
-        <p class="tl-desc">从网络安全与计算机系统出发，建立对数据、隐私与复杂技术系统的底层理解；曾获人民奖学金、明德奖学金、新生奖学金与优秀毕业生。</p>
+        <p class="tl-desc">网络空间安全本科；曾获人民奖学金、明德奖学金、新生奖学金与优秀毕业生。</p>
         <span class="tl-tag">Education</span>
       </div>
 
@@ -857,18 +845,18 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
     <span class="section-title-cn">SELECTED WORK</span>
   </div>
 
-  <div class="work-tabs reveal">
-    <button class="work-tab active" data-tab="internship">Practice</button>
-    <button class="work-tab" data-tab="research">Research</button>
-    <button class="work-tab" data-tab="projects">Projects</button>
+  <div class="work-tabs reveal" role="tablist" aria-label="Selected work categories">
+    <button class="work-tab active" id="tab-internship" role="tab" aria-selected="true" aria-controls="panel-internship" tabindex="0" data-tab="internship">Practice</button>
+    <button class="work-tab" id="tab-research" role="tab" aria-selected="false" aria-controls="panel-research" tabindex="-1" data-tab="research">Research</button>
+    <button class="work-tab" id="tab-projects" role="tab" aria-selected="false" aria-controls="panel-projects" tabindex="-1" data-tab="projects">Projects</button>
   </div>
 
   <!-- Research -->
-  <div class="work-panel" id="panel-research">
+  <div class="work-panel" id="panel-research" role="tabpanel" aria-labelledby="tab-research" hidden>
     <div class="project-list">
 
       <div class="project-item">
-        <div class="project-head">
+        <div class="project-head" role="button" tabindex="0" aria-expanded="false">
           <div class="project-title-wrap">
             <span class="project-title">FedPMR: Personalized Prototype-Based FL for Accelerated MRI Reconstruction</span>
             <span class="project-badge pub">IEEE BIBM 2025 · CCF-B</span>
@@ -913,7 +901,7 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
       </div>
 
       <div class="project-item">
-        <div class="project-head">
+        <div class="project-head" role="button" tabindex="0" aria-expanded="false">
           <div class="project-title-wrap">
             <span class="project-title">基于对比学习与深度生存分析的冠心病多模态风险预警方法</span>
             <span class="project-badge pub">Patent · Under Review</span>
@@ -961,11 +949,11 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
   </div>
 
   <!-- Projects -->
-  <div class="work-panel" id="panel-projects">
+  <div class="work-panel" id="panel-projects" role="tabpanel" aria-labelledby="tab-projects" hidden>
     <div class="project-list">
 
       <div class="project-item">
-        <div class="project-head">
+        <div class="project-head" role="button" tabindex="0" aria-expanded="false">
           <div class="project-title-wrap">
             <span class="project-title">BlindReview: AI Image Blind Testing Platform</span>
             <span class="project-badge proj">Evaluation Tool</span>
@@ -995,7 +983,7 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
       </div>
 
       <div class="project-item">
-        <div class="project-head">
+        <div class="project-head" role="button" tabindex="0" aria-expanded="false">
           <div class="project-title-wrap">
             <span class="project-title">RAG Document Q&A System</span>
             <span class="project-badge proj">AI Product</span>
@@ -1021,7 +1009,7 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
       </div>
 
       <div class="project-item">
-        <div class="project-head">
+        <div class="project-head" role="button" tabindex="0" aria-expanded="false">
           <div class="project-title-wrap">
             <span class="project-title">Federated Behavior Early-Warning System</span>
             <span class="project-badge proj">Federated AI</span>
@@ -1050,11 +1038,11 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
   </div>
 
   <!-- Internship -->
-  <div class="work-panel active" id="panel-internship">
+  <div class="work-panel active" id="panel-internship" role="tabpanel" aria-labelledby="tab-internship">
     <div class="project-list">
 
       <div class="project-item featured">
-        <div class="project-head">
+        <div class="project-head" role="button" tabindex="0" aria-expanded="false">
           <div class="project-title-wrap">
             <span class="project-title">AI Creative Tool Evaluation Case Study</span>
             <span class="project-badge featured-badge">Featured</span>
@@ -1089,7 +1077,7 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
       </div>
 
       <div class="project-item">
-        <div class="project-head">
+        <div class="project-head" role="button" tabindex="0" aria-expanded="false">
           <div class="project-title-wrap">
             <span class="project-title">Smart Agriculture IoT Delivery</span>
             <span class="project-badge work">IoT Practice</span>
@@ -1115,7 +1103,7 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
       </div>
 
       <div class="project-item">
-        <div class="project-head">
+        <div class="project-head" role="button" tabindex="0" aria-expanded="false">
           <div class="project-title-wrap">
             <span class="project-title">Counseling Service Workflow Support</span>
             <span class="project-badge work">Service Design</span>
@@ -1138,6 +1126,41 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- ── Loopi Pet Feedback ───────────────────── -->
+<section id="pet-loop" class="pet-loop-strip reveal">
+  <div class="pet-loop-grid">
+    <div class="pet-loop-copy">
+      <span class="pet-loop-kicker">Living Experiment · Loopi v0.2</span>
+      <h2 class="pet-loop-title">Meet Loopi, my evolving AI companion.</h2>
+      <p class="pet-loop-desc">Loopi 是 yuanzehua.me 持续迭代的虚拟 AI companion。真实访客反馈会进入下一轮形象评估与版本选择，完整实验放在 Pet Lab。</p>
+      <div class="pet-loop-actions">
+        <a class="pet-loop-link" href="/pet-lab/">Pet Lab · 参与评估</a>
+        <a class="pet-loop-link" href="/pet-loop/reports/2026-06-15-loopi-v0-2.html">Evolution Report</a>
+      </div>
+    </div>
+
+    <div class="pet-loop-panel" data-pet-summary-panel data-version-name="loopi_v0_2">
+      <figure class="pet-loop-visual" aria-label="Loopi v0.2 virtual companion avatar">
+        <img src="/assets/images/pets/loopi/v0-2/loopi-v0-2.webp" alt="Loopi v0.2，银白色蓝紫发束的虚拟 AI companion 形象" width="320" height="320" loading="lazy" decoding="async">
+      </figure>
+      <span class="pet-loop-panel-label">Live Feedback</span>
+      <strong class="pet-loop-panel-title">v0.2 正在接受访客评估</strong>
+      <div class="pet-loop-metrics">
+        <div class="pet-loop-metric">
+          <span>Feedback</span>
+          <strong data-pet-summary-count>--</strong>
+        </div>
+        <div class="pet-loop-metric">
+          <span>Avg Score</span>
+          <strong data-pet-summary-score>--</strong>
+        </div>
+      </div>
+      <p class="pet-loop-status" data-pet-summary-status aria-live="polite">正在读取反馈统计...</p>
+      <div class="pet-summary-tags" data-pet-summary-dimensions></div>
     </div>
   </div>
 </section>
@@ -1201,17 +1224,17 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
     <div class="films-label">
       <span>Watchlist · 个人片单</span>
       <div class="films-nav">
-        <button class="film-btn" id="filmPrev">←</button>
-        <button class="film-btn" id="filmNext">→</button>
+        <button class="film-btn" id="filmPrev" type="button" aria-label="Previous film" aria-controls="filmsTrack">←</button>
+        <button class="film-btn" id="filmNext" type="button" aria-label="Next film" aria-controls="filmsTrack">→</button>
       </div>
     </div>
-    <div class="films-track-outer">
+    <div class="films-track-outer" aria-label="Personal film watchlist">
       <div class="films-track" id="filmsTrack">
 
         <!-- FILMS_START -->
         <div class="film-card">
           <div class="film-poster" style="background:#c9c2b0;">
-            <img src="/assets/images/films/cosmic-expedition.jpg" alt="宇宙探索编辑部" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <img src="/assets/images/films/cosmic-expedition.webp" alt="宇宙探索编辑部" width="160" height="228" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
             <div class="film-poster-overlay"></div>
             <span class="film-score">★ 8.0</span>
           </div>
@@ -1221,7 +1244,7 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
         </div>
         <div class="film-card">
           <div class="film-poster" style="background:#5f3426;">
-            <img src="/assets/images/films/oppenheimer.jpg" alt="奥本海默" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <img src="/assets/images/films/oppenheimer.webp" alt="奥本海默" width="160" height="228" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
             <div class="film-poster-overlay"></div>
             <span class="film-score">★ 8.8</span>
           </div>
@@ -1231,7 +1254,7 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
         </div>
         <div class="film-card">
           <div class="film-poster" style="background:#284f63;">
-            <img src="/assets/images/films/ready-player-one.jpg" alt="头号玩家" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <img src="/assets/images/films/ready-player-one.webp" alt="头号玩家" width="160" height="228" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
             <div class="film-poster-overlay"></div>
             <span class="film-score">★ 8.6</span>
           </div>
@@ -1241,7 +1264,7 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
         </div>
         <div class="film-card">
           <div class="film-poster" style="background:#1f4f3a;">
-            <img src="/assets/images/films/the-matrix.jpg" alt="黑客帝国" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <img src="/assets/images/films/the-matrix.webp" alt="黑客帝国" width="160" height="228" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
             <div class="film-poster-overlay"></div>
             <span class="film-score">★ 9.1</span>
           </div>
@@ -1251,7 +1274,7 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
         </div>
         <div class="film-card">
           <div class="film-poster" style="background:#5f5a52;">
-            <img src="/assets/images/films/witness-for-the-prosecution.jpg" alt="控方证人" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <img src="/assets/images/films/witness-for-the-prosecution.webp" alt="控方证人" width="160" height="228" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
             <div class="film-poster-overlay"></div>
             <span class="film-score">★ 9.6</span>
           </div>
@@ -1261,7 +1284,7 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
         </div>
         <div class="film-card">
           <div class="film-poster" style="background:#b24a2f;">
-            <img src="/assets/images/films/i-am-what-i-am.jpg" alt="雄狮少年" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <img src="/assets/images/films/i-am-what-i-am.webp" alt="雄狮少年" width="160" height="228" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
             <div class="film-poster-overlay"></div>
             <span class="film-score">★ 8.3</span>
           </div>
@@ -1271,7 +1294,7 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
         </div>
         <div class="film-card">
           <div class="film-poster" style="background:#8b5a46;">
-            <img src="/assets/images/films/hibiscus-town.jpg" alt="芙蓉镇" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <img src="/assets/images/films/hibiscus-town.webp" alt="芙蓉镇" width="160" height="228" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
             <div class="film-poster-overlay"></div>
             <span class="film-score">★ 9.3</span>
           </div>
@@ -1281,7 +1304,7 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
         </div>
         <div class="film-card">
           <div class="film-poster" style="background:#8f211e;">
-            <img src="/assets/images/films/raise-the-red-lantern.jpg" alt="大红灯笼高高挂" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <img src="/assets/images/films/raise-the-red-lantern.webp" alt="大红灯笼高高挂" width="160" height="228" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
             <div class="film-poster-overlay"></div>
             <span class="film-score">★ 8.8</span>
           </div>
@@ -1291,7 +1314,7 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
         </div>
         <div class="film-card">
           <div class="film-poster" style="background:#d08542;">
-            <img src="/assets/images/films/life-of-pi.jpg" alt="少年派的奇幻漂流" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <img src="/assets/images/films/life-of-pi.webp" alt="少年派的奇幻漂流" width="160" height="228" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
             <div class="film-poster-overlay"></div>
             <span class="film-score">★ 9.1</span>
           </div>
@@ -1317,6 +1340,14 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
 
   <div class="thoughts-list">
     <!-- POSTS_START -->
+      <a href="/posts/2026-06-16-model-evaluation-product-judgment.html" class="thought-item reveal">
+        <span class="thought-date">2026.06</span>
+        <span class="thought-copy">
+          <span class="thought-title">模型评测不是跑分，而是定义什么叫可用</span>
+          <span class="thought-summary">从图像编辑场景里的 bad case 归因出发，思考模型评测如何从 benchmark 跑分走向产品可用性的判断体系。</span>
+        </span>
+        <span class="thought-tag">AI</span>
+      </a>
       <a href="/posts/2026-06-14-vibe-coding-product-validation.html" class="thought-item reveal">
         <span class="thought-date">2026.06</span>
         <span class="thought-copy">
@@ -1366,11 +1397,11 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
         <div><span class="cl-platform">Email</span><span class="cl-name">zehua@zju.edu.cn</span></div>
         <span class="cl-arrow">↗</span>
       </a>
-      <a href="https://github.com/zehua-zehua" target="_blank" class="connect-link">
+      <a href="https://github.com/zehua-zehua" target="_blank" rel="noopener noreferrer" class="connect-link">
         <div><span class="cl-platform">GitHub</span><span class="cl-name">github.com/zehua-zehua</span></div>
         <span class="cl-arrow">↗</span>
       </a>
-      <a href="https://www.xiaohongshu.com/user/profile/607105946" target="_blank" class="connect-link">
+      <a href="https://www.xiaohongshu.com/user/profile/607105946" target="_blank" rel="noopener noreferrer" class="connect-link">
         <div><span class="cl-platform">Xiaohongshu</span><span class="cl-name">607105946</span></div>
         <span class="cl-arrow">↗</span>
       </a>
@@ -1410,25 +1441,68 @@ window.addEventListener('scroll', () => {
 });
 
 /* ── Work tabs ──────────────────────────────── */
-document.querySelectorAll('.work-tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('.work-tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.work-panel').forEach(p => p.classList.remove('active'));
-    tab.classList.add('active');
-    document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+const workTabs = Array.from(document.querySelectorAll('.work-tab'));
+
+function activateWorkTab(tab, shouldFocus = false) {
+  workTabs.forEach(item => {
+    const isActive = item === tab;
+    const panel = document.getElementById(item.getAttribute('aria-controls'));
+    item.classList.toggle('active', isActive);
+    item.setAttribute('aria-selected', String(isActive));
+    item.tabIndex = isActive ? 0 : -1;
+    panel.classList.toggle('active', isActive);
+    panel.hidden = !isActive;
+  });
+  if (shouldFocus) tab.focus();
+}
+
+workTabs.forEach((tab, index) => {
+  tab.addEventListener('click', () => activateWorkTab(tab));
+  tab.addEventListener('keydown', event => {
+    let nextIndex = null;
+    if (event.key === 'ArrowRight') nextIndex = (index + 1) % workTabs.length;
+    if (event.key === 'ArrowLeft') nextIndex = (index - 1 + workTabs.length) % workTabs.length;
+    if (event.key === 'Home') nextIndex = 0;
+    if (event.key === 'End') nextIndex = workTabs.length - 1;
+    if (nextIndex === null) return;
+    event.preventDefault();
+    activateWorkTab(workTabs[nextIndex], true);
   });
 });
 
 /* ── Project accordion ──────────────────────── */
-document.querySelectorAll('.project-head').forEach(head => {
-  head.addEventListener('click', () => {
-    const item = head.closest('.project-item');
-    const wasOpen = item.classList.contains('open');
-    // close all in same panel
-    head.closest('.project-list')
-        .querySelectorAll('.project-item')
-        .forEach(i => i.classList.remove('open'));
-    if (!wasOpen) item.classList.add('open');
+function setProjectOpen(item, isOpen) {
+  item.classList.toggle('open', isOpen);
+  item.querySelector('.project-head')?.setAttribute('aria-expanded', String(isOpen));
+  const body = item.querySelector('.project-body');
+  if (body) {
+    body.setAttribute('aria-hidden', String(!isOpen));
+    body.inert = !isOpen;
+  }
+}
+
+function toggleProject(head) {
+  const item = head.closest('.project-item');
+  const wasOpen = item.classList.contains('open');
+  head.closest('.project-list')
+      .querySelectorAll('.project-item')
+      .forEach(project => setProjectOpen(project, false));
+  if (!wasOpen) setProjectOpen(item, true);
+}
+
+document.querySelectorAll('.project-head').forEach((head, index) => {
+  const body = head.closest('.project-item').querySelector('.project-body');
+  if (body) {
+    body.id = `project-body-${index + 1}`;
+    head.setAttribute('aria-controls', body.id);
+    body.setAttribute('aria-hidden', 'true');
+    body.inert = true;
+  }
+  head.addEventListener('click', () => toggleProject(head));
+  head.addEventListener('keydown', event => {
+    if (event.key !== 'Enter' && event.key !== ' ') return;
+    event.preventDefault();
+    toggleProject(head);
   });
 });
 
