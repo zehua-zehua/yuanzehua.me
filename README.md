@@ -65,7 +65,7 @@ Loopi 数据库配置见 `docs/pet-database-setup.md`。
 ## Loopi 报告生成
 
 ```bash
-PET_ADMIN_TOKEN=你的 Cloudflare 变量值 node scripts/generate-pet-report.js loopi_v0_2
+PET_ADMIN_TOKEN=你的 Cloudflare 变量值 node scripts/generate-pet-report.js loopi_v0_3
 ```
 
 报告会保存到 `pet-loop/reports/`。
@@ -73,7 +73,7 @@ PET_ADMIN_TOKEN=你的 Cloudflare 变量值 node scripts/generate-pet-report.js 
 ## Loopi 自动迭代 Loop
 
 ```bash
-node scripts/run-pet-evolution-loop.js loopi_v0_2
+node scripts/run-pet-evolution-loop.js loopi_v0_3
 ```
 
 完整说明见 `docs/pet-evolution-loop.md`。这个 Loop 会生成反馈快照、评估报告、候选版本和选择报告，但不会自动替换首页生产宠物。

@@ -5,7 +5,7 @@ const ROOT = path.join(__dirname, "..");
 const PET_LOOP_DIR = path.join(ROOT, "pet-loop");
 const RULES_PATH = path.join(PET_LOOP_DIR, "rules", "evolution-rules.json");
 const DEFAULT_SITE_URL = "https://yuanzehua.me";
-const DEFAULT_VERSION = "loopi_v0_2";
+const DEFAULT_VERSION = "loopi_v0_3";
 
 const QUESTION_DEFINITIONS = [
   ["q1_visual_beauty", "整体好看", "visual_first_impression", "视觉第一印象"],

@@ -25,7 +25,7 @@ const POSTS_OUT  = path.join(ROOT, 'posts');
 const FILMS_PATH = path.join(ROOT, 'content', 'films.yml');
 const SITEMAP_PATH = path.join(ROOT, 'sitemap.xml');
 const SITE_URL = 'https://yuanzehua.me';
-const SHARE_IMAGE = `${SITE_URL}/assets/images/pets/loopi/v0-2/loopi-v0-2-source.png`;
+const SHARE_IMAGE = `${SITE_URL}/assets/images/pets/loopi/v0-3/loopi-v0-3-source.png`;
 
 // ── 1. Read posts ──────────────────────────────────────────────────────────
 

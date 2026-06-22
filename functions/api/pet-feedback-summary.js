@@ -1,4 +1,4 @@
-const DEFAULT_VERSION = "loopi_v0_2";
+const DEFAULT_VERSION = "loopi_v0_3";
 
 const QUESTION_DEFINITIONS = [
   {

@@ -7,8 +7,8 @@
   "selected_at": "2026-06-22T07:39:41.518Z",
   "selection_report": "reports/2026-06-22-loopi_v0_2-selection.md",
   "asset_status": "static_candidate_ready",
-  "image_url": "/assets/images/pets/loopi/v0-3-staging/loopi-v0-3-c01.webp",
-  "source_image_url": "/assets/images/pets/loopi/v0-3-staging/loopi-v0-3-c01-source.png",
+  "image_url": "/assets/images/pets/loopi/v0-3/loopi-v0-3.webp",
+  "source_image_url": "/assets/images/pets/loopi/v0-3/loopi-v0-3-source.png",
   "sprite_url": null,
   "visual_generated_at": "2026-06-22T07:31:00Z",
   "changed_variables": [
@@ -27,5 +27,6 @@
   "visual_prompt": "Generate loopi_v0_3_auto_20260622_c01 for Loopi, based on loopi_v0_2. This candidate targets 小马行动力 (3.35) and 专业质感 (3.51). Change only forward stance and material finish. Preserve Loopi's virtual AI companion identity, pony-origin momentum, silver-white body, blue-purple mane or energy tail, warm intelligent eyes, subtle cyan AI markings, and professional homepage fit. Avoid literal four-legged pony, visible hooves, generic puppy mascot, pure dog mascot, childish cartoon style, toy-like plastic, heavy mecha, excessive neon, magic effects, homepage-disrupting motion.",
   "animation_notes": "Use calmer idle and restrained waving; avoid attention-stealing motion.",
   "homepage_fit_notes": "Candidate must remain secondary to the personal homepage content and should sit naturally on the paper background.",
-  "publish_rule": "Human approval required before replacing production homepage assets."
+  "publish_rule": "Promoted to loopi_v0_3 production after human approval on 2026-06-22.",
+  "promoted_to": "loopi_v0_3"
 }

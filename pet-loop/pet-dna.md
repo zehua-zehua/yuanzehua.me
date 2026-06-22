@@ -7,7 +7,7 @@ Loopi is not a decorative pet icon and is no longer constrained to a literal pon
 ## Role
 
 - Name: Loopi
-- Current version: `loopi_v0_2`
+- Current version: `loopi_v0_3`
 - Identity: pony-origin virtual AI companion avatar for a personal AI product homepage
 - Function: lightweight interaction entry, feedback object, and visible Loop Engineering artifact
 - Placement: secondary to Zehua's own identity; Loopi must not replace the personal introduction, work, writing, or contact sections.

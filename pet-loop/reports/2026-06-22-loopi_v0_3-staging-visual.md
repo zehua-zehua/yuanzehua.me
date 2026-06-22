@@ -2,7 +2,7 @@
 
 Date: 2026-06-22
 Candidate: `loopi_v0_3_auto_20260622_c01`
-Status: static staging visual ready
+Status: promoted to production
 
 ## Feedback Trigger
 
@@ -23,10 +23,10 @@ No other Pet DNA variable was intentionally changed.
 
 ## Asset
 
-- Source: `/assets/images/pets/loopi/v0-3-staging/loopi-v0-3-c01-source.png`
-- Web: `/assets/images/pets/loopi/v0-3-staging/loopi-v0-3-c01.webp`
+- Source: `/assets/images/pets/loopi/v0-3/loopi-v0-3-source.png`
+- Web: `/assets/images/pets/loopi/v0-3/loopi-v0-3.webp`
 - Sprite: not generated yet
 
 ## Review Decision
 
-Keep `loopi_v0_2` as the production homepage version. Show this candidate in Pet Lab for human review before generating a full animation set or opening a separate `loopi_v0_3` feedback cycle.
+Promote `loopi_v0_3` to the production homepage and open a separate feedback cycle. Keep the 76 `loopi_v0_2` rows as the historical baseline; new responses use `version_name = loopi_v0_3`.

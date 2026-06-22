@@ -4,14 +4,14 @@
  *
  * Usage:
  *   PET_ADMIN_TOKEN=... node scripts/generate-pet-report.js
- *   PET_ADMIN_TOKEN=... node scripts/generate-pet-report.js loopi_v0_2
+ *   PET_ADMIN_TOKEN=... node scripts/generate-pet-report.js loopi_v0_3
  */
 
 const fs = require("fs");
 const path = require("path");
 
 const ROOT = path.join(__dirname, "..");
-const VERSION = process.argv[2] || "loopi_v0_2";
+const VERSION = process.argv[2] || "loopi_v0_3";
 const SITE = process.env.PET_SITE_URL || "https://yuanzehua.me";
 const TOKEN = process.env.PET_ADMIN_TOKEN || "";
 
@@ -199,7 +199,7 @@ Loopi is now validated through the 8-question homepage feedback survey. Diagnose
 
 ## Recommended Next Step
 
-Keep \`${VERSION}\` active. If real feedback remains low, run simulated visitor reviews using the same 8 questions before generating v0.3 visual assets.
+Keep \`${VERSION}\` active. If real feedback remains low, collect more responses before generating the next visual candidate.
 `;
 
   const outDir = path.join(ROOT, "pet-loop", "reports");

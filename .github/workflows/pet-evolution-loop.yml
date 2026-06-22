@@ -6,7 +6,7 @@ on:
       version:
         description: "Loopi version to evaluate"
         required: false
-        default: "loopi_v0_2"
+        default: "loopi_v0_3"
   schedule:
     - cron: "20 2 * * 1"
 
@@ -33,7 +33,7 @@ jobs:
         run: |
           VERSION="${{ github.event.inputs.version }}"
           if [ -z "$VERSION" ]; then
-            VERSION="loopi_v0_2"
+            VERSION="loopi_v0_3"
           fi
           node scripts/run-pet-evolution-loop.js "$VERSION"
 

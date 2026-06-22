@@ -3,7 +3,7 @@
   "based_on_version": "loopi_v0_2",
   "target_version": "loopi_v0_3",
   "candidate_name": "Conservative Fit Repair",
-  "status": "visual_staging_ready",
+  "status": "promoted_to_production",
   "generated_by": "generation_agent",
   "generated_at": "2026-06-22T07:39:41.483Z",
   "generation_run_id": "2026-06-22-loopi_v0_2",
@@ -59,8 +59,8 @@
     "risk_level": 1.8
   },
   "asset_status": "static_candidate_ready",
-  "image_url": "/assets/images/pets/loopi/v0-3-staging/loopi-v0-3-c01.webp",
-  "source_image_url": "/assets/images/pets/loopi/v0-3-staging/loopi-v0-3-c01-source.png",
+  "image_url": "/assets/images/pets/loopi/v0-3/loopi-v0-3.webp",
+  "source_image_url": "/assets/images/pets/loopi/v0-3/loopi-v0-3-source.png",
   "visual_generated_at": "2026-06-22T07:31:00Z",
   "visual_generation_prompt": "Preserve Loopi v0.2 identity and change only forward stance and material finish: use a purposeful forward-ready posture and premium satin ceramic with subtle pearl-metal highlights on the warm paper background."
 }

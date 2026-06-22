@@ -1,5 +1,5 @@
 (function () {
-  const DEFAULT_VERSION = "loopi_v0_2";
+  const DEFAULT_VERSION = "loopi_v0_3";
   const VISITOR_KEY = "loopi_feedback_visitor_id";
   const SURVEY_TAG = "survey:loopi_homepage_feedback_v1";
 

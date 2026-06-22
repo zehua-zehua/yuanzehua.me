@@ -22,28 +22,28 @@ feedback -> evaluation -> generation -> selection
 ## Local Run
 
 ```bash
-node scripts/run-pet-evolution-loop.js loopi_v0_2
+node scripts/run-pet-evolution-loop.js loopi_v0_3
 ```
 
 Optional protected export:
 
 ```bash
-PET_ADMIN_TOKEN=your-token node scripts/run-pet-evolution-loop.js loopi_v0_2
+PET_ADMIN_TOKEN=your-token node scripts/run-pet-evolution-loop.js loopi_v0_3
 ```
 
 By default, raw visitor text is not saved. To include short redacted samples in the local snapshot:
 
 ```bash
-PET_LOOP_INCLUDE_REDACTED_TEXT=1 PET_ADMIN_TOKEN=your-token node scripts/run-pet-evolution-loop.js loopi_v0_2
+PET_LOOP_INCLUDE_REDACTED_TEXT=1 PET_ADMIN_TOKEN=your-token node scripts/run-pet-evolution-loop.js loopi_v0_3
 ```
 
 ## Individual Agent Runs
 
 ```bash
-node scripts/run-pet-feedback-collector.js loopi_v0_2
-node scripts/run-pet-evaluation.js loopi_v0_2
-node scripts/run-pet-generation.js loopi_v0_2
-node scripts/run-pet-selection.js loopi_v0_2
+node scripts/run-pet-feedback-collector.js loopi_v0_3
+node scripts/run-pet-evaluation.js loopi_v0_3
+node scripts/run-pet-generation.js loopi_v0_3
+node scripts/run-pet-selection.js loopi_v0_3
 ```
 
 ## Generated Files

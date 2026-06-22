@@ -1,6 +1,6 @@
 {
   "schema": "loopi_evolution_rules_v1",
-  "default_version": "loopi_v0_2",
+  "default_version": "loopi_v0_3",
   "site_url": "https://yuanzehua.me",
   "feedback_schema": "loopi_homepage_feedback_v1",
   "thresholds": {

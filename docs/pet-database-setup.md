@@ -52,7 +52,7 @@
 
 完成后可以访问：
 
-- `/api/pet-feedback-summary?version=loopi_v0_2`
+- `/api/pet-feedback-summary?version=loopi_v0_3`
 - `/pet-lab/`
 
 如果返回 JSON，说明数据库已经连通。
