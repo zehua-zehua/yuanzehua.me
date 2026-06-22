@@ -1,0 +1,128 @@
+{
+  "schema": "loopi_evolution_rules_v1",
+  "default_version": "loopi_v0_2",
+  "site_url": "https://yuanzehua.me",
+  "feedback_schema": "loopi_homepage_feedback_v1",
+  "thresholds": {
+    "min_feedback_count": 20,
+    "keep_average_score": 4.3,
+    "keep_min_dimension_score": 4.0,
+    "iterate_average_score_below": 4.3,
+    "iterate_dimension_score_below": 4.0,
+    "urgent_dimension_score_below": 3.6
+  },
+  "red_lines": {
+    "dimension_minimums": {
+      "visual_first_impression": 3.5,
+      "homepage_fit": 3.5,
+      "personal_fit": 3.5,
+      "pony_dog_concept": 3.3
+    },
+    "question_minimums": {
+      "q4_first_impression_not_distracting": 3.5,
+      "q7_pony_momentum_growth": 3.3,
+      "q8_dog_warmth_companionship": 3.3
+    }
+  },
+  "protected_variables": [
+    "virtual AI companion identity",
+    "pony-origin momentum",
+    "silver-white body",
+    "blue-purple mane or energy tail",
+    "warm intelligent eyes",
+    "subtle cyan AI markings",
+    "professional homepage fit"
+  ],
+  "hard_avoids": [
+    "literal four-legged pony",
+    "visible hooves",
+    "generic puppy mascot",
+    "pure dog mascot",
+    "childish cartoon style",
+    "toy-like plastic",
+    "heavy mecha",
+    "excessive neon",
+    "magic effects",
+    "homepage-disrupting motion"
+  ],
+  "question_actions": {
+    "q1_visual_beauty": [
+      "silhouette balance",
+      "surface polish"
+    ],
+    "q2_visual_quality_professional": [
+      "material finish",
+      "lighting maturity"
+    ],
+    "q3_homepage_not_abrupt": [
+      "homepage scale",
+      "background integration"
+    ],
+    "q4_first_impression_not_distracting": [
+      "animation restraint",
+      "visual quietness"
+    ],
+    "q5_ai_curiosity_exploration": [
+      "subtle AI cue",
+      "curious eye focus"
+    ],
+    "q6_friendliness_approachable": [
+      "smile softness",
+      "ear posture"
+    ],
+    "q7_pony_momentum_growth": [
+      "forward stance",
+      "tail-energy direction"
+    ],
+    "q8_dog_warmth_companionship": [
+      "eye warmth",
+      "companion expression"
+    ]
+  },
+  "dimension_actions": {
+    "visual_first_impression": [
+      "material finish",
+      "silhouette balance"
+    ],
+    "homepage_fit": [
+      "homepage scale",
+      "animation restraint"
+    ],
+    "personal_fit": [
+      "subtle AI cue",
+      "smile softness"
+    ],
+    "pony_dog_concept": [
+      "forward stance",
+      "eye warmth"
+    ]
+  },
+  "candidate_strategies": [
+    {
+      "key": "conservative",
+      "label": "Conservative Fit Repair",
+      "risk": "low"
+    },
+    {
+      "key": "expressive",
+      "label": "Warm Personality Lift",
+      "risk": "medium"
+    },
+    {
+      "key": "brand_ip",
+      "label": "Brand/IP Clarity",
+      "risk": "medium"
+    }
+  ],
+  "selection_weights": {
+    "visual_first_impression": 1.2,
+    "homepage_fit": 1.5,
+    "personal_brand_fit": 1.2,
+    "ai_companion_identity": 1.0,
+    "pony_momentum_readability": 0.9,
+    "dog_warmth_readability": 0.9,
+    "professional_quality": 1.3,
+    "animation_feasibility": 0.8,
+    "risk_safety": 1.2
+  }
+}

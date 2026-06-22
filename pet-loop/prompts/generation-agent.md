@@ -1,12 +1,15 @@
-# Pet Generation Agent
+# Generation Agent
 
-Use this prompt when creating next-version Loopi candidates.
+You are the Generation Agent for Loopi.
+
+Your job is to generate next-version candidate directions based on the Evaluation Agent report.
 
 Read:
 
 - `pet-loop/pet-dna.md`
-- Latest report in `pet-loop/reports/`
 - Current version JSON in `pet-loop/versions/`
+- Latest evaluation JSON under `pet-loop/evaluations/`
+- Rule file under `pet-loop/rules/evolution-rules.json`
 
 Use the `loopi_homepage_feedback_v1` survey as the diagnosis map:
 
@@ -17,15 +20,28 @@ Use the `loopi_homepage_feedback_v1` survey as the diagnosis map:
 
 Generate exactly 3 candidate JSON files under `pet-loop/candidates/`.
 
+Candidate types:
+
+1. Conservative improvement: minimal change, lowest risk, targets the weakest score.
+2. Expressive improvement: stronger warmth or personality while staying homepage-safe.
+3. Brand/IP improvement: stronger long-term recognizability and AI companion identity.
+
 Each candidate must include:
 
 - `candidate_id`
 - `based_on_version`
+- `target_version`
 - `candidate_name`
+- `target_feedback_weakness`
 - `changed_variables`
+- `preserved_variables`
 - `expected_improvement`
 - `risk_to_watch`
-- `prompt`
+- `visual_prompt`
+- `animation_notes`
+- `homepage_fit_notes`
+- `pet_dna_consistency_score_estimate`
+- `score_estimate`
 
 Rules:
 

@@ -1,0 +1,66 @@
+{
+  "candidate_id": "loopi_v0_3_auto_20260622_c01",
+  "based_on_version": "loopi_v0_2",
+  "target_version": "loopi_v0_3",
+  "candidate_name": "Conservative Fit Repair",
+  "status": "visual_staging_ready",
+  "generated_by": "generation_agent",
+  "generated_at": "2026-06-22T07:39:41.483Z",
+  "generation_run_id": "2026-06-22-loopi_v0_2",
+  "target_feedback_weakness": [
+    {
+      "type": "question",
+      "key": "q7_pony_momentum_growth",
+      "label": "小马行动力",
+      "dimension": "pony_dog_concept",
+      "average": 3.3484848484848486,
+      "count": 66
+    },
+    {
+      "type": "question",
+      "key": "q2_visual_quality_professional",
+      "label": "专业质感",
+      "dimension": "visual_first_impression",
+      "average": 3.513157894736842,
+      "count": 76
+    }
+  ],
+  "changed_variables": [
+    "forward stance",
+    "material finish"
+  ],
+  "preserved_variables": [
+    "virtual AI companion identity",
+    "pony-origin momentum",
+    "silver-white body",
+    "blue-purple mane or energy tail",
+    "warm intelligent eyes",
+    "subtle cyan AI markings",
+    "professional homepage fit"
+  ],
+  "expected_improvement": [
+    "Improve 小马行动力 from 3.35 and 专业质感 from 3.51 without weakening homepage fit.",
+    "Keep the change to one controlled visual direction so the next feedback loop can isolate signal."
+  ],
+  "risk_to_watch": "May improve fit but feel too subtle if the visual change is barely visible.",
+  "visual_prompt": "Generate loopi_v0_3_auto_20260622_c01 for Loopi, based on loopi_v0_2. This candidate targets 小马行动力 (3.35) and 专业质感 (3.51). Change only forward stance and material finish. Preserve Loopi's virtual AI companion identity, pony-origin momentum, silver-white body, blue-purple mane or energy tail, warm intelligent eyes, subtle cyan AI markings, and professional homepage fit. Avoid literal four-legged pony, visible hooves, generic puppy mascot, pure dog mascot, childish cartoon style, toy-like plastic, heavy mecha, excessive neon, magic effects, homepage-disrupting motion.",
+  "animation_notes": "Use calmer idle and restrained waving; avoid attention-stealing motion.",
+  "homepage_fit_notes": "Candidate must remain secondary to the personal homepage content and should sit naturally on the paper background.",
+  "pet_dna_consistency_score_estimate": 4.65,
+  "score_estimate": {
+    "visual_first_impression": 4.068157894736842,
+    "homepage_fit": 3.9701408450704223,
+    "personal_brand_fit": 4.325757575757576,
+    "ai_companion_identity": 4.55,
+    "pony_momentum_readability": 3.7696969696969695,
+    "dog_warmth_readability": 3.79969696969697,
+    "professional_quality": 4.25,
+    "animation_feasibility": 4.45,
+    "risk_level": 1.8
+  },
+  "asset_status": "static_candidate_ready",
+  "image_url": "/assets/images/pets/loopi/v0-3-staging/loopi-v0-3-c01.webp",
+  "source_image_url": "/assets/images/pets/loopi/v0-3-staging/loopi-v0-3-c01-source.png",
+  "visual_generated_at": "2026-06-22T07:31:00Z",
+  "visual_generation_prompt": "Preserve Loopi v0.2 identity and change only forward stance and material finish: use a purposeful forward-ready posture and premium satin ceramic with subtle pearl-metal highlights on the warm paper background."
+}

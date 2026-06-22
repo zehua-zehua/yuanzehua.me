@@ -69,3 +69,11 @@ PET_ADMIN_TOKEN=你的 Cloudflare 变量值 node scripts/generate-pet-report.js 
 ```
 
 报告会保存到 `pet-loop/reports/`。
+
+## Loopi 自动迭代 Loop
+
+```bash
+node scripts/run-pet-evolution-loop.js loopi_v0_2
+```
+
+完整说明见 `docs/pet-evolution-loop.md`。这个 Loop 会生成反馈快照、评估报告、候选版本和选择报告，但不会自动替换首页生产宠物。

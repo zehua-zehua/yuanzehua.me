@@ -1,0 +1,143 @@
+{
+  "agent": "feedback_collector",
+  "schema": "loopi_feedback_snapshot_v1",
+  "run_id": "2026-06-16-loopi_v0_2",
+  "version_name": "loopi_v0_2",
+  "collected_at": "2026-06-16T02:16:41.803Z",
+  "site_url": "https://yuanzehua.me",
+  "summary_endpoint": "/api/pet-feedback-summary?version=loopi_v0_2",
+  "export_endpoint_used": false,
+  "confidence": "usable",
+  "public_summary": {
+    "ok": true,
+    "evaluation_schema": "loopi_homepage_feedback_v1",
+    "feedback_count": 36,
+    "average_score": 4.027777777777778,
+    "latest_feedback_at": "2026-06-16T01:57:52.614Z",
+    "top_tags": [
+      {
+        "tag": "q5_curiosity_ai:5",
+        "count": 3
+      },
+      {
+        "tag": "q4_first_impression_enhance:4",
+        "count": 2
+      },
+      {
+        "tag": "q4_first_impression_enhance:5",
+        "count": 2
+      },
+      {
+        "tag": "q5_curiosity_ai:4",
+        "count": 2
+      },
+      {
+        "tag": "q6_approachability:4",
+        "count": 2
+      },
+      {
+        "tag": "q6_approachability:5",
+        "count": 2
+      },
+      {
+        "tag": "q7_horse_drive:3",
+        "count": 2
+      },
+      {
+        "tag": "q7_horse_drive:4",
+        "count": 2
+      }
+    ],
+    "question_scores": [
+      {
+        "key": "q1_visual_beauty",
+        "label": "整体好看",
+        "dimension": "visual_first_impression",
+        "average": 4.361111111111111,
+        "count": 36
+      },
+      {
+        "key": "q2_visual_quality_professional",
+        "label": "专业质感",
+        "dimension": "visual_first_impression",
+        "average": 3.6666666666666665,
+        "count": 36
+      },
+      {
+        "key": "q3_homepage_not_abrupt",
+        "label": "首页不突兀",
+        "dimension": "homepage_fit",
+        "average": 3.6666666666666665,
+        "count": 36
+      },
+      {
+        "key": "q4_first_impression_not_distracting",
+        "label": "增强第一印象",
+        "dimension": "homepage_fit",
+        "average": 3.6774193548387095,
+        "count": 31
+      },
+      {
+        "key": "q5_ai_curiosity_exploration",
+        "label": "好奇探索 AI",
+        "dimension": "personal_fit",
+        "average": 4.419354838709677,
+        "count": 31
+      },
+      {
+        "key": "q6_friendliness_approachable",
+        "label": "亲和易交流",
+        "dimension": "personal_fit",
+        "average": 4.451612903225806,
+        "count": 31
+      },
+      {
+        "key": "q7_pony_momentum_growth",
+        "label": "小马行动力",
+        "dimension": "pony_dog_concept",
+        "average": 3.6451612903225805,
+        "count": 31
+      },
+      {
+        "key": "q8_dog_warmth_companionship",
+        "label": "小狗陪伴感",
+        "dimension": "pony_dog_concept",
+        "average": 4.32258064516129,
+        "count": 31
+      }
+    ],
+    "dimension_scores": [
+      {
+        "key": "visual_first_impression",
+        "label": "视觉第一印象",
+        "average": 4.013888888888889,
+        "count": 72
+      },
+      {
+        "key": "homepage_fit",
+        "label": "主页适配度",
+        "average": 3.671641791044776,
+        "count": 67
+      },
+      {
+        "key": "personal_fit",
+        "label": "个人气质匹配",
+        "average": 4.435483870967742,
+        "count": 62
+      },
+      {
+        "key": "pony_dog_concept",
+        "label": "小马 + 小狗设定",
+        "average": 3.9838709677419355,
+        "count": 62
+      }
+    ]
+  },
+  "raw_feedback_available": false,
+  "raw_feedback_count": 0,
+  "raw_feedback_note": "PET_ADMIN_TOKEN was not provided.",
+  "raw_feedback_policy": "Raw visitor comments are not saved in this public snapshot. Set PET_LOOP_INCLUDE_REDACTED_TEXT=1 to include short redacted samples.",
+  "source_counts": {},
+  "page_counts": {},
+  "redacted_open_feedback_samples": []
+}

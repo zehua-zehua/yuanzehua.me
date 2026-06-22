@@ -1,0 +1,50 @@
+name: Loopi Evolution Loop
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Loopi version to evaluate"
+        required: false
+        default: "loopi_v0_2"
+  schedule:
+    - cron: "20 2 * * 1"
+
+permissions:
+  contents: write
+
+jobs:
+  evolve:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run Loopi evolution loop
+        env:
+          PET_ADMIN_TOKEN: ${{ secrets.PET_ADMIN_TOKEN }}
+          PET_SITE_URL: "https://yuanzehua.me"
+        run: |
+          VERSION="${{ github.event.inputs.version }}"
+          if [ -z "$VERSION" ]; then
+            VERSION="loopi_v0_2"
+          fi
+          node scripts/run-pet-evolution-loop.js "$VERSION"
+
+      - name: Commit loop output
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add pet-loop/feedback pet-loop/evaluations pet-loop/generations pet-loop/selections pet-loop/reports pet-loop/candidates pet-loop/versions
+          if git diff --staged --quiet; then
+            echo "No Loopi changes to commit"
+          else
+            git commit -m "chore: run Loopi evolution loop [skip ci]"
+            git push
+          fi
