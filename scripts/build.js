@@ -282,6 +282,7 @@ const sitemapURLs = [
   { loc: `${SITE_URL}/`, lastmod: posts[0]?.date },
   { loc: `${SITE_URL}/posts/`, lastmod: posts[0]?.date },
   { loc: `${SITE_URL}/pet-lab/` },
+  { loc: `${SITE_URL}/pet-lab/agent-loop/` },
   { loc: `${SITE_URL}/pet-loop/reports/2026-06-15-loopi-v0-2.html`, lastmod: '2026-06-15' },
   ...posts.map(post => ({ loc: `${SITE_URL}${post.url}`, lastmod: post.date })),
 ];

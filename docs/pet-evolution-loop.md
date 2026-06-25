@@ -4,6 +4,8 @@ This is the lowest-complexity automation layer for Loopi.
 
 The loop is file-based. It reads Cloudflare D1 feedback through existing APIs, writes reports and candidate JSON files into the repository, and never publishes a new pet asset without human approval.
 
+For the full multi-agent architecture, agent contracts, tools, data flow, and self-iteration mechanism, see `docs/pet-multi-agent-architecture.md`.
+
 ## Agents
 
 The MVP loop has four agents:
