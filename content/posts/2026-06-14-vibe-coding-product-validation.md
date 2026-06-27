@@ -1,12 +1,12 @@
 ---
-title: Vibe Coding 不是一套提示词，而是一种新的产品验证方式
+title: 让想法先跑起来：一次 Vibe Coding 复盘
 date: 2026-06-14
 tag: Product
 lang: zh
 summary: 从一次内部 Figma2Demo 实践出发，复盘我对 Vibe Coding、产品验证与产品经理判断力的理解。
 ---
 
-# Vibe Coding 不是一套提示词，<br>而是一种新的产品验证方式
+# 让想法先跑起来：<br>一次 Vibe Coding 复盘
 
 我第一次认真沉淀 Vibe Coding，不是因为看到了某个惊艳的工具演示，而是因为自己真的用它完成了一次从 Figma 原型到可运行 Demo 的过程。
 

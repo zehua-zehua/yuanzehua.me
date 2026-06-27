@@ -4,15 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="从图像编辑场景里的 bad case 归因出发，思考模型评测如何从 benchmark 跑分走向产品可用性的判断体系。">
-<title>模型评测不是跑分，而是定义什么叫可用 · Zane Hua</title>
+<title>沿着 Bad Case，找到模型边界 · Zane Hua</title>
 <link rel="canonical" href="https://yuanzehua.me/posts/2026-06-16-model-evaluation-product-judgment.html">
 <meta property="og:type" content="article">
-<meta property="og:title" content="模型评测不是跑分，而是定义什么叫可用 · Zane Hua">
+<meta property="og:title" content="沿着 Bad Case，找到模型边界 · Zane Hua">
 <meta property="og:description" content="从图像编辑场景里的 bad case 归因出发，思考模型评测如何从 benchmark 跑分走向产品可用性的判断体系。">
 <meta property="og:url" content="https://yuanzehua.me/posts/2026-06-16-model-evaluation-product-judgment.html">
 <meta property="og:image" content="https://yuanzehua.me/assets/images/pets/loopi/v0-3/loopi-v0-3-source.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="模型评测不是跑分，而是定义什么叫可用 · Zane Hua">
+<meta name="twitter:title" content="沿着 Bad Case，找到模型边界 · Zane Hua">
 <meta name="twitter:description" content="从图像编辑场景里的 bad case 归因出发，思考模型评测如何从 benchmark 跑分走向产品可用性的判断体系。">
 <meta name="twitter:image" content="https://yuanzehua.me/assets/images/pets/loopi/v0-3/loopi-v0-3-source.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,7 +56,7 @@ article code{font-family:var(--mono);font-size:.9em;color:var(--accent)}
   </div>
   <article>
     <div class="meta">2026.06.16 · AI</div>
-<h1>模型评测不是跑分，<br>而是定义什么叫可用</h1>
+<h1>沿着 Bad Case，<br>找到模型边界</h1>
 <p>今天做了一轮新的模型评测工作。</p>
 <p>任务本身很具体：针对图像编辑场景里的文字消除与背景补全 bad case 做技术归因。当前链路大致是先定位需要处理的文字区域，再对消除后的背景进行补全。真正要评估的，不只是“文字有没有被擦掉”，而是擦掉之后的画面是否自然，背景纹理是否连续，边缘是否突兀，是否引入了新的伪影，以及问题到底来自定位、掩膜、补全模型、后处理，还是样本本身超出了当前能力边界。</p>
 <p>这类工作看起来像是一个很细的工程问题，但做着做着，我发现它背后其实牵出一个更大的问题：模型能力到底应该怎么评测？</p>
