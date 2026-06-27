@@ -189,25 +189,11 @@ nav ul a:hover { color: var(--ink); }
   max-width: 640px; font-size: 15px; line-height: 2; color: var(--mid); font-weight: 400;
 }
 .pet-loop-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px 22px;
-  margin-top: 24px;
-}
-.pet-loop-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  min-height: 42px;
-  padding: 0 16px;
-  border: 1px solid var(--accent-rule);
-  background: var(--accent-soft);
-  color: var(--accent);
-}
-.pet-loop-primary:hover {
-  color: var(--ink);
-  border-color: var(--ink);
-  background: rgba(255,253,250,.48);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  max-width: 620px;
+  margin-top: 30px;
 }
 .pet-loop-visual {
   width: min(260px, 100%);
@@ -219,12 +205,105 @@ nav ul a:hover { color: var(--ink); }
   height: auto;
 }
 .pet-loop-link {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
-  text-transform: uppercase; color: var(--mid); text-decoration: none;
+  position: relative;
+  display: block;
+  min-height: 106px;
+  padding: 15px 38px 16px 16px;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: rgba(255,253,250,.42);
+  color: var(--ink);
+  text-decoration: none;
+  box-shadow: 0 12px 32px rgba(31,29,24,.035);
+  transition: transform .22s ease, border-color .22s ease, background .22s ease, box-shadow .22s ease;
 }
-.pet-loop-link:hover { color: var(--ink); }
-.pet-loop-link::after { content: '→'; }
+.pet-loop-link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(45,74,62,.32);
+  background: rgba(255,253,250,.72);
+  box-shadow: 0 16px 38px rgba(31,29,24,.07);
+}
+.pet-loop-primary {
+  border-color: rgba(58,174,162,.42);
+  background:
+    linear-gradient(135deg, rgba(58,174,162,.12), rgba(255,253,250,.54) 62%),
+    rgba(255,253,250,.48);
+}
+.pet-loop-primary::before {
+  content: '';
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 12px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(58,174,162,.88), rgba(142,167,255,.42));
+}
+.pet-loop-action-index {
+  display: block;
+  margin-bottom: 10px;
+  font-family: var(--mono);
+  font-size: 10px;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  color: var(--light);
+}
+.pet-loop-primary .pet-loop-action-index { color: var(--accent); }
+.pet-loop-action-text {
+  display: block;
+  min-width: 0;
+}
+.pet-loop-action-title {
+  display: block;
+  font-family: var(--mono);
+  font-size: 10px;
+  line-height: 1.45;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ink);
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.pet-loop-action-desc {
+  display: block;
+  margin-top: 7px;
+  font-size: 12px;
+  line-height: 1.65;
+  color: var(--mid);
+  letter-spacing: 0;
+}
+.pet-loop-action-arrow {
+  position: absolute;
+  top: 16px;
+  right: 15px;
+  width: 18px;
+  height: 18px;
+  color: var(--light);
+}
+.pet-loop-action-arrow::before {
+  content: '';
+  position: absolute;
+  top: 9px;
+  right: 4px;
+  width: 11px;
+  height: 1px;
+  background: currentColor;
+  transform: rotate(-45deg);
+  transform-origin: right center;
+}
+.pet-loop-action-arrow::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 7px;
+  height: 7px;
+  border-top: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+}
+.pet-loop-link:hover .pet-loop-action-arrow { color: var(--accent); }
 .pet-loop-panel {
   border: 1px solid var(--rule);
   background: rgba(255,253,250,.58);
@@ -752,8 +831,8 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
   .pet-loop-grid { grid-template-columns: 1fr; }
   .pet-loop-panel { padding: 24px; border: 1px solid var(--rule); }
   .pet-loop-visual { width: min(210px, 100%); }
-  .pet-loop-actions { gap: 12px; }
-  .pet-loop-primary { width: 100%; justify-content: center; }
+  .pet-loop-actions { grid-template-columns: 1fr; gap: 10px; max-width: none; margin-top: 24px; }
+  .pet-loop-link { min-height: 92px; }
   .interests-grid { grid-template-columns: 1fr; }
   .connect-layout { grid-template-columns: 1fr; }
   .thought-item { grid-template-columns: 80px 1fr; }
@@ -1266,10 +1345,38 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
       <h2 class="pet-loop-title">Loopi learns in public.</h2>
       <p class="pet-loop-desc">Loopi 是 yuanzehua.me 的动态品牌实验：访客反馈进入数据库，四个 Agent 定时读取、评估、生成候选并选择 staging 版本。现在可以直接观看这个 Loop 如何运转。</p>
       <div class="pet-loop-actions">
-        <a class="pet-loop-link pet-loop-primary" href="/pet-lab/agent-loop/">Watch Agent Loop</a>
-        <a class="pet-loop-link" href="/pet-lab/">Pet Lab · 参与评估</a>
-        <a class="pet-loop-link" href="/pet-lab/#current-iteration">Evolution Report</a>
-        <a class="pet-loop-link" href="https://oricum55bo.feishu.cn/docx/LbGwdDdjuoTZ25xXpYacRDR3nAe" target="_blank" rel="noopener noreferrer">项目介绍文档</a>
+        <a class="pet-loop-link pet-loop-primary" href="/pet-lab/agent-loop/">
+          <span class="pet-loop-action-index">01</span>
+          <span class="pet-loop-action-text">
+            <strong class="pet-loop-action-title">Watch Agent Loop</strong>
+            <small class="pet-loop-action-desc">观看四个 Agent 的实时循环</small>
+          </span>
+          <span class="pet-loop-action-arrow" aria-hidden="true"></span>
+        </a>
+        <a class="pet-loop-link" href="/pet-lab/">
+          <span class="pet-loop-action-index">02</span>
+          <span class="pet-loop-action-text">
+            <strong class="pet-loop-action-title">Pet Lab · 参与评估</strong>
+            <small class="pet-loop-action-desc">提交对 Loopi v0.3 的判断</small>
+          </span>
+          <span class="pet-loop-action-arrow" aria-hidden="true"></span>
+        </a>
+        <a class="pet-loop-link" href="/pet-lab/#current-iteration">
+          <span class="pet-loop-action-index">03</span>
+          <span class="pet-loop-action-text">
+            <strong class="pet-loop-action-title">Evolution Report</strong>
+            <small class="pet-loop-action-desc">查看评分、红线与迭代变量</small>
+          </span>
+          <span class="pet-loop-action-arrow" aria-hidden="true"></span>
+        </a>
+        <a class="pet-loop-link" href="https://oricum55bo.feishu.cn/docx/LbGwdDdjuoTZ25xXpYacRDR3nAe" target="_blank" rel="noopener noreferrer">
+          <span class="pet-loop-action-index">04</span>
+          <span class="pet-loop-action-text">
+            <strong class="pet-loop-action-title">项目介绍文档</strong>
+            <small class="pet-loop-action-desc">从主页宠物到 Agent 系统</small>
+          </span>
+          <span class="pet-loop-action-arrow" aria-hidden="true"></span>
+        </a>
       </div>
     </div>
 
