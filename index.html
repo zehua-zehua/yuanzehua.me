@@ -224,11 +224,12 @@ nav ul a:hover { color: var(--ink); }
   box-shadow: 0 16px 38px rgba(31,29,24,.07);
 }
 .pet-loop-primary {
-  border-color: rgba(58,174,162,.42);
+  border-color: rgba(143,95,47,.28);
   background:
-    linear-gradient(135deg, rgba(58,174,162,.12), rgba(255,253,250,.54) 62%),
+    linear-gradient(135deg, rgba(143,95,47,.08), rgba(255,253,250,.54) 62%),
     rgba(255,253,250,.48);
 }
+.pet-loop-primary:hover { border-color: rgba(143,95,47,.38); }
 .pet-loop-primary::before {
   content: '';
   position: absolute;
@@ -237,7 +238,7 @@ nav ul a:hover { color: var(--ink); }
   bottom: 12px;
   height: 2px;
   border-radius: 999px;
-  background: linear-gradient(90deg, rgba(58,174,162,.88), rgba(142,167,255,.42));
+  background: linear-gradient(90deg, rgba(143,95,47,.74), rgba(143,95,47,.16));
 }
 .pet-loop-action-index {
   display: block;
@@ -248,7 +249,7 @@ nav ul a:hover { color: var(--ink); }
   letter-spacing: 0.12em;
   color: var(--light);
 }
-.pet-loop-primary .pet-loop-action-index { color: var(--accent); }
+.pet-loop-primary .pet-loop-action-index { color: var(--warm); }
 .pet-loop-action-text {
   display: block;
   min-width: 0;
@@ -304,6 +305,7 @@ nav ul a:hover { color: var(--ink); }
   border-right: 1px solid currentColor;
 }
 .pet-loop-link:hover .pet-loop-action-arrow { color: var(--accent); }
+.pet-loop-primary:hover .pet-loop-action-arrow { color: var(--warm); }
 .pet-loop-panel {
   border: 1px solid var(--rule);
   background: rgba(255,253,250,.58);
@@ -917,8 +919,8 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
       </div>
       <div class="meta-item">
         <span class="meta-label">Status</span>
-        <span class="meta-value">浙江大学人工智能硕士 · AI 产品经理实习中</span>
-        <span class="meta-value-en">ZJU AI Master's Student · AI PM Intern</span>
+        <span class="meta-value">浙江大学人工智能硕士 · AI 产品经理实习 · 工作交接中</span>
+        <span class="meta-value-en">ZJU AI Master's Student · AI PM Intern · Handover Phase</span>
       </div>
       <div class="meta-item">
         <span class="meta-label">Keywords</span>
