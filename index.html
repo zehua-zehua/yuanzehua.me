@@ -546,19 +546,19 @@ button:focus-visible,
 }
 .project-item:first-child { border-top: 1px solid var(--rule); }
 .project-item.featured {
-  background: linear-gradient(90deg, var(--accent-soft), rgba(245,242,237,0) 64%);
-  border-bottom-color: var(--accent-rule);
+  background: linear-gradient(90deg, rgba(143,95,47,0.06), rgba(245,242,237,0) 64%);
+  border-bottom-color: rgba(143,95,47,0.22);
 }
 .project-item.featured::before {
   content: '';
   position: absolute; left: 0; top: 0; bottom: 0;
-  width: 2px; background: var(--accent);
+  width: 2px; background: var(--warm);
 }
 .project-item.featured .project-head,
 .project-item.featured .project-body-inner {
   padding-left: 18px; padding-right: 18px;
 }
-.project-item.featured .project-title { color: var(--accent); }
+.project-item.featured .project-title { color: var(--warm); }
 
 .project-head {
   display: grid; grid-template-columns: 1fr auto;
@@ -578,12 +578,6 @@ button:focus-visible,
 .project-badge.pub   { border-color: rgba(45,74,62,0.3); color: var(--accent); }
 .project-badge.proj  { border-color: rgba(140,136,128,0.3); }
 .project-badge.work  { border-color: rgba(26,24,20,0.15); }
-.project-badge.featured-badge {
-  border-color: rgba(143,95,47,0.28);
-  color: var(--warm);
-  background: rgba(143,95,47,0.055);
-}
-
 .project-toggle {
   font-family: var(--mono); font-size: 12px; color: var(--light);
   transition: transform 0.3s; flex-shrink: 0; user-select: none;
@@ -1252,7 +1246,6 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
         <div class="project-head" role="button" tabindex="0" aria-expanded="false">
           <div class="project-title-wrap">
             <span class="project-title">AI Creative Tool Evaluation Case Study</span>
-            <span class="project-badge featured-badge">Featured</span>
             <span class="project-badge work">AI PM Internship</span>
           </div>
           <span class="project-toggle">+</span>
