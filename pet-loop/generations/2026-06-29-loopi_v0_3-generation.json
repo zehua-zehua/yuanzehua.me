@@ -1,0 +1,201 @@
+{
+  "agent": "generation",
+  "schema": "loopi_generation_v1",
+  "run_id": "2026-06-29-loopi_v0_3",
+  "version_name": "loopi_v0_3",
+  "target_version": "loopi_v0_4",
+  "generated_at": "2026-06-29T07:05:29.381Z",
+  "report_date": "2026-06-29",
+  "evaluation_path": "evaluations/2026-06-29-loopi_v0_3-evaluation.json",
+  "evaluation_decision": "urgent_iteration",
+  "status": "candidates_generated",
+  "skip_reason": null,
+  "candidates": [
+    {
+      "candidate_id": "loopi_v0_4_auto_20260629_c01",
+      "based_on_version": "loopi_v0_3",
+      "target_version": "loopi_v0_4",
+      "candidate_name": "Conservative Fit Repair",
+      "status": "loop_generated",
+      "generated_by": "generation_agent",
+      "generated_at": "2026-06-29T07:05:29.380Z",
+      "generation_run_id": "2026-06-29-loopi_v0_3",
+      "target_feedback_weakness": [
+        {
+          "type": "question",
+          "key": "q2_visual_quality_professional",
+          "label": "专业质感",
+          "dimension": "visual_first_impression",
+          "average": 3.4054054054054053,
+          "count": 37
+        },
+        {
+          "type": "question",
+          "key": "q3_homepage_not_abrupt",
+          "label": "首页不突兀",
+          "dimension": "homepage_fit",
+          "average": 3.4594594594594597,
+          "count": 37
+        }
+      ],
+      "changed_variables": [
+        "material finish",
+        "homepage scale"
+      ],
+      "preserved_variables": [
+        "virtual AI companion identity",
+        "pony-origin momentum",
+        "silver-white body",
+        "blue-purple mane or energy tail",
+        "warm intelligent eyes",
+        "subtle cyan AI markings",
+        "professional homepage fit"
+      ],
+      "expected_improvement": [
+        "Improve 专业质感 from 3.41 and 首页不突兀 from 3.46 without weakening homepage fit.",
+        "Keep the change to one controlled visual direction so the next feedback loop can isolate signal."
+      ],
+      "risk_to_watch": "May improve fit but feel too subtle if the visual change is barely visible.",
+      "visual_prompt": "Generate loopi_v0_4_auto_20260629_c01 for Loopi, based on loopi_v0_3. This candidate targets 专业质感 (3.41) and 首页不突兀 (3.46). Change only material finish and homepage scale. Preserve Loopi's virtual AI companion identity, pony-origin momentum, silver-white body, blue-purple mane or energy tail, warm intelligent eyes, subtle cyan AI markings, and professional homepage fit. Avoid literal four-legged pony, visible hooves, generic puppy mascot, pure dog mascot, childish cartoon style, toy-like plastic, heavy mecha, excessive neon, magic effects, homepage-disrupting motion.",
+      "animation_notes": "Use calmer idle and restrained waving; avoid attention-stealing motion.",
+      "homepage_fit_notes": "Candidate must remain secondary to the personal homepage content and should sit naturally on the paper background.",
+      "pet_dna_consistency_score_estimate": 4.65,
+      "score_estimate": {
+        "visual_first_impression": 3.8421621621621624,
+        "homepage_fit": 3.752972972972973,
+        "personal_brand_fit": 4.314285714285714,
+        "ai_companion_identity": 4.55,
+        "pony_momentum_readability": 3.6274647887323943,
+        "dog_warmth_readability": 3.6574647887323946,
+        "professional_quality": 4.25,
+        "animation_feasibility": 4.45,
+        "risk_level": 1.8
+      }
+    },
+    {
+      "candidate_id": "loopi_v0_4_auto_20260629_c02",
+      "based_on_version": "loopi_v0_3",
+      "target_version": "loopi_v0_4",
+      "candidate_name": "Warm Personality Lift",
+      "status": "loop_generated",
+      "generated_by": "generation_agent",
+      "generated_at": "2026-06-29T07:05:29.381Z",
+      "generation_run_id": "2026-06-29-loopi_v0_3",
+      "target_feedback_weakness": [
+        {
+          "type": "question",
+          "key": "q2_visual_quality_professional",
+          "label": "专业质感",
+          "dimension": "visual_first_impression",
+          "average": 3.4054054054054053,
+          "count": 37
+        },
+        {
+          "type": "dimension",
+          "key": "homepage_fit",
+          "label": "主页适配度",
+          "average": 3.472972972972973,
+          "count": 74
+        }
+      ],
+      "changed_variables": [
+        "tail-energy direction",
+        "animation restraint"
+      ],
+      "preserved_variables": [
+        "virtual AI companion identity",
+        "pony-origin momentum",
+        "silver-white body",
+        "blue-purple mane or energy tail",
+        "warm intelligent eyes",
+        "subtle cyan AI markings",
+        "professional homepage fit"
+      ],
+      "expected_improvement": [
+        "Improve 专业质感 from 3.41 and 主页适配度 from 3.47 without weakening homepage fit.",
+        "Keep the change to one controlled visual direction so the next feedback loop can isolate signal."
+      ],
+      "risk_to_watch": "May become too cute or dog-like if warmth cues dominate the AI companion identity.",
+      "visual_prompt": "Generate loopi_v0_4_auto_20260629_c02 for Loopi, based on loopi_v0_3. This candidate targets 专业质感 (3.41) and 主页适配度 (3.47). Change only tail-energy direction and animation restraint. Preserve Loopi's virtual AI companion identity, pony-origin momentum, silver-white body, blue-purple mane or energy tail, warm intelligent eyes, subtle cyan AI markings, and professional homepage fit. Avoid literal four-legged pony, visible hooves, generic puppy mascot, pure dog mascot, childish cartoon style, toy-like plastic, heavy mecha, excessive neon, magic effects, homepage-disrupting motion.",
+      "animation_notes": "Let warmth show through small face and ear changes, not through large bouncy motion.",
+      "homepage_fit_notes": "Candidate must remain secondary to the personal homepage content and should sit naturally on the paper background.",
+      "pet_dna_consistency_score_estimate": 4.35,
+      "score_estimate": {
+        "visual_first_impression": 3.7421621621621624,
+        "homepage_fit": 3.592972972972973,
+        "personal_brand_fit": 4.514285714285714,
+        "ai_companion_identity": 4.45,
+        "pony_momentum_readability": 3.6574647887323946,
+        "dog_warmth_readability": 3.7574647887323946,
+        "professional_quality": 4.05,
+        "animation_feasibility": 4.2,
+        "risk_level": 2.6
+      }
+    },
+    {
+      "candidate_id": "loopi_v0_4_auto_20260629_c03",
+      "based_on_version": "loopi_v0_3",
+      "target_version": "loopi_v0_4",
+      "candidate_name": "Brand/IP Clarity",
+      "status": "loop_generated",
+      "generated_by": "generation_agent",
+      "generated_at": "2026-06-29T07:05:29.381Z",
+      "generation_run_id": "2026-06-29-loopi_v0_3",
+      "target_feedback_weakness": [
+        {
+          "type": "question",
+          "key": "q2_visual_quality_professional",
+          "label": "专业质感",
+          "dimension": "visual_first_impression",
+          "average": 3.4054054054054053,
+          "count": 37
+        },
+        {
+          "type": "dimension",
+          "key": "homepage_fit",
+          "label": "主页适配度",
+          "average": 3.472972972972973,
+          "count": 74
+        }
+      ],
+      "changed_variables": [
+        "subtle AI cue",
+        "tail-energy direction"
+      ],
+      "preserved_variables": [
+        "virtual AI companion identity",
+        "pony-origin momentum",
+        "silver-white body",
+        "blue-purple mane or energy tail",
+        "warm intelligent eyes",
+        "subtle cyan AI markings",
+        "professional homepage fit"
+      ],
+      "expected_improvement": [
+        "Improve 专业质感 from 3.41 and 主页适配度 from 3.47 without weakening homepage fit.",
+        "Keep the change to one controlled visual direction so the next feedback loop can isolate signal."
+      ],
+      "risk_to_watch": "May become too tech-heavy or generic AI if product cues are too literal.",
+      "visual_prompt": "Generate loopi_v0_4_auto_20260629_c03 for Loopi, based on loopi_v0_3. This candidate targets 专业质感 (3.41) and 主页适配度 (3.47). Change only subtle AI cue and tail-energy direction. Preserve Loopi's virtual AI companion identity, pony-origin momentum, silver-white body, blue-purple mane or energy tail, warm intelligent eyes, subtle cyan AI markings, and professional homepage fit. Avoid literal four-legged pony, visible hooves, generic puppy mascot, pure dog mascot, childish cartoon style, toy-like plastic, heavy mecha, excessive neon, magic effects, homepage-disrupting motion.",
+      "animation_notes": "Use tiny cyan pulse or tail-energy direction only if it remains homepage-quiet.",
+      "homepage_fit_notes": "Candidate must remain secondary to the personal homepage content and should sit naturally on the paper background.",
+      "pet_dna_consistency_score_estimate": 4.5,
+      "score_estimate": {
+        "visual_first_impression": 3.7821621621621624,
+        "homepage_fit": 3.6229729729729727,
+        "personal_brand_fit": 4.414285714285714,
+        "ai_companion_identity": 4.7,
+        "pony_momentum_readability": 3.7274647887323944,
+        "dog_warmth_readability": 3.6374647887323945,
+        "professional_quality": 4.15,
+        "animation_feasibility": 4.05,
+        "risk_level": 2.3
+      }
+    }
+  ],
+  "candidate_paths": [
+    "candidates/loopi_v0_4_auto_20260629_c01.json",
+    "candidates/loopi_v0_4_auto_20260629_c02.json",
+    "candidates/loopi_v0_4_auto_20260629_c03.json"
+  ]
+}
