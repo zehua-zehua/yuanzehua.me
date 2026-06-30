@@ -385,6 +385,124 @@ nav ul a:hover { color: var(--ink); }
 }
 .pet-summary-tag.is-empty { color: var(--light); }
 
+/* ── Coding agent demo entry ───────────────── */
+.agent-demo-strip {
+  --agent-demo-width: min(1120px, calc(100vw - (var(--gap) * 2)));
+  position: relative;
+  width: var(--agent-demo-width);
+  margin-left: calc((100% - var(--agent-demo-width)) / 2);
+  padding: clamp(68px, 7vw, 98px) 0;
+  border-bottom: 1px solid var(--rule);
+}
+.agent-demo-strip::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 100vw;
+  height: 100%;
+  transform: translateX(-50%);
+  background:
+    linear-gradient(180deg, rgba(255,253,250,.34), rgba(245,242,237,0) 72%),
+    linear-gradient(90deg, rgba(143,95,47,.055), rgba(45,74,62,.045) 58%, rgba(245,242,237,0));
+  pointer-events: none;
+  z-index: -1;
+}
+.agent-demo-grid {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(320px, 1.1fr);
+  gap: clamp(38px, 5.6vw, 78px);
+  align-items: center;
+}
+.agent-demo-kicker {
+  display: block;
+  margin-bottom: 16px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--warm);
+}
+.agent-demo-title {
+  max-width: 620px;
+  font-family: var(--serif-en);
+  font-size: clamp(34px, 4.6vw, 60px);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.06;
+  letter-spacing: 0;
+  margin-bottom: 20px;
+}
+.agent-demo-desc {
+  max-width: 620px;
+  color: var(--mid);
+  font-size: 15px;
+  line-height: 2;
+  font-weight: 400;
+}
+.agent-demo-points {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin: 28px 0 22px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+.agent-demo-point {
+  min-height: 92px;
+  padding: 15px 14px;
+  background: rgba(255,253,250,.54);
+}
+.agent-demo-point span {
+  display: block;
+  margin-bottom: 9px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--light);
+}
+.agent-demo-point strong {
+  display: block;
+  font-size: 13px;
+  line-height: 1.7;
+  font-weight: 400;
+  color: var(--ink);
+}
+.agent-demo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 22px;
+}
+.agent-demo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--mid);
+  text-decoration: none;
+}
+.agent-demo-link:hover { color: var(--warm); }
+.agent-demo-link::after { content: '→'; }
+.agent-demo-shot {
+  overflow: hidden;
+  border: 1px solid rgba(143,95,47,.18);
+  border-radius: 8px;
+  background: rgba(255,253,250,.64);
+  box-shadow: 0 18px 58px rgba(31,29,24,.08);
+  aspect-ratio: 16 / 10;
+}
+.agent-demo-shot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
 
 /* ── Section base ───────────────────────────── */
 section { padding: 80px 0; border-bottom: 1px solid var(--rule); }
@@ -829,6 +947,9 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
   .pet-loop-visual { width: min(210px, 100%); }
   .pet-loop-actions { grid-template-columns: 1fr; gap: 10px; max-width: none; margin-top: 24px; }
   .pet-loop-link { min-height: 92px; }
+  .agent-demo-grid { grid-template-columns: 1fr; }
+  .agent-demo-points { grid-template-columns: 1fr; }
+  .agent-demo-shot { order: -1; }
   .interests-grid { grid-template-columns: 1fr; }
   .connect-layout { grid-template-columns: 1fr; }
   .thought-item { grid-template-columns: 80px 1fr; }
@@ -1092,6 +1213,37 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
   <!-- Projects -->
   <div class="work-panel" id="panel-projects" role="tabpanel" aria-labelledby="tab-projects" hidden>
     <div class="project-list">
+
+      <div class="project-item featured">
+        <div class="project-head" role="button" tabindex="0" aria-expanded="false">
+          <div class="project-title-wrap">
+            <span class="project-title">Loop Canvas: Coding Agent Workflow Control Workspace</span>
+            <span class="project-badge proj">Agent Workflow</span>
+          </div>
+          <span class="project-toggle">+</span>
+        </div>
+        <div class="project-body">
+          <div class="project-body-inner">
+            <div class="project-detail">
+              <div class="project-desc">
+                <p class="cn-note">一个前端-only 的 Coding Agent 工作流 Demo：把 Goal、Task、Agent、Evaluation Criteria、失败处理与 Timeline 组织成可检查、可编辑、可导出的控制台。</p>
+                <br>
+                <p>Built a React + TypeScript MVP for managing an agentic coding loop from goal definition to task ownership, criteria evaluation, failure handling, replanning, and traceable export.</p>
+                <br>
+                <p><em>Product value:</em> Makes evaluation standards explicit before and after implementation, helping AI-assisted development move from scattered prompts to an inspectable workflow with task-level acceptance criteria.</p>
+              </div>
+              <div class="project-meta-list">
+                <div class="pm-item"><span class="pm-label">Stack</span><span class="pm-val">React · TypeScript · Vite · Tailwind CSS</span></div>
+                <div class="pm-item"><span class="pm-label">Year</span><span class="pm-val">2026</span></div>
+                <div class="pm-item"><span class="pm-label">Role</span><span class="pm-val">Product Design · Frontend Build · Agent Workflow</span></div>
+                <div class="pm-item"><span class="pm-label">Focus</span><span class="pm-val">Agent Evaluation · Criteria Editor · Failure-to-Fix Loop</span></div>
+                <div class="pm-item"><span class="pm-label">Evidence</span><span class="pm-val">4 Agents · 6 Tasks · LocalStorage · JSON Export</span></div>
+                <div class="pm-item"><span class="pm-label">Link</span><span class="pm-val"><a href="https://github.com/zehua-zehua/loop-canvas" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none">GitHub ↗</a></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div class="project-item">
         <div class="project-head" role="button" tabindex="0" aria-expanded="false">
@@ -1413,6 +1565,38 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
     </div>
   </div>
 
+</section>
+
+<!-- ── Coding Agent Demo ─────────────────────── -->
+<section id="loop-canvas" class="agent-demo-strip reveal">
+  <div class="agent-demo-grid">
+    <div class="agent-demo-copy">
+      <span class="agent-demo-kicker">Latest Project · Coding Agent Demo</span>
+      <h2 class="agent-demo-title">Loop Canvas turns agent work into a visible loop.</h2>
+      <p class="agent-demo-desc">Loop Canvas 是一个前端-only 的 Agent 工作流控制台：把 Goal、Task、Agent、Evaluation Criteria、失败处理与 Timeline 串成可检查、可编辑、可导出的协作界面。</p>
+      <div class="agent-demo-points" aria-label="Loop Canvas project highlights">
+        <div class="agent-demo-point">
+          <span>01</span>
+          <strong>任务拆解与 Agent 责任清晰可见</strong>
+        </div>
+        <div class="agent-demo-point">
+          <span>02</span>
+          <strong>评测标准可编辑、可加权、可联动状态</strong>
+        </div>
+        <div class="agent-demo-point">
+          <span>03</span>
+          <strong>失败项进入 Fix Task 与 Timeline 闭环</strong>
+        </div>
+      </div>
+      <div class="agent-demo-actions">
+        <a class="agent-demo-link" href="https://github.com/zehua-zehua/loop-canvas" target="_blank" rel="noopener noreferrer">GitHub Source</a>
+        <a class="agent-demo-link" href="https://github.com/zehua-zehua/loop-canvas/blob/main/product-brief.md" target="_blank" rel="noopener noreferrer">Product Brief</a>
+      </div>
+    </div>
+    <figure class="agent-demo-shot" aria-label="Loop Canvas coding agent workflow dashboard preview">
+      <img src="/assets/images/projects/loop-canvas-preview.png" alt="Loop Canvas coding agent workflow dashboard showing Goal Bar, Agent Panel, Task Canvas, Inspector, and Timeline" width="1440" height="900" loading="lazy" decoding="async">
+    </figure>
+  </div>
 </section>
 
 <!-- ── 03 Thinking ────────────────────────────── -->
