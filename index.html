@@ -410,9 +410,11 @@ nav ul a:hover { color: var(--ink); }
 }
 .agent-demo-grid {
   display: grid;
-  grid-template-columns: minmax(0, .9fr) minmax(320px, 1.1fr);
-  gap: clamp(38px, 5.6vw, 78px);
-  align-items: center;
+  grid-template-columns: 1fr;
+  gap: clamp(30px, 4vw, 46px);
+}
+.agent-demo-copy {
+  max-width: 780px;
 }
 .agent-demo-kicker {
   display: block;
@@ -487,20 +489,61 @@ nav ul a:hover { color: var(--ink); }
 }
 .agent-demo-link:hover { color: var(--warm); }
 .agent-demo-link::after { content: '→'; }
-.agent-demo-shot {
+.agent-demo-live {
   overflow: hidden;
   border: 1px solid rgba(143,95,47,.18);
   border-radius: 8px;
   background: rgba(255,253,250,.64);
   box-shadow: 0 18px 58px rgba(31,29,24,.08);
-  aspect-ratio: 16 / 10;
 }
-.agent-demo-shot img {
+.agent-demo-live-bar {
+  min-height: 44px;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-bottom: 1px solid rgba(26,24,20,.09);
+  background: rgba(245,242,237,.82);
+}
+.agent-demo-live-dots {
+  display: inline-flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.agent-demo-live-dots i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1px solid rgba(143,95,47,.28);
+  background: rgba(255,253,250,.72);
+}
+.agent-demo-live-url {
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .08em;
+  color: var(--mid);
+}
+.agent-demo-live-open {
+  flex-shrink: 0;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--warm);
+  text-decoration: none;
+}
+.agent-demo-live-open::after { content: ' ↗'; }
+.agent-demo-frame {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
+  height: clamp(520px, 58vw, 680px);
+  border: 0;
+  background: #fff;
 }
 
 
@@ -949,7 +992,7 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
   .pet-loop-link { min-height: 92px; }
   .agent-demo-grid { grid-template-columns: 1fr; }
   .agent-demo-points { grid-template-columns: 1fr; }
-  .agent-demo-shot { order: -1; }
+  .agent-demo-frame { height: 520px; }
   .interests-grid { grid-template-columns: 1fr; }
   .connect-layout { grid-template-columns: 1fr; }
   .thought-item { grid-template-columns: 80px 1fr; }
@@ -1238,7 +1281,8 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
                 <div class="pm-item"><span class="pm-label">Role</span><span class="pm-val">Product Design · Frontend Build · Agent Workflow</span></div>
                 <div class="pm-item"><span class="pm-label">Focus</span><span class="pm-val">Agent Evaluation · Criteria Editor · Failure-to-Fix Loop</span></div>
                 <div class="pm-item"><span class="pm-label">Evidence</span><span class="pm-val">4 Agents · 6 Tasks · LocalStorage · JSON Export</span></div>
-                <div class="pm-item"><span class="pm-label">Link</span><span class="pm-val"><a href="https://github.com/zehua-zehua/loop-canvas" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none">GitHub ↗</a></span></div>
+                <div class="pm-item"><span class="pm-label">Prototype</span><span class="pm-val"><a href="https://zehua-zehua.github.io/loop-canvas/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none">Live Site ↗</a></span></div>
+                <div class="pm-item"><span class="pm-label">Source</span><span class="pm-val"><a href="https://github.com/zehua-zehua/loop-canvas" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none">GitHub ↗</a></span></div>
               </div>
             </div>
           </div>
@@ -1589,13 +1633,19 @@ footer { padding: 40px 0; display: flex; justify-content: space-between; align-i
         </div>
       </div>
       <div class="agent-demo-actions">
+        <a class="agent-demo-link" href="https://zehua-zehua.github.io/loop-canvas/" target="_blank" rel="noopener noreferrer">Prototype Site</a>
         <a class="agent-demo-link" href="https://github.com/zehua-zehua/loop-canvas" target="_blank" rel="noopener noreferrer">GitHub Source</a>
         <a class="agent-demo-link" href="https://github.com/zehua-zehua/loop-canvas/blob/main/product-brief.md" target="_blank" rel="noopener noreferrer">Product Brief</a>
       </div>
     </div>
-    <figure class="agent-demo-shot" aria-label="Loop Canvas coding agent workflow dashboard preview">
-      <img src="/assets/images/projects/loop-canvas-preview.png" alt="Loop Canvas coding agent workflow dashboard showing Goal Bar, Agent Panel, Task Canvas, Inspector, and Timeline" width="1440" height="900" loading="lazy" decoding="async">
-    </figure>
+    <div class="agent-demo-live" aria-label="Loop Canvas interactive prototype">
+      <div class="agent-demo-live-bar">
+        <span class="agent-demo-live-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="agent-demo-live-url">zehua-zehua.github.io/loop-canvas/</span>
+        <a class="agent-demo-live-open" href="https://zehua-zehua.github.io/loop-canvas/" target="_blank" rel="noopener noreferrer">Open</a>
+      </div>
+      <iframe class="agent-demo-frame" src="https://zehua-zehua.github.io/loop-canvas/?embed=homepage&v=b1a5cf2" title="Loop Canvas interactive prototype" loading="lazy"></iframe>
+    </div>
   </div>
 </section>
 
