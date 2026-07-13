@@ -1,0 +1,60 @@
+{
+  "candidate_id": "loopi_v0_4_auto_20260713_c02",
+  "based_on_version": "loopi_v0_3",
+  "target_version": "loopi_v0_4",
+  "candidate_name": "Warm Personality Lift",
+  "status": "loop_generated",
+  "generated_by": "generation_agent",
+  "generated_at": "2026-07-13T05:49:23.084Z",
+  "generation_run_id": "2026-07-13-loopi_v0_3",
+  "target_feedback_weakness": [
+    {
+      "type": "question",
+      "key": "q2_visual_quality_professional",
+      "label": "专业质感",
+      "dimension": "visual_first_impression",
+      "average": 3.4054054054054053,
+      "count": 37
+    },
+    {
+      "type": "dimension",
+      "key": "homepage_fit",
+      "label": "主页适配度",
+      "average": 3.472972972972973,
+      "count": 74
+    }
+  ],
+  "changed_variables": [
+    "tail-energy direction",
+    "animation restraint"
+  ],
+  "preserved_variables": [
+    "virtual AI companion identity",
+    "pony-origin momentum",
+    "silver-white body",
+    "blue-purple mane or energy tail",
+    "warm intelligent eyes",
+    "subtle cyan AI markings",
+    "professional homepage fit"
+  ],
+  "expected_improvement": [
+    "Improve 专业质感 from 3.41 and 主页适配度 from 3.47 without weakening homepage fit.",
+    "Keep the change to one controlled visual direction so the next feedback loop can isolate signal."
+  ],
+  "risk_to_watch": "May become too cute or dog-like if warmth cues dominate the AI companion identity.",
+  "visual_prompt": "Generate loopi_v0_4_auto_20260713_c02 for Loopi, based on loopi_v0_3. This candidate targets 专业质感 (3.41) and 主页适配度 (3.47). Change only tail-energy direction and animation restraint. Preserve Loopi's virtual AI companion identity, pony-origin momentum, silver-white body, blue-purple mane or energy tail, warm intelligent eyes, subtle cyan AI markings, and professional homepage fit. Avoid literal four-legged pony, visible hooves, generic puppy mascot, pure dog mascot, childish cartoon style, toy-like plastic, heavy mecha, excessive neon, magic effects, homepage-disrupting motion.",
+  "animation_notes": "Let warmth show through small face and ear changes, not through large bouncy motion.",
+  "homepage_fit_notes": "Candidate must remain secondary to the personal homepage content and should sit naturally on the paper background.",
+  "pet_dna_consistency_score_estimate": 4.35,
+  "score_estimate": {
+    "visual_first_impression": 3.7421621621621624,
+    "homepage_fit": 3.592972972972973,
+    "personal_brand_fit": 4.514285714285714,
+    "ai_companion_identity": 4.45,
+    "pony_momentum_readability": 3.6574647887323946,
+    "dog_warmth_readability": 3.7574647887323946,
+    "professional_quality": 4.05,
+    "animation_feasibility": 4.2,
+    "risk_level": 2.6
+  }
+}
