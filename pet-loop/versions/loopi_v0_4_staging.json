@@ -3,9 +3,9 @@
   "display_name": "Loopi v0.4 Staging",
   "status": "staging_recommended",
   "based_on_version": "loopi_v0_3",
-  "selected_candidate_id": "loopi_v0_4_auto_20260720_c01",
-  "selected_at": "2026-07-20T05:50:19.317Z",
-  "selection_report": "reports/2026-07-20-loopi_v0_3-selection.md",
+  "selected_candidate_id": "loopi_v0_4_auto_20260727_c01",
+  "selected_at": "2026-07-27T06:02:17.125Z",
+  "selection_report": "reports/2026-07-27-loopi_v0_3-selection.md",
   "asset_status": "candidate_prompt_ready",
   "image_url": null,
   "source_image_url": null,
@@ -24,7 +24,7 @@
     "subtle cyan AI markings",
     "professional homepage fit"
   ],
-  "visual_prompt": "Generate loopi_v0_4_auto_20260720_c01 for Loopi, based on loopi_v0_3. This candidate targets 专业质感 (3.41) and 首页不突兀 (3.46). Change only material finish and homepage scale. Preserve Loopi's virtual AI companion identity, pony-origin momentum, silver-white body, blue-purple mane or energy tail, warm intelligent eyes, subtle cyan AI markings, and professional homepage fit. Avoid literal four-legged pony, visible hooves, generic puppy mascot, pure dog mascot, childish cartoon style, toy-like plastic, heavy mecha, excessive neon, magic effects, homepage-disrupting motion.",
+  "visual_prompt": "Generate loopi_v0_4_auto_20260727_c01 for Loopi, based on loopi_v0_3. This candidate targets 专业质感 (3.41) and 首页不突兀 (3.46). Change only material finish and homepage scale. Preserve Loopi's virtual AI companion identity, pony-origin momentum, silver-white body, blue-purple mane or energy tail, warm intelligent eyes, subtle cyan AI markings, and professional homepage fit. Avoid literal four-legged pony, visible hooves, generic puppy mascot, pure dog mascot, childish cartoon style, toy-like plastic, heavy mecha, excessive neon, magic effects, homepage-disrupting motion.",
   "animation_notes": "Use calmer idle and restrained waving; avoid attention-stealing motion.",
   "homepage_fit_notes": "Candidate must remain secondary to the personal homepage content and should sit naturally on the paper background.",
   "publish_rule": "Human approval required before replacing production homepage assets."
