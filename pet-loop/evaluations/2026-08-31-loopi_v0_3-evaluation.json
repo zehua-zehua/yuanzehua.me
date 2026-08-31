@@ -1,0 +1,279 @@
+{
+  "agent": "evaluation",
+  "schema": "loopi_evaluation_v1",
+  "run_id": "2026-08-31-loopi_v0_3",
+  "version_name": "loopi_v0_3",
+  "evaluated_at": "2026-08-31T08:40:48.994Z",
+  "report_date": "2026-08-31",
+  "snapshot_path": "feedback/2026-08-31-loopi_v0_3-feedback.json",
+  "current_version_status": "active",
+  "pet_dna_version": "Loopi Pet DNA v1.1",
+  "public_summary": {
+    "ok": true,
+    "evaluation_schema": "loopi_homepage_feedback_v1",
+    "feedback_count": 37,
+    "average_score": 3.810810810810811,
+    "latest_feedback_at": "2026-06-23T05:28:48.194Z",
+    "top_tags": [
+      {
+        "tag": "q5_curiosity_ai_exploration:4",
+        "count": 1
+      },
+      {
+        "tag": "q5_curiosity_ai_explorer:4",
+        "count": 1
+      },
+      {
+        "tag": "q6_approachable_communicative:3",
+        "count": 1
+      },
+      {
+        "tag": "q6_approachable_easy_communicate:4",
+        "count": 1
+      },
+      {
+        "tag": "q7_pony_action_growth:3",
+        "count": 1
+      },
+      {
+        "tag": "q7_pony_energy_forward:4",
+        "count": 1
+      },
+      {
+        "tag": "q8_puppy_warmth_companionship:4",
+        "count": 1
+      }
+    ],
+    "question_scores": [
+      {
+        "key": "q1_visual_beauty",
+        "label": "整体好看",
+        "dimension": "visual_first_impression",
+        "average": 3.918918918918919,
+        "count": 37
+      },
+      {
+        "key": "q2_visual_quality_professional",
+        "label": "专业质感",
+        "dimension": "visual_first_impression",
+        "average": 3.4054054054054053,
+        "count": 37
+      },
+      {
+        "key": "q3_homepage_not_abrupt",
+        "label": "首页不突兀",
+        "dimension": "homepage_fit",
+        "average": 3.4594594594594597,
+        "count": 37
+      },
+      {
+        "key": "q4_first_impression_not_distracting",
+        "label": "增强第一印象",
+        "dimension": "homepage_fit",
+        "average": 3.4864864864864864,
+        "count": 37
+      },
+      {
+        "key": "q5_ai_curiosity_exploration",
+        "label": "好奇探索 AI",
+        "dimension": "personal_fit",
+        "average": 4.3428571428571425,
+        "count": 35
+      },
+      {
+        "key": "q6_friendliness_approachable",
+        "label": "亲和易交流",
+        "dimension": "personal_fit",
+        "average": 4.285714285714286,
+        "count": 35
+      },
+      {
+        "key": "q7_pony_momentum_growth",
+        "label": "小马行动力",
+        "dimension": "pony_dog_concept",
+        "average": 3.4857142857142858,
+        "count": 35
+      },
+      {
+        "key": "q8_dog_warmth_companionship",
+        "label": "小狗陪伴感",
+        "dimension": "pony_dog_concept",
+        "average": 3.6666666666666665,
+        "count": 36
+      }
+    ],
+    "dimension_scores": [
+      {
+        "key": "visual_first_impression",
+        "label": "视觉第一印象",
+        "average": 3.6621621621621623,
+        "count": 74
+      },
+      {
+        "key": "homepage_fit",
+        "label": "主页适配度",
+        "average": 3.472972972972973,
+        "count": 74
+      },
+      {
+        "key": "personal_fit",
+        "label": "个人气质匹配",
+        "average": 4.314285714285714,
+        "count": 70
+      },
+      {
+        "key": "pony_dog_concept",
+        "label": "小马 + 小狗设定",
+        "average": 3.5774647887323945,
+        "count": 71
+      }
+    ]
+  },
+  "decision": "urgent_iteration",
+  "confidence": "usable",
+  "reason": "One or more Pet DNA red lines were triggered.",
+  "strengths": [
+    {
+      "key": "q5_ai_curiosity_exploration",
+      "label": "好奇探索 AI",
+      "dimension": "personal_fit",
+      "average": 4.3428571428571425,
+      "count": 35
+    },
+    {
+      "key": "q6_friendliness_approachable",
+      "label": "亲和易交流",
+      "dimension": "personal_fit",
+      "average": 4.285714285714286,
+      "count": 35
+    },
+    {
+      "key": "q1_visual_beauty",
+      "label": "整体好看",
+      "dimension": "visual_first_impression",
+      "average": 3.918918918918919,
+      "count": 37
+    },
+    {
+      "key": "q8_dog_warmth_companionship",
+      "label": "小狗陪伴感",
+      "dimension": "pony_dog_concept",
+      "average": 3.6666666666666665,
+      "count": 36
+    }
+  ],
+  "weak_dimensions": [
+    {
+      "key": "homepage_fit",
+      "label": "主页适配度",
+      "average": 3.472972972972973,
+      "count": 74
+    },
+    {
+      "key": "pony_dog_concept",
+      "label": "小马 + 小狗设定",
+      "average": 3.5774647887323945,
+      "count": 71
+    },
+    {
+      "key": "visual_first_impression",
+      "label": "视觉第一印象",
+      "average": 3.6621621621621623,
+      "count": 74
+    }
+  ],
+  "weak_questions": [
+    {
+      "key": "q2_visual_quality_professional",
+      "label": "专业质感",
+      "dimension": "visual_first_impression",
+      "average": 3.4054054054054053,
+      "count": 37
+    },
+    {
+      "key": "q3_homepage_not_abrupt",
+      "label": "首页不突兀",
+      "dimension": "homepage_fit",
+      "average": 3.4594594594594597,
+      "count": 37
+    },
+    {
+      "key": "q7_pony_momentum_growth",
+      "label": "小马行动力",
+      "dimension": "pony_dog_concept",
+      "average": 3.4857142857142858,
+      "count": 35
+    },
+    {
+      "key": "q4_first_impression_not_distracting",
+      "label": "增强第一印象",
+      "dimension": "homepage_fit",
+      "average": 3.4864864864864864,
+      "count": 37
+    },
+    {
+      "key": "q8_dog_warmth_companionship",
+      "label": "小狗陪伴感",
+      "dimension": "pony_dog_concept",
+      "average": 3.6666666666666665,
+      "count": 36
+    },
+    {
+      "key": "q1_visual_beauty",
+      "label": "整体好看",
+      "dimension": "visual_first_impression",
+      "average": 3.918918918918919,
+      "count": 37
+    },
+    {
+      "key": "q6_friendliness_approachable",
+      "label": "亲和易交流",
+      "dimension": "personal_fit",
+      "average": 4.285714285714286,
+      "count": 35
+    }
+  ],
+  "red_lines": [
+    {
+      "type": "dimension",
+      "key": "homepage_fit",
+      "label": "主页适配度",
+      "average": 3.472972972972973,
+      "minimum": 3.5
+    },
+    {
+      "type": "question",
+      "key": "q4_first_impression_not_distracting",
+      "label": "增强第一印象",
+      "average": 3.4864864864864864,
+      "minimum": 3.5
+    }
+  ],
+  "recommended_variables": [
+    "material finish",
+    "lighting maturity",
+    "homepage scale",
+    "background integration"
+  ],
+  "protected_variables": [
+    "virtual AI companion identity",
+    "pony-origin momentum",
+    "silver-white body",
+    "blue-purple mane or energy tail",
+    "warm intelligent eyes",
+    "subtle cyan AI markings",
+    "professional homepage fit"
+  ],
+  "hard_avoids": [
+    "literal four-legged pony",
+    "visible hooves",
+    "generic puppy mascot",
+    "pure dog mascot",
+    "childish cartoon style",
+    "toy-like plastic",
+    "heavy mecha",
+    "excessive neon",
+    "magic effects",
+    "homepage-disrupting motion"
+  ]
+}
